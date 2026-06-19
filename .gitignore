@@ -1,0 +1,18 @@
+node_modules/
+.env
+.env.local
+.env*.local
+.claude/
+temporary screenshots/
+.DS_Store
+*.log
+.next/
+out/
+dist/
+.vercel
+dairy.zip
+CLAUDE-web copy.md
+Claude_Code_Web_Design_Masterclass copy.md
+copy-analysis.md
+premium_dairy_website_research.md
+site-improvements.md

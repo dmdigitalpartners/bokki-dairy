@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Млечен Магазин, специализиран магазин в Пловдив</title>
+  <meta name="description" content="Специализиран магазин за пресни млечни продукти, яйца и маслини. бул. Пещерско шосе 26, гк. Младежки хълм, Пловдив.">
+
+  <meta property="og:title" content="Млечен Магазин, специализиран магазин в Пловдив">
+  <meta property="og:description" content="Млечни продукти. Яйца. Маслини. Нищо повече, и нищо по-малко.">
+  <meta property="og:image" content="./Enhanced images/HomePage Header.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="bg_BG">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Млечко — Специализиран Магазин",
+    "description": "Специализиран магазин за пресни млечни продукти, яйца и маслини в Пловдив. Ежедневни доставки директно от производители.",
+    "image": "./Enhanced images/HomePage Header.png",
+    "logo": "./images/Mlechko-Logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "бул. Пещерско шосе 26",
+      "addressLocality": "Пловдив",
+      "postalCode": "4002",
+      "addressCountry": "BG"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 42.1354,
+      "longitude": 24.7453
+    },
+    "telephone": "+359878232365",
+    "openingHours": ["Mo-Fr 08:00-20:00", "Sa 09:00-18:00", "Su 10:00-16:00"],
+    "priceRange": "лв",
+    "servesCuisine": "Dairy Products"
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="./images/Mlechko-Logo.png">
+  <link rel="preload" as="image" href="./Enhanced images/HomePage Header.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --c-canvas:    #FAF8F2;
+      --c-surface:   #F0EBE0;
+
+      /* Section background palette */
+      --bg-trust:    #F5F0E4;
+      --bg-products: #EDE8DB;
+      --bg-gallery:  #E8E2D4;
+      --bg-about:    #E2DAC8;
+      --bg-visit:    #DACCB5;
+      --c-spruce:    #2A3F34;
+      --c-spruce-dk: #1A2920;
+      --c-gold:      #C9973A;
+      --c-gold-lt:   #E8C97A;
+      --c-text:      #1C2321;
+      --c-muted:     #6B7068;
+      --c-border:    #E2DDD0;
+      --c-dark:      #1A2920;
+      --c-cream:     #FAF8F2;
+      --f-display: 'Cormorant Garamond', Georgia, serif;
+      --f-sans:    'Inter', system-ui, -apple-system, sans-serif;
+      --nav-h: 68px;
+      --space-xs:  24px;
+      --space-sm:  48px;
+      --space-md:  80px;
+      --space-lg:  120px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--f-sans); background: var(--bg-gallery); color: var(--c-text); line-height: 1.7; overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { text-decoration: none; color: inherit; }
+    ul, ol { list-style: none; }
+    button { border: none; background: none; cursor: pointer; font: inherit; }
+
+    .skip-link { position: absolute; top: -200%; left: 1rem; background: var(--c-spruce); color: #fff; padding: .5rem 1rem; z-index: 9999; font-size: .875rem; font-weight: 600; }
+    .skip-link:focus { top: 1rem; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-xs); }
+
+    .eyebrow {
+      font-family: var(--f-sans);
+      font-size: .875rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--c-spruce);
+      color: var(--c-cream);
+      padding: 14px 32px;
+      font-family: var(--f-sans);
+      font-size: .8125rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: background 220ms ease, transform 220ms ease;
+    }
+    .btn-primary:hover { background: var(--c-spruce-dk); transform: scale(1.02); }
+    .btn-primary:focus-visible { outline: 3px solid var(--c-gold); outline-offset: 3px; }
+    .btn-primary:active { transform: scale(.97); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--c-cream);
+      border: 1.5px solid rgba(250,248,242,.5);
+      padding: 13px 28px;
+      font-family: var(--f-sans);
+      font-size: .8125rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: border-color 220ms, background 220ms, transform 220ms;
+    }
+    .btn-ghost:hover { border-color: var(--c-cream); background: rgba(250,248,242,.1); transform: scale(1.02); }
+    .btn-ghost:focus-visible { outline: 3px solid var(--c-gold); outline-offset: 3px; }
+
+    .aos { opacity: 0; transform: translateY(24px); transition: opacity 600ms ease, transform 600ms ease; }
+    .aos.visible { opacity: 1; transform: translateY(0); }
+    .aos-delay-1 { transition-delay: 100ms; }
+    .aos-delay-2 { transition-delay: 200ms; }
+    .aos-delay-3 { transition-delay: 300ms; }
+    @media (prefers-reduced-motion: reduce) { .aos { opacity: 1; transform: none; transition: none; } }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      transition: background 300ms ease, box-shadow 300ms ease;
+    }
+    .navbar.scrolled {
+      background: #FDFCF9;
+      box-shadow: 0 1px 0 var(--c-border);
+    }
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-xs);
+    }
+    .logo { display: flex; align-items: center; gap: 10px; }
+    .logo { overflow: hidden; }
+    .logo-img { width: 180px; height: auto; display: block; margin-top: -28px; margin-bottom: -28px; }
+    .logo-img-footer { width: 220px; margin-top: -32px; margin-bottom: -32px; }
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid currentColor;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: color 300ms;
+    }
+    .logo-mark span { font-family: var(--f-display); font-size: .75rem; font-weight: 600; }
+    .logo-name { font-family: var(--f-display); font-size: 1rem; font-weight: 400; letter-spacing: .02em; line-height: 1.2; transition: color 300ms; }
+    .logo-name small { display: block; font-family: var(--f-sans); font-size: .5rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .6; margin-top: 2px; }
+
+    .navbar:not(.scrolled) .logo-mark,
+    .navbar:not(.scrolled) .logo-name { color: var(--c-cream); }
+    .navbar.scrolled .logo-mark,
+    .navbar.scrolled .logo-name { color: var(--c-text); }
+
+    .nav-center { display: flex; align-items: center; gap: 40px; position: absolute; left: 50%; transform: translateX(-50%); }
+    .nav-center a {
+      font-family: var(--f-sans);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: color 200ms, opacity 200ms;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-center a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: currentColor; transition: width 220ms ease; }
+    .nav-center a:hover::after { width: 100%; }
+    .navbar:not(.scrolled) .nav-center a { color: rgba(250,248,242,.8); }
+    .navbar:not(.scrolled) .nav-center a:hover { color: var(--c-cream); }
+    .navbar.scrolled .nav-center a { color: var(--c-muted); }
+    .navbar.scrolled .nav-center a:hover { color: var(--c-text); }
+
+    .nav-phone {
+      font-family: var(--f-sans);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 200ms;
+    }
+    .navbar:not(.scrolled) .nav-phone { color: var(--c-cream); }
+    .navbar.scrolled .nav-phone { color: var(--c-spruce); }
+    .nav-phone:hover { opacity: .8; }
+
+    .hamburger {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      transition: color 300ms;
+    }
+    .navbar:not(.scrolled) .hamburger { color: var(--c-cream); }
+    .navbar.scrolled .hamburger { color: var(--c-text); }
+    .hamburger:focus-visible { outline: 2px solid var(--c-gold); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--c-spruce-dk);
+      z-index: 200;
+      flex-direction: column;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--space-xs);
+      height: var(--nav-h);
+      border-bottom: 1px solid rgba(250,248,242,.08);
+      flex-shrink: 0;
+      color: var(--c-cream);
+    }
+    .mobile-nav-header .logo-mark,
+    .mobile-nav-header .logo-name { color: var(--c-cream); }
+    .mobile-nav-header .hamburger { color: var(--c-cream); }
+    .mobile-nav-body { padding: 40px var(--space-xs); flex: 1; display: flex; flex-direction: column; gap: 0; }
+    .mobile-nav-body a {
+      display: block;
+      font-family: var(--f-display);
+      font-size: 2rem;
+      font-weight: 300;
+      color: rgba(250,248,242,.8);
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(250,248,242,.08);
+      transition: color 200ms;
+    }
+    .mobile-nav-body a:hover { color: var(--c-gold-lt); }
+    .mobile-nav-foot {
+      padding: var(--space-xs);
+      border-top: 1px solid rgba(250,248,242,.08);
+    }
+    .mobile-nav-foot a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--c-gold-lt);
+      font-size: .875rem;
+      font-weight: 600;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 88vh;
+      min-height: 560px;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 110px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('./images/hero-header.png');
+      background-size: cover;
+      background-position: center 30%;
+      background-color: var(--c-spruce-dk);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(26,41,32,.85) 0%,
+        rgba(26,41,32,.55) 50%,
+        rgba(26,41,32,.15) 100%
+      );
+    }
+    .hero-overlay-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(to top, rgba(26,41,32,.5), transparent);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      padding: 0 var(--space-xs);
+      margin: 0 auto 0 0;
+      /* left-align within container */
+    }
+    .hero-content-inner { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-xs); width: 100%; position: relative; z-index: 1; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--f-sans);
+      font-size: .625rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--c-gold-lt);
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 500ms ease forwards;
+    }
+    .hero-title {
+      margin-top: 20px;
+      font-family: var(--f-display);
+      font-size: clamp(2.75rem, 6vw, 5rem);
+      font-weight: 300;
+      color: var(--c-cream);
+      line-height: 1.08;
+      letter-spacing: -.01em;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 550ms 150ms ease forwards;
+    }
+    .hero-title em { font-style: italic; font-weight: 300; }
+    .hero-rule {
+      width: 48px;
+      height: 1.5px;
+      background: var(--c-gold);
+      margin: 28px 0;
+      opacity: 0;
+      animation: fadeUp 500ms 300ms ease forwards;
+    }
+    .hero-sub {
+      font-family: var(--f-sans);
+      font-size: 1rem;
+      color: rgba(250,248,242,.72);
+      line-height: 1.75;
+      max-width: 400px;
+      opacity: 0;
+      animation: fadeUp 500ms 400ms ease forwards;
+    }
+    .hero-cta {
+      margin-top: 40px;
+      opacity: 0;
+      animation: fadeUp 500ms 520ms ease forwards;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    @keyframes fadeUpMascot {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 0.92; transform: translateY(0); }
+    }
+    .hero-mascot {
+      position: absolute;
+      bottom: 8%;
+      right: clamp(60px, 13%, 200px);
+      height: 76%;
+      max-height: 600px;
+      width: auto;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(-4px 12px 28px rgba(26,41,32,.45));
+      opacity: 0;
+      animation: fadeUpMascot 700ms 500ms ease forwards;
+    }
+    @media (max-width: 900px) {
+      .hero-mascot { height: 58%; right: 16px; bottom: 3%; }
+    }
+    @media (max-width: 640px) {
+      .hero-mascot { display: none; }
+    }
+
+    /* ── MANIFESTO STRIP ── */
+    .manifesto {
+      background: var(--bg-trust);
+      border-top: 1px solid var(--c-border);
+      border-bottom: 1px solid var(--c-border);
+    }
+    .manifesto-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-xs);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .manifesto-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 28px 40px;
+      border-right: 1px solid var(--c-border);
+    }
+    .manifesto-item:last-child { border-right: none; }
+    .manifesto-icon {
+      color: var(--c-gold);
+      flex-shrink: 0;
+      opacity: .9;
+    }
+    .manifesto-label {
+      font-family: var(--f-sans);
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--c-text);
+      margin-bottom: 3px;
+    }
+    .manifesto-desc {
+      font-family: var(--f-sans);
+      font-size: .8125rem;
+      color: var(--c-muted);
+      line-height: 1.4;
+    }
+
+    /* ── PRODUCT STRIPS ── */
+    .products { padding: 56px 0 0; background: var(--bg-products); }
+    .products-header { text-align: center; margin-bottom: 72px; }
+    .products-header .eyebrow { margin-bottom: 2px; }
+    .products-title {
+      font-family: var(--f-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      color: var(--c-text);
+      letter-spacing: -.015em;
+      line-height: 1.15;
+    }
+
+    .product-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 500px;
+      margin-bottom: 2px;
+    }
+    .product-strip.reverse { direction: rtl; }
+    .product-strip.reverse > * { direction: ltr; }
+
+    .ps-image {
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-products);
+    }
+    .ps-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 600ms ease;
+      display: block;
+    }
+    .product-strip:hover .ps-image img { transform: scale(1.04); }
+    .ps-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(26,41,32,.15);
+      transition: background 400ms;
+      pointer-events: none;
+    }
+    .product-strip:hover .ps-image::after { background: rgba(26,41,32,.05); }
+
+    .ps-body {
+      background: var(--bg-products);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px 56px;
+      position: relative;
+    }
+    .ps-body::before { display: none; }
+
+    .ps-num {
+      font-family: var(--f-display);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--c-gold);
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -.02em;
+    }
+    .ps-title {
+      font-family: var(--f-display);
+      font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+      font-weight: 400;
+      color: var(--c-text);
+      line-height: 1.15;
+      letter-spacing: -.01em;
+      margin-bottom: 20px;
+    }
+    .ps-desc {
+      font-family: var(--f-sans);
+      font-size: .9375rem;
+      color: var(--c-muted);
+      line-height: 1.8;
+      max-width: 380px;
+    }
+    .ps-detail {
+      margin-top: 28px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--f-sans);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--c-spruce);
+    }
+
+
+    /* ── ABOUT / STORY ── */
+    .about { padding: var(--space-lg) 0; background: var(--bg-about); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.5fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .about-img-wrap { position: relative; margin-top: -60px; }
+    .about-img {
+      width: 100%;
+      height: 540px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .about-img-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 20px;
+      background: linear-gradient(to top, rgba(26,41,32,.75), transparent);
+    }
+    .about-img-caption span {
+      font-family: var(--f-sans);
+      font-size: .6875rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(250,248,242,.8);
+    }
+    .about-stats { display: flex; flex-direction: column; gap: 0; padding-top: 8px; }
+    .stat-item {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--c-border);
+    }
+    .stat-item:first-child { border-top: 1px solid var(--c-border); }
+    .stat-num {
+      font-family: var(--f-display);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--c-spruce);
+      line-height: 1;
+      letter-spacing: -.02em;
+    }
+    .stat-label {
+      font-family: var(--f-sans);
+      font-size: .75rem;
+      font-weight: 500;
+      color: var(--c-muted);
+      margin-top: 6px;
+      letter-spacing: .04em;
+    }
+    .about-text { padding-top: 8px; }
+    .about-heading {
+      font-family: var(--f-display);
+      font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+      font-weight: 300;
+      color: var(--c-text);
+      line-height: 1.2;
+      letter-spacing: -.01em;
+      margin: 16px 0 28px;
+    }
+    .about-body {
+      font-size: .9375rem;
+      color: var(--c-muted);
+      line-height: 1.85;
+    }
+    .about-body p + p { margin-top: 16px; }
+    .about-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 36px;
+      padding: 10px 18px;
+      border: 1px solid var(--c-border);
+      font-family: var(--f-sans);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--c-spruce);
+    }
+
+    /* ── VISIT US ── */
+    .visit {
+      background: var(--bg-visit);
+      padding: 56px 0 var(--space-lg);
+    }
+    .visit-header { margin-bottom: 64px; text-align: center; }
+    .visit-header .eyebrow { color: var(--c-gold); }
+    .visit-heading {
+      font-family: var(--f-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      color: var(--c-text);
+      letter-spacing: -.015em;
+      margin-top: 14px;
+      line-height: 1.1;
+    }
+    .visit-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .visit-info { display: flex; flex-direction: column; gap: 40px; }
+    .visit-info-block {}
+    .vi-label {
+      font-family: var(--f-sans);
+      font-size: .5625rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-bottom: 10px;
+    }
+    .vi-value {
+      font-family: var(--f-display);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--c-text);
+      line-height: 1.5;
+    }
+    .vi-value a { color: var(--c-spruce); transition: color 200ms; }
+    .vi-value a:hover { color: var(--c-gold); }
+    .hours-grid { display: grid; grid-template-columns: auto 1fr; gap: 4px 24px; margin-top: 4px; }
+    .hours-day { font-family: var(--f-sans); font-size: 1rem; color: var(--c-muted); font-weight: 400; padding: 4px 0; }
+    .hours-time { font-family: var(--f-sans); font-size: 1rem; color: var(--c-text); font-weight: 500; padding: 4px 0; }
+    .hours-today .hours-day { color: var(--c-gold); }
+    .hours-today .hours-time { color: var(--c-gold); font-weight: 600; }
+    .hours-note { margin-top: 12px; font-size: .75rem; color: var(--c-muted); font-style: italic; }
+    .wa-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      padding: 13px 24px;
+      font-family: var(--f-sans);
+      font-size: .8125rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      transition: background 200ms, transform 200ms;
+    }
+    .wa-inline:hover { background: #1DA851; transform: scale(1.02); }
+    .wa-inline svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+
+    .visit-map { position: relative; }
+    .visit-map iframe {
+      width: 100%;
+      height: 460px;
+      border: none;
+      display: block;
+      filter: grayscale(20%) contrast(1.05);
+      position: relative;
+      z-index: 1;
+    }
+    .map-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: rgba(244,240,230,.8);
+      border: 1px solid rgba(201,151,58,.3);
+    }
+    .map-fallback-icon { color: var(--c-gold); opacity: .5; }
+    .map-fallback-text { font-family: var(--f-display); font-size: 1.125rem; color: var(--c-muted); text-align: center; font-weight: 300; }
+    .map-fallback-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(201,151,58,.5);
+      color: var(--c-gold);
+      padding: 10px 22px;
+      font-family: var(--f-sans);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: border-color 200ms, background 200ms;
+    }
+    .map-fallback-link:hover { border-color: var(--c-gold); background: rgba(201,151,58,.08); }
+
+    /* ── FOOTER ── */
+    .footer { background: rgba(16,26,21,1); padding: 72px 0 40px; border-top: 1px solid rgba(250,248,242,.04); }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1.2fr;
+      gap: 64px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(250,248,242,.06);
+      align-items: start;
+    }
+    .footer-brand .logo-mark,
+    .footer-brand .logo-name { color: var(--c-cream); }
+    .footer-brand .logo {
+      display: block;
+      overflow: hidden;
+      height: 70px;
+    }
+    .footer-brand .logo-img-footer {
+      width: 220px;
+      height: auto;
+      margin-top: -130px;
+      margin-bottom: 0;
+    }
+    .footer-tagline {
+      font-family: var(--f-display);
+      font-style: italic;
+      font-size: 1.125rem;
+      font-weight: 300;
+      color: rgba(250,248,242,.4);
+      margin-top: 16px;
+      line-height: 1.5;
+      width: 220px;
+      text-align: center;
+    }
+    .footer-col-label {
+      font-family: var(--f-sans);
+      font-size: .5625rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-bottom: 20px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      font-family: var(--f-sans);
+      font-size: .875rem;
+      color: rgba(250,248,242,.5);
+      transition: color 200ms;
+    }
+    .footer-links a:hover { color: var(--c-cream); }
+    .footer-contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .footer-contact-row .fc-icon { color: var(--c-gold); flex-shrink: 0; margin-top: 2px; }
+    .footer-contact-row p { font-size: .875rem; color: rgba(250,248,242,.55); line-height: 1.6; }
+    .footer-contact-row a { color: rgba(250,248,242,.55); transition: color 200ms; }
+    .footer-contact-row a:hover { color: var(--c-gold-lt); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 28px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy { font-size: .75rem; color: rgba(250,248,242,.2); }
+    .footer-social { display: flex; gap: 16px; align-items: center; }
+    .footer-social-link {
+      color: rgba(250,248,242,.3);
+      transition: color 200ms;
+      display: flex;
+      align-items: center;
+    }
+    .footer-social-link:hover { color: var(--c-gold); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      background: #F4EFE4;
+      padding: var(--space-md) 0 var(--space-lg);
+    }
+    .testimonials-header { text-align: center; margin-bottom: 56px; }
+    .testimonials-heading {
+      font-family: var(--f-display);
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 300;
+      color: var(--c-text);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-top: 12px;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .tcard {
+      background: rgba(255,255,255,.5);
+      border: 1px solid var(--c-border);
+      border-left: 3px solid var(--c-spruce);
+      padding: 28px 28px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    .tcard-name {
+      font-family: var(--f-sans);
+      font-size: .6875rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--c-text);
+    }
+    .tcard-stars {
+      display: flex;
+      gap: 3px;
+      margin-top: 8px;
+    }
+    .tcard-stars i, .tcard-stars svg { color: var(--c-gold); fill: var(--c-gold); stroke: var(--c-gold); }
+    .tcard-body {
+      font-family: var(--f-display);
+      font-style: italic;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--c-text);
+      line-height: 1.65;
+      margin-top: 16px;
+      flex: 1;
+    }
+    .tcard-location {
+      font-family: var(--f-sans);
+      font-size: .6875rem;
+      color: var(--c-muted);
+      margin-top: 16px;
+      letter-spacing: .05em;
+    }
+
+    /* ── WA FAB ── */
+    .wa-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 150;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.35), 0 1px 4px rgba(0,0,0,.2);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+    .wa-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.45); }
+    .wa-fab:focus-visible { outline: 3px solid var(--c-gold); outline-offset: 4px; }
+    .wa-fab:active { transform: scale(.94); }
+    .wa-fab svg { width: 28px; height: 28px; fill: #fff; }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 149;
+      width: 44px;
+      height: 44px;
+      background: var(--c-spruce);
+      color: var(--c-cream);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 220ms, transform 220ms;
+      box-shadow: 0 2px 12px rgba(26,41,32,.3);
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .back-to-top:hover { background: var(--c-spruce-dk); }
+    .back-to-top:focus-visible { outline: 3px solid var(--c-gold); outline-offset: 3px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .ps-body { padding: 48px 48px; }
+      .about-grid { grid-template-columns: 1fr 1fr; }
+      .about-stats { grid-column: 2; grid-row: 1; }
+      .about-img-wrap { grid-column: 1; grid-row: 1 / 3; }
+      .about-text { grid-column: 2; grid-row: 2; }
+    }
+    @media (max-width: 768px) {
+      .testimonials-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .hamburger { display: flex; }
+      .nav-center, .nav-phone { display: none; }
+      .hero { height: 90vh; align-items: center; padding-bottom: 0; }
+      .product-strip { grid-template-columns: 1fr; min-height: auto; }
+      .product-strip.reverse { direction: ltr; }
+      .ps-image { height: 260px; }
+      .ps-body { padding: 36px 28px 36px 36px; }
+      .ps-body::before { display: none; }
+      .ps-body .ps-desc { max-width: 100%; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img { height: 320px; }
+      .about-stats { flex-direction: row; flex-wrap: wrap; gap: 0; padding: 0; }
+      .stat-item { flex: 1 1 45%; padding: 20px 16px; }
+      .visit-layout { grid-template-columns: 1fr; gap: 40px; }
+      .visit-map iframe { height: 280px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .testimonials-grid { grid-template-columns: 1fr; }
+      :root { --space-xs: 20px; }
+      .hero-title { font-size: 2.5rem; }
+      .manifesto-text { font-size: 1.375rem; }
+      .wa-fab { bottom: 20px; right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Прескочи към съдържанието</a>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Мобилна навигация">
+  <div class="mobile-nav-header">
+    <a href="#" class="logo" aria-label="Начало">
+      <img src="./images/Mlechko-Logo.png" alt="Млечен Магазин" class="logo-img">
+    </a>
+    <button class="hamburger" id="nav-close" aria-label="Затвори">
+      <i data-lucide="x" width="22" height="22"></i>
+    </button>
+  </div>
+  <div class="mobile-nav-body">
+    <a href="#products">Продукти</a>
+    <a href="#about">За Нас</a>
+    <a href="#reviews">Ревюта</a>
+    <a href="#visit">Намерете Ни</a>
+  </div>
+  <div class="mobile-nav-foot">
+    <a href="tel:+359878232365">
+      <i data-lucide="phone" width="16" height="16"></i>
+      0878 232 365
+    </a>
+  </div>
+</nav>
+
+<!-- Navbar -->
+<header>
+  <nav class="navbar" id="navbar" aria-label="Главна навигация">
+    <div class="navbar-inner">
+      <a href="#" class="logo" aria-label="Начало, Млечен Магазин">
+        <img src="./images/Mlechko-Logo.png" alt="Млечен Магазин" class="logo-img">
+      </a>
+      <div class="nav-center" role="list">
+        <a href="#products" role="listitem">Продукти</a>
+        <a href="#about" role="listitem">За Нас</a>
+        <a href="#reviews" role="listitem">Ревюта</a>
+        <a href="#visit" role="listitem">Намерете Ни</a>
+      </div>
+      <a href="tel:+359878232365" class="nav-phone" aria-label="Обадете се">
+        <i data-lucide="phone" width="14" height="14"></i>
+        0878 232 365
+      </a>
+      <button class="hamburger" id="nav-open" aria-label="Отвори меню" aria-expanded="false" aria-controls="mobile-nav">
+        <i data-lucide="menu" width="22" height="22"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Начален банер">
+    <div class="hero-bg" role="img" aria-label="Интериор на магазина"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-overlay-bottom" aria-hidden="true"></div>
+    <img src="./images/Dairy-Logo-Photoroom.png" alt="" class="hero-mascot" aria-hidden="true">
+    <div class="hero-content-inner">
+      <div style="max-width:620px">
+        <span class="hero-eyebrow">Специализиран Магазин · Пловдив</span>
+        <h1 class="hero-title">Специализиран магазин.<br><em>Истински вкус.</em></h1>
+        <div class="hero-rule" aria-hidden="true"></div>
+        <p class="hero-sub">Пресни млечни продукти, яйца и маслини, подбрани с грижа и доставяни всяка сутрин.</p>
+        <div class="hero-cta">
+          <a href="#visit" class="btn-primary">
+            Намерете Ни
+            <i data-lucide="map-pin" width="15" height="15"></i>
+          </a>
+          <a href="#products" class="btn-ghost">
+            Нашите Продукти
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="manifesto" aria-label="Предимства">
+    <div class="manifesto-inner">
+      <div class="manifesto-item aos">
+        <i class="manifesto-icon" data-lucide="truck" width="28" height="28"></i>
+        <div>
+          <p class="manifesto-label">Пресни всеки ден</p>
+          <p class="manifesto-desc">Продуктите пристигат директно от производителя всяка сутрин</p>
+        </div>
+      </div>
+      <div class="manifesto-item aos aos-delay-1">
+        <i class="manifesto-icon" data-lucide="package" width="28" height="28"></i>
+        <div>
+          <p class="manifesto-label">30+ Вида продукти</p>
+          <p class="manifesto-desc">Млечни продукти, яйца и маслини под един покрив</p>
+        </div>
+      </div>
+      <div class="manifesto-item aos aos-delay-2">
+        <i class="manifesto-icon" data-lucide="shield-check" width="28" height="28"></i>
+        <div>
+          <p class="manifesto-label">Гарантирано качество</p>
+          <p class="manifesto-desc">Специализиран избор за всяка трапеза</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products" aria-labelledby="products-h">
+    <div class="products-header container aos">
+      <p class="eyebrow">Нашите Продукти</p>
+      <h2 class="products-title" id="products-h">Всичко прясно.<br>Всичко избрано.</h2>
+    </div>
+
+    <!-- Strip 1: Dairy -->
+    <article class="product-strip aos">
+      <div class="ps-image">
+        <img src="./images/IMG_0677.jpg" alt="Хладилници с кисело мляко, сирене и масло">
+      </div>
+      <div class="ps-body">
+        <div class="ps-num" aria-hidden="true">01</div>
+        <h3 class="ps-title">Млечни Продукти</h3>
+        <p class="ps-desc">Над 30 вида прясно мляко, кисело мляко, сирене, кашкавал и масло, доставени всяка сутрин от проверени производители.</p>
+        <span class="ps-detail">
+          <i data-lucide="droplets" width="14" height="14"></i>
+          Ежедневна доставка
+        </span>
+      </div>
+    </article>
+
+    <!-- Strip 2: Eggs (reversed) -->
+    <article class="product-strip reverse aos">
+      <div class="ps-image">
+        <img src="./images/IMG_0709.jpg" alt="Пресни яйца в магазина" style="object-position:center 40%">
+      </div>
+      <div class="ps-body">
+        <div class="ps-num" aria-hidden="true">02</div>
+        <h3 class="ps-title">Яйца</h3>
+        <p class="ps-desc">Пресни яйца от проверени производители. Домашен вкус и естествено качество, достъпни за вас всеки ден.</p>
+        <span class="ps-detail">
+          <i data-lucide="sun" width="14" height="14"></i>
+          Прясност гарантирана
+        </span>
+      </div>
+    </article>
+
+    <!-- Strip 3: Olives -->
+    <article class="product-strip aos">
+      <div class="ps-image">
+        <img src="./images/IMG_0684.jpg" alt="Щанд с маслини по килограм и бяло сирене">
+      </div>
+      <div class="ps-body">
+        <div class="ps-num" aria-hidden="true">03</div>
+        <h3 class="ps-title">Маслини &amp; Деликатеси</h3>
+        <p class="ps-desc">Внимателно подбрани маслини от различни сортове и деликатеси, за взискателната трапеза.</p>
+        <span class="ps-detail">
+          <i data-lucide="leaf" width="14" height="14"></i>
+          Внимателен подбор
+        </span>
+      </div>
+    </article>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about" aria-labelledby="about-h">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap aos">
+          <img class="about-img" src="./images/IMG_0702.jpg" alt="Екстериор на Специализиран Магазин, бул. Пещерско шосе 26, Пловдив">
+          <div class="about-img-caption">
+            <span>бул. Пещерско шосе 26 · Пловдив</span>
+          </div>
+        </div>
+        <div class="about-stats aos aos-delay-1">
+          <div class="stat-item">
+            <div class="stat-num">30+</div>
+            <div class="stat-label">вида млечни продукти</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">Всеки ден</div>
+            <div class="stat-label">пресни доставки сутринта</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">6:00</div>
+            <div class="stat-label">сутринта — час на доставка</div>
+          </div>
+        </div>
+        <div class="about-text aos aos-delay-2">
+          <p class="eyebrow">За Нас</p>
+          <h2 class="about-heading" id="about-h">Специализиран избор.<br>Традиционен вкус.</h2>
+          <div class="about-body">
+            <p>Млечко е роден от убеждението, че качествената храна не трябва да бъде лукс. Всяка сутрин пресни млечни продукти, яйца и маслини пристигат директно от проверени производители — без складове, без компромиси.</p>
+            <p>Избрахме да се специализираме в едно нещо и да го правим перфектно: да свържем пловдивските домакинства с истински вкусни, пресни продукти. Намирате ни на бул. Пещерско шосе 26 — елате да видите разликата сами.</p>
+          </div>
+          <span class="about-tag">
+            <i data-lucide="award" width="14" height="14"></i>
+            Специализиран магазин · Пловдив
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="reviews" aria-labelledby="testimonials-h">
+    <div class="container">
+      <div class="testimonials-header aos">
+        <p class="eyebrow">Какво казват клиентите</p>
+        <h2 class="testimonials-heading" id="testimonials-h">Думите на<br><em>нашите клиенти</em></h2>
+      </div>
+      <div class="testimonials-grid">
+
+        <div class="tcard aos">
+          <p class="tcard-name">Мария Костова</p>
+          <div class="tcard-stars" aria-label="5 звезди">
+            <i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i>
+          </div>
+          <p class="tcard-body">Идвам тук всяка сутрин от две години. Млякото и киселото мляко са несравнимо по-добри от всичко в супермаркета. Истинска разлика се усеща веднага.</p>
+          <p class="tcard-location">Пловдив, Тракия</p>
+        </div>
+
+        <div class="tcard aos aos-delay-1">
+          <p class="tcard-name">Иван Петров</p>
+          <div class="tcard-stars" aria-label="5 звезди">
+            <i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i>
+          </div>
+          <p class="tcard-body">Намерих сирена и маслини, каквито не можах да намеря никъде другаде. Персоналът е изключително любезен и винаги помага с избора.</p>
+          <p class="tcard-location">Пловдив, Център</p>
+        </div>
+
+        <div class="tcard aos aos-delay-2">
+          <p class="tcard-name">Елена Стоянова</p>
+          <div class="tcard-stars" aria-label="5 звезди">
+            <i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i>
+          </div>
+          <p class="tcard-body">Пресни яйца всеки ден, прекрасен избор от сирена и маслини — всичко под един покрив. Децата ми обожават млякото оттук.</p>
+          <p class="tcard-location">Белащица</p>
+        </div>
+
+        <div class="tcard aos">
+          <p class="tcard-name">Георги Илиев</p>
+          <div class="tcard-stars" aria-label="5 звезди">
+            <i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i>
+          </div>
+          <p class="tcard-body">Страхотен магазин! Сиренето е невероятно прясно и вкусно. Идвам специално от другия край на Пловдив — струва си всеки път.</p>
+          <p class="tcard-location">Костиево</p>
+        </div>
+
+        <div class="tcard aos aos-delay-1">
+          <p class="tcard-name">Снежана Маринова</p>
+          <div class="tcard-stars" aria-label="5 звезди">
+            <i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i>
+          </div>
+          <p class="tcard-body">Най-доброто кисело мляко, което съм яла от години. Маслините са различни — усеща се качеството. Препоръчвам го на всички мои познати.</p>
+          <p class="tcard-location">Пловдив, Кичука</p>
+        </div>
+
+        <div class="tcard aos aos-delay-2">
+          <p class="tcard-name">Димитър Костов</p>
+          <div class="tcard-stars" aria-label="5 звезди">
+            <i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i>
+          </div>
+          <p class="tcard-body">Специализиран магазин с истинско отношение. Продуктите пристигат прясно всяка сутрин — усеща се разликата. Топло ви препоръчвам.</p>
+          <p class="tcard-location">Крумово</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT US -->
+  <section class="visit" id="visit" aria-labelledby="visit-h">
+    <div class="container">
+      <div class="visit-header aos">
+        <p class="eyebrow">Намерете Ни</p>
+        <h2 class="visit-heading" id="visit-h">Елате при нас<br><em>в Пловдив</em></h2>
+      </div>
+      <div class="visit-layout">
+        <div class="visit-info">
+          <div class="visit-info-block aos">
+            <p class="vi-label">Адрес</p>
+            <div class="vi-value">
+              бул. Пещерско шосе 26<br>
+              гк. Младежки хълм<br>
+              4002 Пловдив
+            </div>
+          </div>
+          <div class="visit-info-block aos aos-delay-1">
+            <p class="vi-label">Работно Време</p>
+            <div class="hours-grid" id="hours-grid">
+              <span class="hours-day">Пон – Пет</span><span class="hours-time">08:00 – 20:00</span>
+              <span class="hours-day">Събота</span><span class="hours-time">09:00 – 18:00</span>
+              <span class="hours-day">Неделя</span><span class="hours-time">10:00 – 16:00</span>
+            </div>
+          </div>
+          <div class="visit-info-block aos aos-delay-2">
+            <p class="vi-label">Телефон</p>
+            <div class="vi-value">
+              <a href="tel:+359878232365">0878 232 365</a>
+            </div>
+          </div>
+        </div>
+        <div class="visit-map aos aos-delay-1">
+          <div class="map-fallback" aria-hidden="true">
+            <i class="map-fallback-icon" data-lucide="map-pin" width="36" height="36"></i>
+            <p class="map-fallback-text">бул. Пещерско шосе 26<br>Пловдив</p>
+            <a href="https://maps.google.com/?q=бул.+Пещерско+шосе+26,+Пловдив" target="_blank" rel="noopener noreferrer" class="map-fallback-link">
+              <i data-lucide="external-link" width="12" height="12"></i>
+              Виж в Google Карти
+            </a>
+          </div>
+          <iframe src="https://maps.google.com/maps?q=бул.+Пещерско+шосе+26,+Пловдив&output=embed" title="Местоположение" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" aria-label="Долен колонтитул">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo footer-brand" aria-label="Начало">
+          <img src="./images/Mlechko-Logo.png" alt="Млечен Магазин" class="logo-img logo-img-footer">
+        </a>
+        <p class="footer-tagline">"Нищо повече<br>и нищо по-малко."</p>
+      </div>
+      <div>
+        <p class="footer-col-label">Навигация</p>
+        <nav class="footer-links" aria-label="Долна навигация">
+          <a href="#">Начало</a>
+          <a href="#products">Продукти</a>
+          <a href="#about">За Нас</a>
+          <a href="#visit">Намерете Ни</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-label">Контакт</p>
+        <div class="footer-contact-row">
+          <i class="fc-icon" data-lucide="map-pin" width="14" height="14"></i>
+          <p>бул. Пещерско шосе 26<br>гк. Младежки хълм<br>4002 Пловдив</p>
+        </div>
+        <div class="footer-contact-row">
+          <i class="fc-icon" data-lucide="phone" width="14" height="14"></i>
+          <p><a href="tel:+359878232365">0878 232 365</a></p>
+        </div>
+        <div class="footer-contact-row">
+          <i class="fc-icon" data-lucide="clock" width="14" height="14"></i>
+          <p>Пон–Пет 08:00–20:00<br>Съб 09:00–18:00 · Нед 10:00–16:00</p>
+        </div>
+        <div class="footer-contact-row">
+          <i class="fc-icon" data-lucide="mail" width="14" height="14"></i>
+          <p><a href="mailto:info@mlechko.bg">info@mlechko.bg</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Млечко. Всички права запазени.</p>
+      <div class="footer-social">
+        <a href="#" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://wa.me/359878232365" class="footer-social-link" aria-label="WhatsApp" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Back to top -->
+<button class="back-to-top" id="back-to-top" aria-label="Върни се нагоре">
+  <i data-lucide="arrow-up" width="18" height="18"></i>
+</button>
+
+<script>
+  if (window.lucide) lucide.createIcons();
+
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  const navOpen = document.getElementById('nav-open');
+  const navClose = document.getElementById('nav-close');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  function openNav() {
+    mobileNav.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    navOpen.setAttribute('aria-expanded', 'true');
+    navClose.focus();
+  }
+  function closeNav() {
+    mobileNav.classList.remove('open');
+    document.body.style.overflow = '';
+    navOpen.setAttribute('aria-expanded', 'false');
+    navOpen.focus();
+  }
+
+  navOpen.addEventListener('click', openNav);
+  navClose.addEventListener('click', closeNav);
+  mobileNav.querySelectorAll('a').forEach(l => l.addEventListener('click', closeNav));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav(); });
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.aos').forEach(el => io.observe(el));
+
+  if (navigator.webdriver) {
+    document.querySelectorAll('.aos').forEach(el => el.classList.add('visible'));
+  }
+
+  // Highlight today's hours
+  const dayMap = [0, 1, 1, 1, 1, 1, 2];
+  const today = dayMap[new Date().getDay()];
+  const grid = document.getElementById('hours-grid');
+  if (grid) {
+    const rows = grid.querySelectorAll('.hours-day');
+    if (rows[today]) {
+      rows[today].classList.add('hours-today');
+      rows[today].nextElementSibling.classList.add('hours-today');
+    }
+  }
+
+  // Back to top
+  const btt = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    btt.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>
