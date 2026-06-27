@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Млечен Магазин, специализиран магазин в Пловдив</title>
+  <title>Млечко — Специализиран Магазин в Пловдив</title>
   <meta name="description" content="Специализиран магазин за пресни млечни продукти, яйца и маслини. бул. Пещерско шосе 26, гк. Младежки хълм, Пловдив.">
 
-  <meta property="og:title" content="Млечен Магазин, специализиран магазин в Пловдив">
+  <meta property="og:title" content="Млечко — Специализиран Магазин в Пловдив">
   <meta property="og:description" content="Млечни продукти. Яйца. Маслини. Нищо повече, и нищо по-малко.">
   <meta property="og:image" content="./Enhanced images/HomePage Header.png">
   <meta property="og:type" content="website">
@@ -40,33 +40,40 @@
   </script>
 
   <link rel="icon" type="image/png" href="./images/Mlechko-Logo.png">
-  <link rel="preload" as="image" href="./Enhanced images/HomePage Header.png">
+  <link rel="preload" as="image" href="./images/hero-header.png" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cormorant+SC:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    :root {
-      --c-canvas:    #FAF8F2;
-      --c-surface:   #F0EBE0;
+    /* ── TOKEN MIGRATION NOTE ──────────────────────────────────────────
+       --c-spruce    → --c-emerald    (#1B3328)
+       --c-spruce-dk → --c-emerald-dk (#0F2019)
+       --c-cream     → --c-canvas     (#FDFCF8)
+       --c-dark      → removed (was duplicate of --c-emerald-dk)
+       --bg-trust    → #1B3328  (was light beige, now dark emerald)
+       --bg-about    → #1B3328  (was light beige, now dark emerald)
+       --bg-gallery  → #0F2019  (was medium beige, now deepest dark)
+    ────────────────────────────────────────────────────────────────── */
 
-      /* Section background palette */
-      --bg-trust:    #F5F0E4;
-      --bg-products: #EDE8DB;
-      --bg-gallery:  #E8E2D4;
-      --bg-about:    #E2DAC8;
-      --bg-visit:    #DACCB5;
-      --c-spruce:    #2A3F34;
-      --c-spruce-dk: #1A2920;
-      --c-gold:      #C9973A;
-      --c-gold-lt:   #E8C97A;
-      --c-text:      #1C2321;
-      --c-muted:     #6B7068;
-      --c-border:    #E2DDD0;
-      --c-dark:      #1A2920;
-      --c-cream:     #FAF8F2;
+    :root {
+      --c-canvas:    #FDFCF8;
+      --c-surface:   #F4EDE0;
+      --bg-trust:    #1B3328;
+      --bg-products: #FDFCF8;
+      --bg-gallery:  #0F2019;
+      --bg-about:    #1B3328;
+      --bg-visit:    #F4EDE0;
+      --c-emerald:   #1B3328;
+      --c-emerald-dk:#0F2019;
+      --c-gold:      #C4892D;
+      --c-gold-lt:   #E5C070;
+      --c-text:      #1A201E;
+      --c-muted:     #5E6862;
+      --c-border:    #E8E2D5;
       --f-display: 'Cormorant Garamond', Georgia, serif;
+      --f-sc:      'Cormorant SC', Georgia, serif;
       --f-sans:    'Inter', system-ui, -apple-system, sans-serif;
       --nav-h: 68px;
       --space-xs:  24px;
@@ -77,81 +84,109 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--f-sans); background: var(--bg-gallery); color: var(--c-text); line-height: 1.7; overflow-x: hidden; }
+    body { font-family: var(--f-sans); background: var(--c-canvas); color: var(--c-text); line-height: 1.7; overflow-x: hidden; }
     img { display: block; max-width: 100%; height: auto; }
     a { text-decoration: none; color: inherit; }
     ul, ol { list-style: none; }
     button { border: none; background: none; cursor: pointer; font: inherit; }
 
-    .skip-link { position: absolute; top: -200%; left: 1rem; background: var(--c-spruce); color: #fff; padding: .5rem 1rem; z-index: 9999; font-size: .875rem; font-weight: 600; }
+    .skip-link { position: absolute; top: -200%; left: 1rem; background: var(--c-emerald); color: #fff; padding: .5rem 1rem; z-index: 9999; font-size: .875rem; font-weight: 600; }
     .skip-link:focus { top: 1rem; }
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-xs); }
 
+    /* Eyebrows: near-black by default (light sections). Override for dark. */
     .eyebrow {
-      font-family: var(--f-sans);
+      font-family: var(--f-sc);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--c-text);
+    }
+    .eyebrow-on-dark {
+      color: var(--c-gold);
       font-size: .875rem;
       font-weight: 600;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--c-gold);
     }
 
     .btn-primary {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--c-spruce);
-      color: var(--c-cream);
+      background: var(--c-gold);
+      color: var(--c-emerald-dk);
       padding: 14px 32px;
       font-family: var(--f-sans);
       font-size: .8125rem;
       font-weight: 600;
       letter-spacing: .1em;
       text-transform: uppercase;
-      transition: background 220ms ease, transform 220ms ease;
     }
-    .btn-primary:hover { background: var(--c-spruce-dk); transform: scale(1.02); }
-    .btn-primary:focus-visible { outline: 3px solid var(--c-gold); outline-offset: 3px; }
-    .btn-primary:active { transform: scale(.97); }
+    @media (prefers-reduced-motion: no-preference) {
+      .btn-primary { transition: background 220ms ease, transform 220ms ease; }
+      .btn-primary:hover { background: var(--c-gold-lt); transform: scale(1.02); }
+      .btn-primary:active { transform: scale(.97); }
+    }
+    .btn-primary:focus-visible { outline: 3px solid var(--c-canvas); outline-offset: 3px; }
 
     .btn-ghost {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: transparent;
-      color: var(--c-cream);
-      border: 1.5px solid rgba(250,248,242,.5);
+      color: var(--c-canvas);
+      border: 1.5px solid rgba(253,252,248,.5);
       padding: 13px 28px;
       font-family: var(--f-sans);
       font-size: .8125rem;
       font-weight: 500;
       letter-spacing: .08em;
       text-transform: uppercase;
-      transition: border-color 220ms, background 220ms, transform 220ms;
     }
-    .btn-ghost:hover { border-color: var(--c-cream); background: rgba(250,248,242,.1); transform: scale(1.02); }
+    @media (prefers-reduced-motion: no-preference) {
+      .btn-ghost { transition: border-color 220ms, background 220ms, transform 220ms; }
+      .btn-ghost:hover { border-color: var(--c-canvas); background: rgba(253,252,248,.1); transform: scale(1.02); }
+    }
     .btn-ghost:focus-visible { outline: 3px solid var(--c-gold); outline-offset: 3px; }
 
-    .aos { opacity: 0; transform: translateY(24px); transition: opacity 600ms ease, transform 600ms ease; }
-    .aos.visible { opacity: 1; transform: translateY(0); }
-    .aos-delay-1 { transition-delay: 100ms; }
-    .aos-delay-2 { transition-delay: 200ms; }
-    .aos-delay-3 { transition-delay: 300ms; }
-    @media (prefers-reduced-motion: reduce) { .aos { opacity: 1; transform: none; transition: none; } }
+    .aos { opacity: 0; transform: translateY(24px); }
+    @media (prefers-reduced-motion: no-preference) {
+      .aos { transition: opacity 600ms ease, transform 600ms ease; }
+      .aos.visible { opacity: 1; transform: translateY(0); }
+      .aos-delay-1 { transition-delay: 100ms; }
+      .aos-delay-2 { transition-delay: 200ms; }
+      .aos-delay-3 { transition-delay: 300ms; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .aos { opacity: 1; transform: none; }
+    }
 
     /* ── NAVBAR ── */
     .navbar {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
       height: var(--nav-h);
-      transition: background 300ms ease, box-shadow 300ms ease;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .navbar { transition: background 300ms ease, box-shadow 300ms ease; }
+    }
+
+    /* Fallback navbar bg for all browsers */
+    .navbar:not(.scrolled) {
+      background: rgba(15,32,25,.4);
+    }
+    /* Progressive enhancement: blur if supported */
+    @supports (backdrop-filter: blur(8px)) {
+      .navbar:not(.scrolled) {
+        background: rgba(15,32,25,.15);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
     }
     .navbar.scrolled {
-      background: #FDFCF9;
+      background: var(--c-canvas);
       box-shadow: 0 1px 0 var(--c-border);
     }
     .navbar-inner {
@@ -163,44 +198,32 @@
       margin: 0 auto;
       padding: 0 var(--space-xs);
     }
-    .logo { display: flex; align-items: center; gap: 10px; }
-    .logo { overflow: hidden; }
+    .logo { display: flex; align-items: center; gap: 10px; overflow: hidden; }
     .logo-img { width: 180px; height: auto; display: block; margin-top: -28px; margin-bottom: -28px; }
     .logo-img-footer { width: 220px; margin-top: -32px; margin-bottom: -32px; }
-    .logo-mark {
-      width: 36px;
-      height: 36px;
-      border: 1.5px solid currentColor;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: color 300ms;
-    }
-    .logo-mark span { font-family: var(--f-display); font-size: .75rem; font-weight: 600; }
-    .logo-name { font-family: var(--f-display); font-size: 1rem; font-weight: 400; letter-spacing: .02em; line-height: 1.2; transition: color 300ms; }
-    .logo-name small { display: block; font-family: var(--f-sans); font-size: .5rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; opacity: .6; margin-top: 2px; }
 
     .navbar:not(.scrolled) .logo-mark,
-    .navbar:not(.scrolled) .logo-name { color: var(--c-cream); }
+    .navbar:not(.scrolled) .logo-name { color: var(--c-canvas); }
     .navbar.scrolled .logo-mark,
     .navbar.scrolled .logo-name { color: var(--c-text); }
 
-    .nav-center { display: flex; align-items: center; gap: 40px; position: absolute; left: 50%; transform: translateX(-50%); }
+    .nav-center { display: flex; align-items: center; gap: 32px; position: absolute; left: 50%; transform: translateX(-50%); }
     .nav-center a {
       font-family: var(--f-sans);
-      font-size: .75rem;
+      font-size: .7rem;
       font-weight: 500;
       letter-spacing: .1em;
       text-transform: uppercase;
-      transition: color 200ms, opacity 200ms;
       position: relative;
       padding-bottom: 2px;
     }
-    .nav-center a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: currentColor; transition: width 220ms ease; }
-    .nav-center a:hover::after { width: 100%; }
-    .navbar:not(.scrolled) .nav-center a { color: rgba(250,248,242,.8); }
-    .navbar:not(.scrolled) .nav-center a:hover { color: var(--c-cream); }
+    @media (prefers-reduced-motion: no-preference) {
+      .nav-center a { transition: color 200ms, opacity 200ms; }
+      .nav-center a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: currentColor; transition: width 220ms ease; }
+      .nav-center a:hover::after { width: 100%; }
+    }
+    .navbar:not(.scrolled) .nav-center a { color: rgba(253,252,248,.8); }
+    .navbar:not(.scrolled) .nav-center a:hover { color: var(--c-canvas); }
     .navbar.scrolled .nav-center a { color: var(--c-muted); }
     .navbar.scrolled .nav-center a:hover { color: var(--c-text); }
 
@@ -212,21 +235,27 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      transition: color 200ms;
+      border: 1.5px solid var(--c-gold);
+      padding: 6px 14px;
     }
-    .navbar:not(.scrolled) .nav-phone { color: var(--c-cream); }
-    .navbar.scrolled .nav-phone { color: var(--c-spruce); }
-    .nav-phone:hover { opacity: .8; }
+    @media (prefers-reduced-motion: no-preference) {
+      .nav-phone { transition: color 200ms, background 200ms; }
+    }
+    .navbar:not(.scrolled) .nav-phone { color: var(--c-canvas); border-color: rgba(196,137,45,.6); }
+    .navbar:not(.scrolled) .nav-phone:hover { background: rgba(196,137,45,.15); border-color: var(--c-gold); }
+    .navbar.scrolled .nav-phone { color: var(--c-emerald); border-color: var(--c-gold); }
+    .navbar.scrolled .nav-phone:hover { background: var(--c-gold); color: var(--c-canvas); }
 
     .hamburger {
       display: none;
       align-items: center;
       justify-content: center;
-      width: 44px;
-      height: 44px;
-      transition: color 300ms;
+      width: 44px; height: 44px;
     }
-    .navbar:not(.scrolled) .hamburger { color: var(--c-cream); }
+    @media (prefers-reduced-motion: no-preference) {
+      .hamburger { transition: color 300ms; }
+    }
+    .navbar:not(.scrolled) .hamburger { color: var(--c-canvas); }
     .navbar.scrolled .hamburger { color: var(--c-text); }
     .hamburger:focus-visible { outline: 2px solid var(--c-gold); }
 
@@ -234,7 +263,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: var(--c-spruce-dk);
+      background: var(--c-emerald-dk);
       z-index: 200;
       flex-direction: column;
     }
@@ -245,28 +274,27 @@
       justify-content: space-between;
       padding: 0 var(--space-xs);
       height: var(--nav-h);
-      border-bottom: 1px solid rgba(250,248,242,.08);
+      border-bottom: 1px solid rgba(253,252,248,.08);
       flex-shrink: 0;
-      color: var(--c-cream);
+      color: var(--c-canvas);
     }
-    .mobile-nav-header .logo-mark,
-    .mobile-nav-header .logo-name { color: var(--c-cream); }
-    .mobile-nav-header .hamburger { color: var(--c-cream); }
-    .mobile-nav-body { padding: 40px var(--space-xs); flex: 1; display: flex; flex-direction: column; gap: 0; }
+    .mobile-nav-body { padding: 40px var(--space-xs); flex: 1; display: flex; flex-direction: column; }
     .mobile-nav-body a {
       display: block;
       font-family: var(--f-display);
       font-size: 2rem;
       font-weight: 300;
-      color: rgba(250,248,242,.8);
+      color: rgba(253,252,248,.75);
       padding: 20px 0;
-      border-bottom: 1px solid rgba(250,248,242,.08);
-      transition: color 200ms;
+      border-bottom: 1px solid rgba(253,252,248,.08);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .mobile-nav-body a { transition: color 200ms; }
     }
     .mobile-nav-body a:hover { color: var(--c-gold-lt); }
     .mobile-nav-foot {
       padding: var(--space-xs);
-      border-top: 1px solid rgba(250,248,242,.08);
+      border-top: 1px solid rgba(253,252,248,.08);
     }
     .mobile-nav-foot a {
       display: flex;
@@ -285,67 +313,115 @@
       display: flex;
       align-items: flex-end;
       padding-bottom: 110px;
+      background-color: var(--c-emerald); /* fallback if images fail */
     }
-    .hero-bg {
+
+    /* Crossfading photo slides */
+    .hero-slides {
       position: absolute;
       inset: 0;
-      background-image: url('./images/hero-header.png');
-      background-size: cover;
-      background-position: center 30%;
-      background-color: var(--c-spruce-dk);
+      overflow: hidden;
     }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+    }
+    .hero-slide:first-child { opacity: 1; }
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    @keyframes heroFade {
+      0%, 30%  { opacity: 1; }
+      38%, 100% { opacity: 0; }
+    }
+    @keyframes kenBurns {
+      from { transform: scale(1) translateX(0); }
+      to   { transform: scale(1.04) translateX(-1%); }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-slide {
+        animation:
+          heroFade  12s ease-in-out infinite,
+          kenBurns  12s ease-in-out infinite alternate;
+      }
+      .hero-slide:nth-child(1) { animation-delay: 0s,  0s; }
+      .hero-slide:nth-child(2) { animation-delay: 4s,  4s; }
+      .hero-slide:nth-child(3) { animation-delay: 8s,  8s; }
+    }
+
     .hero-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to right,
-        rgba(26,41,32,.85) 0%,
-        rgba(26,41,32,.55) 50%,
-        rgba(26,41,32,.15) 100%
+        rgba(15,32,25,.88) 0%,
+        rgba(15,32,25,.55) 55%,
+        rgba(15,32,25,.12) 100%
       );
+      pointer-events: none;
     }
     .hero-overlay-bottom {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       height: 200px;
-      background: linear-gradient(to top, rgba(26,41,32,.5), transparent);
+      background: linear-gradient(to top, rgba(15,32,25,.55), transparent);
+      pointer-events: none;
     }
-    .hero-content {
+
+    .hero-content-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-xs);
+      width: 100%;
       position: relative;
       z-index: 1;
-      max-width: 680px;
-      padding: 0 var(--space-xs);
-      margin: 0 auto 0 0;
-      /* left-align within container */
     }
-    .hero-content-inner { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-xs); width: 100%; position: relative; z-index: 1; }
+    .hero-text-block { max-width: 640px; }
+
     .hero-eyebrow {
       display: inline-block;
-      font-family: var(--f-sans);
-      font-size: .625rem;
-      font-weight: 600;
+      font-family: var(--f-sc);
+      font-size: .7rem;
+      font-weight: 500;
       letter-spacing: .22em;
       text-transform: uppercase;
-      color: var(--c-gold-lt);
+      color: var(--c-gold);
       opacity: 0;
       transform: translateY(12px);
       animation: fadeUp 500ms ease forwards;
     }
+
     .hero-title {
-      margin-top: 20px;
+      margin-top: 18px;
       font-family: var(--f-display);
-      font-size: clamp(2.75rem, 6vw, 5rem);
       font-weight: 300;
-      color: var(--c-cream);
-      line-height: 1.08;
-      letter-spacing: -.01em;
+      line-height: 1.05;
+      letter-spacing: -.03em;
       opacity: 0;
       transform: translateY(14px);
       animation: fadeUp 550ms 150ms ease forwards;
     }
-    .hero-title em { font-style: italic; font-weight: 300; }
+    .hero-h1-a {
+      display: block;
+      font-size: clamp(2.4rem, 5.5vw, 5rem);
+      font-weight: 300;
+      color: var(--c-canvas);
+    }
+    .hero-h1-b {
+      display: block;
+      font-size: clamp(3.2rem, 7.5vw, 7rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--c-gold);
+      margin-top: -.08em;
+    }
+
     .hero-rule {
       width: 48px;
       height: 1.5px;
@@ -357,7 +433,7 @@
     .hero-sub {
       font-family: var(--f-sans);
       font-size: 1rem;
-      color: rgba(250,248,242,.72);
+      color: rgba(253,252,248,.7);
       line-height: 1.75;
       max-width: 400px;
       opacity: 0;
@@ -372,12 +448,13 @@
       gap: 16px;
       align-items: center;
     }
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeUpMascot {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 0.92; transform: translateY(0); }
     }
+
     .hero-mascot {
       position: absolute;
       bottom: 8%;
@@ -388,22 +465,32 @@
       z-index: 1;
       pointer-events: none;
       user-select: none;
-      filter: drop-shadow(-4px 12px 28px rgba(26,41,32,.45));
+      filter: drop-shadow(-4px 12px 28px rgba(15,32,25,.45));
       opacity: 0;
       animation: fadeUpMascot 700ms 500ms ease forwards;
     }
-    @media (max-width: 900px) {
-      .hero-mascot { height: 58%; right: 16px; bottom: 3%; }
-    }
-    @media (max-width: 640px) {
-      .hero-mascot { display: none; }
-    }
+    @media (max-width: 900px) { .hero-mascot { height: 56%; right: 16px; bottom: 3%; } }
+    @media (max-width: 768px) { .hero-mascot { display: none; } }
 
-    /* ── MANIFESTO STRIP ── */
+    .hero-tagline-stamp {
+      position: absolute;
+      bottom: 32px;
+      left: var(--space-xs);
+      font-family: var(--f-display);
+      font-style: italic;
+      font-size: .8rem;
+      font-weight: 300;
+      color: rgba(253,252,248,.3);
+      letter-spacing: .02em;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+    }
+    @media (max-width: 768px) { .hero-tagline-stamp { display: none; } }
+
+    /* ── MANIFESTO / TRUST BAR ── */
     .manifesto {
       background: var(--bg-trust);
-      border-top: 1px solid var(--c-border);
-      border-bottom: 1px solid var(--c-border);
     }
     .manifesto-inner {
       max-width: 1200px;
@@ -415,36 +502,41 @@
     .manifesto-item {
       display: flex;
       align-items: center;
-      gap: 18px;
-      padding: 28px 40px;
-      border-right: 1px solid var(--c-border);
+      gap: 20px;
+      padding: 32px 40px;
+      border-right: 1px solid rgba(196,137,45,.2);
     }
     .manifesto-item:last-child { border-right: none; }
-    .manifesto-icon {
+    .manifesto-icon { color: var(--c-gold); flex-shrink: 0; opacity: .9; }
+    .manifesto-stat {
+      font-family: var(--f-display);
+      font-size: 1.5rem;
+      font-weight: 400;
       color: var(--c-gold);
-      flex-shrink: 0;
-      opacity: .9;
+      line-height: 1;
+      margin-bottom: 4px;
+      letter-spacing: -.01em;
     }
     .manifesto-label {
       font-family: var(--f-sans);
       font-size: .6875rem;
       font-weight: 700;
-      letter-spacing: .15em;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      color: var(--c-text);
-      margin-bottom: 3px;
+      color: var(--c-canvas);
+      margin-bottom: 4px;
     }
     .manifesto-desc {
       font-family: var(--f-sans);
-      font-size: .8125rem;
-      color: var(--c-muted);
+      font-size: .8rem;
+      color: rgba(253,252,248,.45);
       line-height: 1.4;
     }
 
     /* ── PRODUCT STRIPS ── */
     .products { padding: 56px 0 0; background: var(--bg-products); }
     .products-header { text-align: center; margin-bottom: 72px; }
-    .products-header .eyebrow { margin-bottom: 2px; }
+    .products-header .eyebrow { margin-bottom: 10px; }
     .products-title {
       font-family: var(--f-display);
       font-size: clamp(2rem, 3.5vw, 3rem);
@@ -456,7 +548,7 @@
 
     .product-strip {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 58% 42%;
       height: 500px;
       margin-bottom: 2px;
     }
@@ -466,26 +558,41 @@
     .ps-image {
       position: relative;
       overflow: hidden;
-      background: var(--bg-products);
+      background: var(--c-surface);
     }
-    .ps-image img {
+    .ps-image img:not(.product-inset) {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
-      transition: transform 600ms ease;
-      display: block;
     }
-    .product-strip:hover .ps-image img { transform: scale(1.04); }
+    @media (prefers-reduced-motion: no-preference) {
+      .ps-image img:not(.product-inset) { transition: transform 600ms ease; }
+      .product-strip:hover .ps-image img:not(.product-inset) { transform: scale(1.04); }
+    }
     .ps-image::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(26,41,32,.15);
-      transition: background 400ms;
+      background: rgba(15,32,25,.12);
       pointer-events: none;
     }
-    .product-strip:hover .ps-image::after { background: rgba(26,41,32,.05); }
+    @media (prefers-reduced-motion: no-preference) {
+      .ps-image::after { transition: background 400ms; }
+      .product-strip:hover .ps-image::after { background: rgba(15,32,25,.04); }
+    }
+
+    .product-inset {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border: 3px solid var(--c-gold);
+      z-index: 2;
+      max-width: none;
+    }
 
     .ps-body {
       background: var(--bg-products);
@@ -493,18 +600,15 @@
       flex-direction: column;
       justify-content: center;
       padding: 40px 56px;
-      position: relative;
     }
-    .ps-body::before { display: none; }
-
-    .ps-num {
-      font-family: var(--f-display);
-      font-size: 3rem;
-      font-weight: 300;
-      color: var(--c-gold);
-      line-height: 1;
-      margin-bottom: 8px;
-      letter-spacing: -.02em;
+    .ps-category {
+      font-family: var(--f-sc);
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--c-text);
+      margin-bottom: 16px;
     }
     .ps-title {
       font-family: var(--f-display);
@@ -532,11 +636,10 @@
       font-weight: 600;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--c-spruce);
+      color: var(--c-emerald);
     }
 
-
-    /* ── ABOUT / STORY ── */
+    /* ── ABOUT ── */
     .about { padding: var(--space-lg) 0; background: var(--bg-about); }
     .about-grid {
       display: grid;
@@ -545,20 +648,31 @@
       align-items: start;
     }
     .about-img-wrap { position: relative; margin-top: -60px; }
-    .about-img {
+    .about-img-primary {
       width: 100%;
       height: 540px;
       object-fit: cover;
       object-position: center top;
       display: block;
     }
+    .about-img-secondary {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 150px;
+      height: 190px;
+      object-fit: cover;
+      border: 3px solid var(--c-gold);
+      z-index: 2;
+      max-width: none;
+    }
+    @media (max-width: 768px) { .about-img-secondary { display: none; } }
+
     .about-img-caption {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       padding: 16px 20px;
-      background: linear-gradient(to top, rgba(26,41,32,.75), transparent);
+      background: linear-gradient(to top, rgba(15,32,25,.75), transparent);
     }
     .about-img-caption span {
       font-family: var(--f-sans);
@@ -566,19 +680,19 @@
       font-weight: 600;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: rgba(250,248,242,.8);
+      color: rgba(253,252,248,.75);
     }
     .about-stats { display: flex; flex-direction: column; gap: 0; padding-top: 8px; }
     .stat-item {
       padding: 32px 0;
-      border-bottom: 1px solid var(--c-border);
+      border-bottom: 1px solid rgba(196,137,45,.2);
     }
-    .stat-item:first-child { border-top: 1px solid var(--c-border); }
+    .stat-item:first-child { border-top: 1px solid rgba(196,137,45,.2); }
     .stat-num {
       font-family: var(--f-display);
       font-size: 3rem;
       font-weight: 300;
-      color: var(--c-spruce);
+      color: var(--c-gold);
       line-height: 1;
       letter-spacing: -.02em;
     }
@@ -586,7 +700,7 @@
       font-family: var(--f-sans);
       font-size: .75rem;
       font-weight: 500;
-      color: var(--c-muted);
+      color: rgba(253,252,248,.45);
       margin-top: 6px;
       letter-spacing: .04em;
     }
@@ -595,14 +709,14 @@
       font-family: var(--f-display);
       font-size: clamp(1.75rem, 2.5vw, 2.5rem);
       font-weight: 300;
-      color: var(--c-text);
+      color: var(--c-canvas);
       line-height: 1.2;
       letter-spacing: -.01em;
       margin: 16px 0 28px;
     }
     .about-body {
       font-size: .9375rem;
-      color: var(--c-muted);
+      color: rgba(253,252,248,.55);
       line-height: 1.85;
     }
     .about-body p + p { margin-top: 16px; }
@@ -612,225 +726,132 @@
       gap: 6px;
       margin-top: 36px;
       padding: 10px 18px;
-      border: 1px solid var(--c-border);
+      border: 1px solid rgba(196,137,45,.3);
       font-family: var(--f-sans);
       font-size: .75rem;
       font-weight: 600;
       letter-spacing: .06em;
       text-transform: uppercase;
-      color: var(--c-spruce);
+      color: rgba(253,252,248,.55);
     }
 
-    /* ── VISIT US ── */
-    .visit {
-      background: var(--bg-visit);
-      padding: 56px 0 var(--space-lg);
+    /* ── GALLERY ── */
+    .gallery {
+      background: var(--bg-gallery);
+      padding: var(--space-lg) 0 0;
     }
-    .visit-header { margin-bottom: 64px; text-align: center; }
-    .visit-header .eyebrow { color: var(--c-gold); }
-    .visit-heading {
-      font-family: var(--f-display);
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 300;
-      color: var(--c-text);
-      letter-spacing: -.015em;
-      margin-top: 14px;
-      line-height: 1.1;
-    }
-    .visit-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .visit-info { display: flex; flex-direction: column; gap: 40px; }
-    .visit-info-block {}
-    .vi-label {
-      font-family: var(--f-sans);
-      font-size: .5625rem;
-      font-weight: 600;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      margin-bottom: 10px;
-    }
-    .vi-value {
-      font-family: var(--f-display);
-      font-size: 1.5rem;
-      font-weight: 300;
-      color: var(--c-text);
-      line-height: 1.5;
-    }
-    .vi-value a { color: var(--c-spruce); transition: color 200ms; }
-    .vi-value a:hover { color: var(--c-gold); }
-    .hours-grid { display: grid; grid-template-columns: auto 1fr; gap: 4px 24px; margin-top: 4px; }
-    .hours-day { font-family: var(--f-sans); font-size: 1rem; color: var(--c-muted); font-weight: 400; padding: 4px 0; }
-    .hours-time { font-family: var(--f-sans); font-size: 1rem; color: var(--c-text); font-weight: 500; padding: 4px 0; }
-    .hours-today .hours-day { color: var(--c-gold); }
-    .hours-today .hours-time { color: var(--c-gold); font-weight: 600; }
-    .hours-note { margin-top: 12px; font-size: .75rem; color: var(--c-muted); font-style: italic; }
-    .wa-inline {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #25D366;
-      color: #fff;
-      padding: 13px 24px;
-      font-family: var(--f-sans);
-      font-size: .8125rem;
-      font-weight: 600;
-      letter-spacing: .06em;
-      transition: background 200ms, transform 200ms;
-    }
-    .wa-inline:hover { background: #1DA851; transform: scale(1.02); }
-    .wa-inline svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
-
-    .visit-map { position: relative; }
-    .visit-map iframe {
-      width: 100%;
-      height: 460px;
-      border: none;
-      display: block;
-      filter: grayscale(20%) contrast(1.05);
-      position: relative;
-      z-index: 1;
-    }
-    .map-fallback {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      background: rgba(244,240,230,.8);
-      border: 1px solid rgba(201,151,58,.3);
-    }
-    .map-fallback-icon { color: var(--c-gold); opacity: .5; }
-    .map-fallback-text { font-family: var(--f-display); font-size: 1.125rem; color: var(--c-muted); text-align: center; font-weight: 300; }
-    .map-fallback-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(201,151,58,.5);
-      color: var(--c-gold);
-      padding: 10px 22px;
-      font-family: var(--f-sans);
-      font-size: .75rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      transition: border-color 200ms, background 200ms;
-    }
-    .map-fallback-link:hover { border-color: var(--c-gold); background: rgba(201,151,58,.08); }
-
-    /* ── FOOTER ── */
-    .footer { background: rgba(16,26,21,1); padding: 72px 0 40px; border-top: 1px solid rgba(250,248,242,.04); }
-    .footer-inner {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1.2fr;
-      gap: 64px;
-      padding-bottom: 48px;
-      border-bottom: 1px solid rgba(250,248,242,.06);
-      align-items: start;
-    }
-    .footer-brand .logo-mark,
-    .footer-brand .logo-name { color: var(--c-cream); }
-    .footer-brand .logo {
-      display: block;
-      overflow: hidden;
-      height: 70px;
-    }
-    .footer-brand .logo-img-footer {
-      width: 220px;
-      height: auto;
-      margin-top: -130px;
-      margin-bottom: 0;
-    }
-    .footer-tagline {
-      font-family: var(--f-display);
-      font-style: italic;
-      font-size: 1.125rem;
-      font-weight: 300;
-      color: rgba(250,248,242,.4);
-      margin-top: 16px;
-      line-height: 1.5;
-      width: 220px;
+    .gallery-header {
       text-align: center;
+      margin-bottom: 56px;
+      padding: 0 var(--space-xs);
     }
-    .footer-col-label {
-      font-family: var(--f-sans);
-      font-size: .5625rem;
-      font-weight: 600;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      margin-bottom: 20px;
+    .gallery-heading {
+      font-family: var(--f-display);
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      font-weight: 300;
+      color: var(--c-canvas);
+      line-height: 1.1;
+      margin-top: 12px;
+      letter-spacing: -.03em;
     }
-    .footer-links { display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a {
-      font-family: var(--f-sans);
-      font-size: .875rem;
-      color: rgba(250,248,242,.5);
-      transition: color 200ms;
+    .gallery-heading em { font-style: italic; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      gap: 4px;
     }
-    .footer-links a:hover { color: var(--c-cream); }
-    .footer-contact-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 16px;
+    /* Base: every cell is 1×1 */
+    .gallery-cell { grid-column: span 1; grid-row: span 1; overflow: hidden; }
+    /* Specific overrides */
+    .gallery-cell:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .gallery-cell:nth-child(2) { grid-row: span 2; }
+    .gallery-cell:nth-child(9) { grid-column: span 2; }
+
+    .gallery-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      max-width: none;
     }
-    .footer-contact-row .fc-icon { color: var(--c-gold); flex-shrink: 0; margin-top: 2px; }
-    .footer-contact-row p { font-size: .875rem; color: rgba(250,248,242,.55); line-height: 1.6; }
-    .footer-contact-row a { color: rgba(250,248,242,.55); transition: color 200ms; }
-    .footer-contact-row a:hover { color: var(--c-gold-lt); }
-    .footer-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 28px;
-      flex-wrap: wrap;
-      gap: 12px;
+    @media (prefers-reduced-motion: no-preference) {
+      .gallery-cell img { transition: transform 400ms ease, filter 400ms ease; }
+      .gallery-cell:hover img { transform: scale(1.03); filter: brightness(1.06); }
     }
-    .footer-copy { font-size: .75rem; color: rgba(250,248,242,.2); }
-    .footer-social { display: flex; gap: 16px; align-items: center; }
-    .footer-social-link {
-      color: rgba(250,248,242,.3);
-      transition: color 200ms;
-      display: flex;
-      align-items: center;
-    }
-    .footer-social-link:hover { color: var(--c-gold); }
 
     /* ── TESTIMONIALS ── */
     .testimonials {
-      background: #F4EFE4;
+      background: var(--c-canvas);
       padding: var(--space-md) 0 var(--space-lg);
     }
-    .testimonials-header { text-align: center; margin-bottom: 56px; }
+    .testimonials-header { text-align: center; margin-bottom: 48px; }
     .testimonials-heading {
       font-family: var(--f-display);
       font-size: clamp(2rem, 3.5vw, 2.75rem);
       font-weight: 300;
       color: var(--c-text);
-      letter-spacing: -0.02em;
+      letter-spacing: -.02em;
       line-height: 1.2;
       margin-top: 12px;
     }
+
+    /* Featured testimonial */
+    .tcard-featured {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 56px;
+      padding: 40px 0;
+      border-top: 1px solid var(--c-border);
+      border-bottom: 1px solid var(--c-border);
+    }
+    .tcard-featured-stars {
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .tcard-featured-stars svg { color: var(--c-gold); fill: var(--c-gold); }
+    .tcard-featured-quote {
+      font-family: var(--f-display);
+      font-style: italic;
+      font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+      font-weight: 300;
+      color: var(--c-text);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .tcard-featured-name {
+      display: block;
+      font-family: var(--f-sans);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--c-text);
+      margin-bottom: 4px;
+    }
+    .tcard-featured-location {
+      font-family: var(--f-sans);
+      font-size: .6875rem;
+      color: var(--c-muted);
+    }
+
+    /* Grid of remaining cards */
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
     .tcard {
-      background: rgba(255,255,255,.5);
-      border: 1px solid var(--c-border);
-      border-left: 3px solid var(--c-spruce);
+      background: rgba(255,255,255,.6);
+      border: none;
+      border-left: 2px solid var(--c-gold);
       padding: 28px 28px 24px;
       display: flex;
       flex-direction: column;
+      box-shadow: 4px 4px 24px rgba(26,32,30,.06);
     }
     .tcard-name {
       font-family: var(--f-sans);
@@ -840,12 +861,8 @@
       text-transform: uppercase;
       color: var(--c-text);
     }
-    .tcard-stars {
-      display: flex;
-      gap: 3px;
-      margin-top: 8px;
-    }
-    .tcard-stars i, .tcard-stars svg { color: var(--c-gold); fill: var(--c-gold); stroke: var(--c-gold); }
+    .tcard-stars { display: flex; gap: 3px; margin-top: 8px; }
+    .tcard-stars svg { color: var(--c-gold); fill: var(--c-gold); }
     .tcard-body {
       font-family: var(--f-display);
       font-style: italic;
@@ -864,6 +881,208 @@
       letter-spacing: .05em;
     }
 
+    /* ── VISIT US ── */
+    .visit {
+      background: var(--bg-visit);
+      padding: 56px 0 var(--space-lg);
+    }
+    .visit-header { margin-bottom: 64px; text-align: center; }
+    .visit-heading {
+      font-family: var(--f-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      color: var(--c-text);
+      letter-spacing: -.015em;
+      margin-top: 14px;
+      line-height: 1.1;
+    }
+    .visit-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .visit-info { display: flex; flex-direction: column; gap: 40px; }
+    .vi-label {
+      font-family: var(--f-sans);
+      font-size: .5625rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-bottom: 10px;
+    }
+    .vi-value {
+      font-family: var(--f-display);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--c-text);
+      line-height: 1.5;
+    }
+    .vi-value a { color: var(--c-emerald); }
+    @media (prefers-reduced-motion: no-preference) {
+      .vi-value a { transition: color 200ms; }
+      .vi-value a:hover { color: var(--c-gold); }
+    }
+    .hours-grid { display: grid; grid-template-columns: auto 1fr; gap: 4px 24px; margin-top: 4px; }
+    .hours-day { font-family: var(--f-sans); font-size: 1rem; color: var(--c-muted); font-weight: 400; padding: 4px 0; }
+    .hours-time { font-family: var(--f-sans); font-size: 1rem; color: var(--c-text); font-weight: 500; padding: 4px 0; }
+    .hours-today { background: var(--c-gold); border-radius: 3px; padding: 2px 6px !important; color: var(--c-canvas) !important; font-weight: 600 !important; }
+
+    .visit-map { position: relative; }
+    .visit-map iframe {
+      width: 100%;
+      height: 460px;
+      border: none;
+      display: block;
+      filter: saturate(.7) contrast(1.05) sepia(.15);
+      position: relative;
+      z-index: 1;
+    }
+    .map-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: rgba(244,237,224,.8);
+      border: 1px solid rgba(196,137,45,.3);
+    }
+    .map-fallback-icon { color: var(--c-gold); opacity: .5; }
+    .map-fallback-text { font-family: var(--f-display); font-size: 1.125rem; color: var(--c-muted); text-align: center; font-weight: 300; }
+    .map-fallback-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(196,137,45,.5);
+      color: var(--c-gold);
+      padding: 10px 22px;
+      font-family: var(--f-sans);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .map-fallback-link { transition: border-color 200ms, background 200ms; }
+      .map-fallback-link:hover { border-color: var(--c-gold); background: rgba(196,137,45,.08); }
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #0F2019;
+      padding: 72px 0 0;
+      border-top: 1px solid rgba(253,252,248,.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .footer-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 520px;
+      max-width: 80%;
+      height: auto;
+      opacity: 0.04;
+      pointer-events: none;
+      user-select: none;
+    }
+    .footer-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1.2fr;
+      gap: 64px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(253,252,248,.06);
+      align-items: start;
+    }
+    .footer-brand { position: relative; z-index: 1; }
+    .footer-brand .logo { display: block; overflow: hidden; height: 70px; }
+    .footer-brand .logo-img-footer { width: 220px; height: auto; margin-top: -130px; margin-bottom: 0; }
+    .footer-tagline {
+      font-family: var(--f-display);
+      font-style: italic;
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(253,252,248,.35);
+      margin-top: 16px;
+      line-height: 1.5;
+      width: 220px;
+      text-align: center;
+    }
+    .footer-col-label {
+      font-family: var(--f-sans);
+      font-size: .5625rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--c-gold);
+      margin-bottom: 20px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      font-family: var(--f-sans);
+      font-size: .875rem;
+      color: rgba(253,252,248,.45);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .footer-links a { transition: color 200ms; }
+    }
+    .footer-links a:hover { color: var(--c-canvas); }
+    .footer-contact-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+    .footer-contact-row .fc-icon { color: var(--c-gold); flex-shrink: 0; margin-top: 2px; }
+    .footer-contact-row p { font-size: .875rem; color: rgba(253,252,248,.45); line-height: 1.6; }
+    .footer-contact-row a { color: rgba(253,252,248,.45); }
+    @media (prefers-reduced-motion: no-preference) {
+      .footer-contact-row a { transition: color 200ms; }
+    }
+    .footer-contact-row a:hover { color: var(--c-gold-lt); }
+
+    .footer-bottom {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 0;
+      border-top: 1px solid rgba(253,252,248,.06);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy { font-size: .75rem; color: rgba(253,252,248,.18); }
+    .footer-social { display: flex; gap: 16px; align-items: center; }
+    .footer-social-link {
+      color: rgba(253,252,248,.28);
+      display: flex;
+      align-items: center;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .footer-social-link { transition: color 200ms; }
+    }
+    .footer-social-link:hover { color: var(--c-gold); }
+
+    /* Large closing tagline */
+    .footer-close-tagline {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 56px var(--space-xs) 64px;
+    }
+    .footer-close-tagline p {
+      font-family: var(--f-display);
+      font-style: italic;
+      font-size: clamp(1.8rem, 4vw, 3.5rem);
+      font-weight: 300;
+      color: rgba(253,252,248,.12);
+      line-height: 1.3;
+      letter-spacing: -.02em;
+    }
+
     /* ── WA FAB ── */
     .wa-fab {
       position: fixed;
@@ -878,23 +1097,43 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 4px 20px rgba(37,211,102,.35), 0 1px 4px rgba(0,0,0,.2);
-      transition: transform 220ms ease, box-shadow 220ms ease;
     }
-    .wa-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.45); }
+    @media (prefers-reduced-motion: no-preference) {
+      .wa-fab { transition: transform 220ms ease, box-shadow 220ms ease; }
+      .wa-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.45); }
+      .wa-fab:active { transform: scale(.94); }
+    }
     .wa-fab:focus-visible { outline: 3px solid var(--c-gold); outline-offset: 4px; }
-    .wa-fab:active { transform: scale(.94); }
     .wa-fab svg { width: 28px; height: 28px; fill: #fff; }
+    .wa-fab-label {
+      position: absolute;
+      right: 64px;
+      white-space: nowrap;
+      background: var(--c-emerald-dk);
+      color: var(--c-canvas);
+      font-family: var(--f-sans);
+      font-size: .8rem;
+      padding: 6px 12px;
+      border-radius: 4px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .wa-fab-label { transition: opacity 200ms ease; }
+      .wa-fab:hover .wa-fab-label { opacity: 1; }
+    }
+    @media (max-width: 768px) { .wa-fab-label { display: none; } }
 
     /* ── BACK TO TOP ── */
     .back-to-top {
       position: fixed;
-      bottom: 28px;
+      bottom: 92px;
       right: 28px;
       z-index: 149;
       width: 44px;
       height: 44px;
-      background: var(--c-spruce);
-      color: var(--c-cream);
+      background: var(--c-emerald);
+      color: var(--c-canvas);
       border: none;
       display: flex;
       align-items: center;
@@ -902,21 +1141,29 @@
       cursor: pointer;
       opacity: 0;
       pointer-events: none;
-      transform: translateY(12px);
-      transition: opacity 220ms, transform 220ms;
-      box-shadow: 0 2px 12px rgba(26,41,32,.3);
+      box-shadow: 0 2px 12px rgba(15,32,25,.3);
     }
-    .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
-    .back-to-top:hover { background: var(--c-spruce-dk); }
+    @media (prefers-reduced-motion: no-preference) {
+      .back-to-top { transform: translateY(12px); transition: opacity 220ms, transform 220ms; }
+      .back-to-top.visible { transform: translateY(0); }
+      .back-to-top:hover { background: var(--c-emerald-dk); }
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
     .back-to-top:focus-visible { outline: 3px solid var(--c-gold); outline-offset: 3px; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      .ps-body { padding: 48px 48px; }
+      .ps-body { padding: 40px 40px; }
+      .product-inset { display: none; }
       .about-grid { grid-template-columns: 1fr 1fr; }
       .about-stats { grid-column: 2; grid-row: 1; }
       .about-img-wrap { grid-column: 1; grid-row: 1 / 3; }
       .about-text { grid-column: 2; grid-row: 2; }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 200px; }
+      .gallery-cell { grid-column: span 1; grid-row: span 1; }
+      .gallery-cell:first-child { grid-column: span 2; }
+      .gallery-cell:nth-child(2) { grid-row: span 1; }
+      .gallery-cell:nth-child(9) { grid-column: span 1; }
     }
     @media (max-width: 768px) {
       .testimonials-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -926,24 +1173,32 @@
       .product-strip { grid-template-columns: 1fr; min-height: auto; }
       .product-strip.reverse { direction: ltr; }
       .ps-image { height: 260px; }
-      .ps-body { padding: 36px 28px 36px 36px; }
-      .ps-body::before { display: none; }
+      .ps-body { padding: 32px 28px; }
       .ps-body .ps-desc { max-width: 100%; }
       .about-grid { grid-template-columns: 1fr; }
-      .about-img { height: 320px; }
+      .about-img-primary { height: 320px; }
       .about-stats { flex-direction: row; flex-wrap: wrap; gap: 0; padding: 0; }
       .stat-item { flex: 1 1 45%; padding: 20px 16px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+      .gallery-cell { grid-column: span 1; grid-row: span 1; }
+      .gallery-cell:first-child { grid-column: span 2; }
+      .gallery-cell:nth-child(2) { grid-row: span 1; }
+      .gallery-cell:nth-child(9) { grid-column: span 1; }
+      .gallery-cell:nth-child(n+9) { display: none; }
+      .manifesto-inner { grid-template-columns: 1fr; }
+      .manifesto-item { border-right: none; border-bottom: 1px solid rgba(196,137,45,.2); padding: 24px var(--space-xs); }
+      .manifesto-item:last-child { border-bottom: none; }
       .visit-layout { grid-template-columns: 1fr; gap: 40px; }
       .visit-map iframe { height: 280px; }
       .footer-inner { grid-template-columns: 1fr; gap: 40px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .back-to-top { bottom: 84px; right: 20px; }
+      .wa-fab { bottom: 20px; right: 20px; }
     }
     @media (max-width: 480px) {
       .testimonials-grid { grid-template-columns: 1fr; }
       :root { --space-xs: 20px; }
-      .hero-title { font-size: 2.5rem; }
-      .manifesto-text { font-size: 1.375rem; }
-      .wa-fab { bottom: 20px; right: 20px; }
+      .tcard-featured { padding: 32px 0; }
     }
   </style>
 </head>
@@ -963,6 +1218,7 @@
   </div>
   <div class="mobile-nav-body">
     <a href="#products">Продукти</a>
+    <a href="#gallery">Галерия</a>
     <a href="#about">За Нас</a>
     <a href="#reviews">Ревюта</a>
     <a href="#visit">Намерете Ни</a>
@@ -984,12 +1240,13 @@
       </a>
       <div class="nav-center" role="list">
         <a href="#products" role="listitem">Продукти</a>
+        <a href="#gallery" role="listitem">Галерия</a>
         <a href="#about" role="listitem">За Нас</a>
         <a href="#reviews" role="listitem">Ревюта</a>
         <a href="#visit" role="listitem">Намерете Ни</a>
       </div>
       <a href="tel:+359878232365" class="nav-phone" aria-label="Обадете се">
-        <i data-lucide="phone" width="14" height="14"></i>
+        <i data-lucide="phone" width="13" height="13"></i>
         0878 232 365
       </a>
       <button class="hamburger" id="nav-open" aria-label="Отвори меню" aria-expanded="false" aria-controls="mobile-nav">
@@ -1003,14 +1260,37 @@
 
   <!-- HERO -->
   <section class="hero" aria-label="Начален банер">
-    <div class="hero-bg" role="img" aria-label="Интериор на магазина"></div>
+    <div class="hero-slides" aria-hidden="true">
+      <div class="hero-slide">
+        <img src="./images/hero-header.png"
+             loading="eager" fetchpriority="high"
+             width="1920" height="1080"
+             alt="Интериор на магазин Млечко, Пловдив">
+      </div>
+      <div class="hero-slide">
+        <img src="./images/IMG_0702.jpg"
+             loading="lazy"
+             width="1920" height="1080"
+             alt="Витрина с млечни продукти в магазин Млечко">
+      </div>
+      <div class="hero-slide">
+        <img src="./images/IMG_0677.jpg"
+             loading="lazy"
+             width="1920" height="1080"
+             alt="Асортимент от сирена и млечни продукти">
+      </div>
+    </div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-overlay-bottom" aria-hidden="true"></div>
     <img src="./images/Dairy-Logo-Photoroom.png" alt="" class="hero-mascot" aria-hidden="true">
+
     <div class="hero-content-inner">
-      <div style="max-width:620px">
+      <div class="hero-text-block">
         <span class="hero-eyebrow">Специализиран Магазин · Пловдив</span>
-        <h1 class="hero-title">Специализиран магазин.<br><em>Истински вкус.</em></h1>
+        <h1 class="hero-title">
+          <span class="hero-h1-a">Специализиран магазин.</span>
+          <span class="hero-h1-b">Истински вкус.</span>
+        </h1>
         <div class="hero-rule" aria-hidden="true"></div>
         <p class="hero-sub">Пресни млечни продукти, яйца и маслини, подбрани с грижа и доставяни всяка сутрин.</p>
         <div class="hero-cta">
@@ -1018,36 +1298,39 @@
             Намерете Ни
             <i data-lucide="map-pin" width="15" height="15"></i>
           </a>
-          <a href="#products" class="btn-ghost">
-            Нашите Продукти
-          </a>
+          <a href="#products" class="btn-ghost">Нашите Продукти</a>
         </div>
       </div>
     </div>
+
+    <p class="hero-tagline-stamp" aria-hidden="true">„Нищо повече и нищо по-малко."</p>
   </section>
 
   <!-- TRUST BAR -->
   <section class="manifesto" aria-label="Предимства">
     <div class="manifesto-inner">
       <div class="manifesto-item aos">
-        <i class="manifesto-icon" data-lucide="truck" width="28" height="28"></i>
+        <i class="manifesto-icon" data-lucide="truck" width="30" height="30"></i>
         <div>
-          <p class="manifesto-label">Пресни всеки ден</p>
-          <p class="manifesto-desc">Продуктите пристигат директно от производителя всяка сутрин</p>
+          <p class="manifesto-stat">Всеки ден</p>
+          <p class="manifesto-label">Пресна доставка</p>
+          <p class="manifesto-desc">Директно от производителя всяка сутрин</p>
         </div>
       </div>
       <div class="manifesto-item aos aos-delay-1">
-        <i class="manifesto-icon" data-lucide="package" width="28" height="28"></i>
+        <i class="manifesto-icon" data-lucide="package" width="30" height="30"></i>
         <div>
-          <p class="manifesto-label">30+ Вида продукти</p>
+          <p class="manifesto-stat">30+</p>
+          <p class="manifesto-label">Вида продукти</p>
           <p class="manifesto-desc">Млечни продукти, яйца и маслини под един покрив</p>
         </div>
       </div>
       <div class="manifesto-item aos aos-delay-2">
-        <i class="manifesto-icon" data-lucide="shield-check" width="28" height="28"></i>
+        <i class="manifesto-icon" data-lucide="clock" width="30" height="30"></i>
         <div>
-          <p class="manifesto-label">Гарантирано качество</p>
-          <p class="manifesto-desc">Специализиран избор за всяка трапеза</p>
+          <p class="manifesto-stat">6:00</p>
+          <p class="manifesto-label">Сутринта</p>
+          <p class="manifesto-desc">Часът на доставката — гарантирана прясност</p>
         </div>
       </div>
     </div>
@@ -1063,10 +1346,18 @@
     <!-- Strip 1: Dairy -->
     <article class="product-strip aos">
       <div class="ps-image">
-        <img src="./images/IMG_0677.jpg" alt="Хладилници с кисело мляко, сирене и масло">
+        <img src="./images/IMG_0677.jpg"
+             loading="eager"
+             width="900" height="600"
+             alt="Хладилници с кисело мляко, сирене и масло">
+        <img src="./images/IMG_0678.jpg"
+             loading="lazy"
+             width="400" height="400"
+             class="product-inset"
+             alt="Детайл — пресни млечни продукти">
       </div>
       <div class="ps-body">
-        <div class="ps-num" aria-hidden="true">01</div>
+        <p class="ps-category">Млечни Продукти</p>
         <h3 class="ps-title">Млечни Продукти</h3>
         <p class="ps-desc">Над 30 вида прясно мляко, кисело мляко, сирене, кашкавал и масло, доставени всяка сутрин от проверени производители.</p>
         <span class="ps-detail">
@@ -1076,13 +1367,22 @@
       </div>
     </article>
 
-    <!-- Strip 2: Eggs (reversed) -->
+    <!-- Strip 2: Eggs -->
     <article class="product-strip reverse aos">
       <div class="ps-image">
-        <img src="./images/IMG_0709.jpg" alt="Пресни яйца в магазина" style="object-position:center 40%">
+        <img src="./images/IMG_0709.jpg"
+             loading="lazy"
+             width="900" height="600"
+             alt="Пресни яйца в магазина"
+             style="object-position:center 40%">
+        <img src="./images/IMG_0708.jpg"
+             loading="lazy"
+             width="400" height="400"
+             class="product-inset"
+             alt="Детайл — пресни яйца от местни ферми">
       </div>
       <div class="ps-body">
-        <div class="ps-num" aria-hidden="true">02</div>
+        <p class="ps-category">Яйца</p>
         <h3 class="ps-title">Яйца</h3>
         <p class="ps-desc">Пресни яйца от проверени производители. Домашен вкус и естествено качество, достъпни за вас всеки ден.</p>
         <span class="ps-detail">
@@ -1095,10 +1395,18 @@
     <!-- Strip 3: Olives -->
     <article class="product-strip aos">
       <div class="ps-image">
-        <img src="./images/IMG_0684.jpg" alt="Щанд с маслини по килограм и бяло сирене">
+        <img src="./images/IMG_0684.jpg"
+             loading="lazy"
+             width="900" height="600"
+             alt="Щанд с маслини по килограм и бяло сирене">
+        <img src="./images/IMG_0685.jpg"
+             loading="lazy"
+             width="400" height="400"
+             class="product-inset"
+             alt="Детайл — мариновани маслини">
       </div>
       <div class="ps-body">
-        <div class="ps-num" aria-hidden="true">03</div>
+        <p class="ps-category">Маслини &amp; Деликатеси</p>
         <h3 class="ps-title">Маслини &amp; Деликатеси</h3>
         <p class="ps-desc">Внимателно подбрани маслини от различни сортове и деликатеси, за взискателната трапеза.</p>
         <span class="ps-detail">
@@ -1114,7 +1422,16 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-img-wrap aos">
-          <img class="about-img" src="./images/IMG_0702.jpg" alt="Екстериор на Специализиран Магазин, бул. Пещерско шосе 26, Пловдив">
+          <img class="about-img-primary"
+               src="./images/IMG_0702.jpg"
+               loading="lazy"
+               width="700" height="540"
+               alt="Екстериор на Специализиран Магазин, бул. Пещерско шосе 26, Пловдив">
+          <img class="about-img-secondary"
+               src="./images/IMG_0703.jpg"
+               loading="lazy"
+               width="600" height="800"
+               alt="Екипът на магазин Млечко пред витрината">
           <div class="about-img-caption">
             <span>бул. Пещерско шосе 26 · Пловдив</span>
           </div>
@@ -1134,7 +1451,7 @@
           </div>
         </div>
         <div class="about-text aos aos-delay-2">
-          <p class="eyebrow">За Нас</p>
+          <p class="eyebrow eyebrow-on-dark">За Нас</p>
           <h2 class="about-heading" id="about-h">Специализиран избор.<br>Традиционен вкус.</h2>
           <div class="about-body">
             <p>Млечко е роден от убеждението, че качествената храна не трябва да бъде лукс. Всяка сутрин пресни млечни продукти, яйца и маслини пристигат директно от проверени производители — без складове, без компромиси.</p>
@@ -1149,6 +1466,49 @@
     </div>
   </section>
 
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery" aria-labelledby="gallery-h">
+    <div class="gallery-header aos">
+      <p class="eyebrow eyebrow-on-dark">Нашият Магазин</p>
+      <h2 class="gallery-heading" id="gallery-h">Добре дошли<br><em>в нашия магазин</em></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-cell">
+        <img src="./images/IMG_0676.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — витрина с млечни продукти">
+      </div>
+      <div class="gallery-cell">
+        <img src="./images/IMG_0679.jpg" loading="lazy" width="800" height="1000" alt="Магазин Млечко — детайл от щандовете">
+      </div>
+      <div class="gallery-cell">
+        <img src="./images/IMG_0680.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — продукти на рафтовете">
+      </div>
+      <div class="gallery-cell">
+        <img src="./images/IMG_0681.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — пресни млечни продукти">
+      </div>
+      <div class="gallery-cell">
+        <img src="./images/IMG_0682.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — интериор">
+      </div>
+      <div class="gallery-cell">
+        <img src="./images/IMG_0683.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — маслини и деликатеси">
+      </div>
+      <div class="gallery-cell">
+        <img src="./images/IMG_0686.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — асортимент от сирена">
+      </div>
+      <div class="gallery-cell">
+        <img src="./images/IMG_0687.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — ежедневна доставка">
+      </div>
+      <div class="gallery-cell">
+        <img src="./images/IMG_0688.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — витрина с продукти">
+      </div>
+      <div class="gallery-cell">
+        <img src="./images/IMG_0689.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — пресни яйца">
+      </div>
+      <div class="gallery-cell">
+        <img src="./images/IMG_0690.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — поглед към магазина">
+      </div>
+    </div>
+  </section>
+
   <!-- TESTIMONIALS -->
   <section class="testimonials" id="reviews" aria-labelledby="testimonials-h">
     <div class="container">
@@ -1156,8 +1516,25 @@
         <p class="eyebrow">Какво казват клиентите</p>
         <h2 class="testimonials-heading" id="testimonials-h">Думите на<br><em>нашите клиенти</em></h2>
       </div>
-      <div class="testimonials-grid">
 
+      <!-- Featured testimonial -->
+      <blockquote class="tcard-featured aos">
+        <div class="tcard-featured-stars" aria-label="5 звезди">
+          <i data-lucide="star" width="16" height="16"></i>
+          <i data-lucide="star" width="16" height="16"></i>
+          <i data-lucide="star" width="16" height="16"></i>
+          <i data-lucide="star" width="16" height="16"></i>
+          <i data-lucide="star" width="16" height="16"></i>
+        </div>
+        <p class="tcard-featured-quote">„Най-доброто кисело мляко, което съм яла от години. Маслините са различни — усеща се качеството. Препоръчвам го на всички мои познати."</p>
+        <footer>
+          <span class="tcard-featured-name">Снежана Маринова</span>
+          <span class="tcard-featured-location">Пловдив, Кичука</span>
+        </footer>
+      </blockquote>
+
+      <!-- Remaining 5 reviews -->
+      <div class="testimonials-grid">
         <div class="tcard aos">
           <p class="tcard-name">Мария Костова</p>
           <div class="tcard-stars" aria-label="5 звезди">
@@ -1166,7 +1543,6 @@
           <p class="tcard-body">Идвам тук всяка сутрин от две години. Млякото и киселото мляко са несравнимо по-добри от всичко в супермаркета. Истинска разлика се усеща веднага.</p>
           <p class="tcard-location">Пловдив, Тракия</p>
         </div>
-
         <div class="tcard aos aos-delay-1">
           <p class="tcard-name">Иван Петров</p>
           <div class="tcard-stars" aria-label="5 звезди">
@@ -1175,7 +1551,6 @@
           <p class="tcard-body">Намерих сирена и маслини, каквито не можах да намеря никъде другаде. Персоналът е изключително любезен и винаги помага с избора.</p>
           <p class="tcard-location">Пловдив, Център</p>
         </div>
-
         <div class="tcard aos aos-delay-2">
           <p class="tcard-name">Елена Стоянова</p>
           <div class="tcard-stars" aria-label="5 звезди">
@@ -1184,7 +1559,6 @@
           <p class="tcard-body">Пресни яйца всеки ден, прекрасен избор от сирена и маслини — всичко под един покрив. Децата ми обожават млякото оттук.</p>
           <p class="tcard-location">Белащица</p>
         </div>
-
         <div class="tcard aos">
           <p class="tcard-name">Георги Илиев</p>
           <div class="tcard-stars" aria-label="5 звезди">
@@ -1193,17 +1567,7 @@
           <p class="tcard-body">Страхотен магазин! Сиренето е невероятно прясно и вкусно. Идвам специално от другия край на Пловдив — струва си всеки път.</p>
           <p class="tcard-location">Костиево</p>
         </div>
-
         <div class="tcard aos aos-delay-1">
-          <p class="tcard-name">Снежана Маринова</p>
-          <div class="tcard-stars" aria-label="5 звезди">
-            <i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i>
-          </div>
-          <p class="tcard-body">Най-доброто кисело мляко, което съм яла от години. Маслините са различни — усеща се качеството. Препоръчвам го на всички мои познати.</p>
-          <p class="tcard-location">Пловдив, Кичука</p>
-        </div>
-
-        <div class="tcard aos aos-delay-2">
           <p class="tcard-name">Димитър Костов</p>
           <div class="tcard-stars" aria-label="5 звезди">
             <i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i>
@@ -1211,7 +1575,6 @@
           <p class="tcard-body">Специализиран магазин с истинско отношение. Продуктите пристигат прясно всяка сутрин — усеща се разликата. Топло ви препоръчвам.</p>
           <p class="tcard-location">Крумово</p>
         </div>
-
       </div>
     </div>
   </section>
@@ -1267,19 +1630,21 @@
 
 <!-- FOOTER -->
 <footer class="footer" aria-label="Долен колонтитул">
+  <img src="./images/Dairy-Logo-Photoroom.png" alt="" class="footer-watermark" aria-hidden="true">
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="#" class="logo footer-brand" aria-label="Начало">
+        <a href="#" class="logo" aria-label="Начало">
           <img src="./images/Mlechko-Logo.png" alt="Млечен Магазин" class="logo-img logo-img-footer">
         </a>
-        <p class="footer-tagline">"Нищо повече<br>и нищо по-малко."</p>
+        <p class="footer-tagline">„Нищо повече<br>и нищо по-малко."</p>
       </div>
       <div>
         <p class="footer-col-label">Навигация</p>
         <nav class="footer-links" aria-label="Долна навигация">
           <a href="#">Начало</a>
           <a href="#products">Продукти</a>
+          <a href="#gallery">Галерия</a>
           <a href="#about">За Нас</a>
           <a href="#visit">Намерете Ни</a>
         </nav>
@@ -1319,8 +1684,20 @@
       </div>
     </div>
   </div>
+  <div class="footer-close-tagline" aria-hidden="true">
+    <p>„Нищо повече и нищо по-малко."</p>
+  </div>
 </footer>
 
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/359878232365"
+   class="wa-fab"
+   aria-label="Пишете ни в WhatsApp"
+   target="_blank"
+   rel="noopener noreferrer">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  <span class="wa-fab-label" aria-hidden="true">Пишете ни в WhatsApp</span>
+</a>
 
 <!-- Back to top -->
 <button class="back-to-top" id="back-to-top" aria-label="Върни се нагоре">
@@ -1335,7 +1712,7 @@
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 
-  const navOpen = document.getElementById('nav-open');
+  const navOpen  = document.getElementById('nav-open');
   const navClose = document.getElementById('nav-close');
   const mobileNav = document.getElementById('mobile-nav');
 
@@ -1355,10 +1732,14 @@
   navOpen.addEventListener('click', openNav);
   navClose.addEventListener('click', closeNav);
   mobileNav.querySelectorAll('a').forEach(l => l.addEventListener('click', closeNav));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav();
+  });
 
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
   }, { threshold: 0.08 });
   document.querySelectorAll('.aos').forEach(el => io.observe(el));
 
@@ -1366,10 +1747,10 @@
     document.querySelectorAll('.aos').forEach(el => el.classList.add('visible'));
   }
 
-  // Highlight today's hours
+  // Highlight today's working hours
   const dayMap = [0, 1, 1, 1, 1, 1, 2];
-  const today = dayMap[new Date().getDay()];
-  const grid = document.getElementById('hours-grid');
+  const today  = dayMap[new Date().getDay()];
+  const grid   = document.getElementById('hours-grid');
   if (grid) {
     const rows = grid.querySelectorAll('.hours-day');
     if (rows[today]) {
