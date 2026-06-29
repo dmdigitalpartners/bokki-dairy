@@ -3,1768 +3,1335 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Млечко — Специализиран Магазин в Пловдив</title>
-  <meta name="description" content="Специализиран магазин за пресни млечни продукти, яйца и маслини. бул. Пещерско шосе 26, гк. Младежки хълм, Пловдив.">
-
-  <meta property="og:title" content="Млечко — Специализиран Магазин в Пловдив">
-  <meta property="og:description" content="Млечни продукти. Яйца. Маслини. Нищо повече, и нищо по-малко.">
-  <meta property="og:image" content="./Enhanced images/HomePage Header.png">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="bg_BG">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Млечко — Специализиран Магазин",
-    "description": "Специализиран магазин за пресни млечни продукти, яйца и маслини в Пловдив. Ежедневни доставки директно от производители.",
-    "image": "./Enhanced images/HomePage Header.png",
-    "logo": "./images/Mlechko-Logo.png",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "бул. Пещерско шосе 26",
-      "addressLocality": "Пловдив",
-      "postalCode": "4002",
-      "addressCountry": "BG"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 42.1354,
-      "longitude": 24.7453
-    },
-    "telephone": "+359878232365",
-    "openingHours": ["Mo-Fr 08:00-20:00", "Sa 09:00-18:00", "Su 10:00-16:00"],
-    "priceRange": "лв",
-    "servesCuisine": "Dairy Products"
-  }
-  </script>
-
-  <link rel="icon" type="image/png" href="./images/Mlechko-Logo.png">
-  <link rel="preload" as="image" href="./images/hero-header.png" fetchpriority="high">
+  <meta name="theme-color" content="#2C3E50">
+  <meta name="description" content="Млечко — специализиран магазин за пресни млечни продукти, яйца и маслини в Пловдив. Доставка всяка сутрин директно от производителите.">
+  <title>Млечко — Специализиран Магазин · Пловдив</title>
+  <link rel="icon" type="image/png" href="images/Mlechko-Logo.png">
+  <link rel="preload" as="image" href="images/hero-header.png" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cormorant+SC:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* ── TOKEN MIGRATION NOTE ──────────────────────────────────────────
-       --c-spruce    → --c-emerald    (#1B3328)
-       --c-spruce-dk → --c-emerald-dk (#0F2019)
-       --c-cream     → --c-canvas     (#FDFCF8)
-       --c-dark      → removed (was duplicate of --c-emerald-dk)
-       --bg-trust    → #1B3328  (was light beige, now dark emerald)
-       --bg-about    → #1B3328  (was light beige, now dark emerald)
-       --bg-gallery  → #0F2019  (was medium beige, now deepest dark)
-    ────────────────────────────────────────────────────────────────── */
+/* ============================================================
+   CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  --color-cream: #FAF7F2;
+  --color-warm-white: #FFFFFF;
+  --color-slate-deep: #2C3E50;
+  --color-slate-mid: #4A5568;
+  --color-sage: #7C9A7E;
+  --color-sage-light: #A8C5A0;
+  --color-gold: #C8A96E;
+  --color-gold-light: #E8D5B0;
+  --color-charcoal: #1A1A2E;
+  --color-mist: #F0EDE8;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
 
-    :root {
-      --c-canvas:    #FDFCF8;
-      --c-surface:   #F4EDE0;
-      --bg-trust:    #1B3328;
-      --bg-products: #FDFCF8;
-      --bg-gallery:  #0F2019;
-      --bg-about:    #1B3328;
-      --bg-visit:    #F4EDE0;
-      --c-emerald:   #1B3328;
-      --c-emerald-dk:#0F2019;
-      --c-gold:      #C4892D;
-      --c-gold-lt:   #E5C070;
-      --c-text:      #1A201E;
-      --c-muted:     #5E6862;
-      --c-border:    #E8E2D5;
-      --f-display: 'Cormorant Garamond', Georgia, serif;
-      --f-sc:      'Cormorant SC', Georgia, serif;
-      --f-sans:    'Inter', system-ui, -apple-system, sans-serif;
-      --nav-h: 68px;
-      --space-xs:  24px;
-      --space-sm:  48px;
-      --space-md:  80px;
-      --space-lg:  120px;
-    }
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-sans);
+  color: var(--color-slate-mid);
+  background: var(--color-cream);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--f-sans); background: var(--c-canvas); color: var(--c-text); line-height: 1.7; overflow-x: hidden; }
-    img { display: block; max-width: 100%; height: auto; }
-    a { text-decoration: none; color: inherit; }
-    ul, ol { list-style: none; }
-    button { border: none; background: none; cursor: pointer; font: inherit; }
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
 
-    .skip-link { position: absolute; top: -200%; left: 1rem; background: var(--c-emerald); color: #fff; padding: .5rem 1rem; z-index: 9999; font-size: .875rem; font-weight: 600; }
-    .skip-link:focus { top: 1rem; }
+/* ============================================================
+   SHARED UTILITIES
+   ============================================================ */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-sage);
+  display: block;
+  margin-bottom: 14px;
+}
+.wave-divider {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin-top: -1px;
+}
+.wave-divider svg { display: block; width: 100%; height: 70px; }
+.section-header { text-align: center; max-width: 700px; margin: 0 auto 64px; }
+.section-header h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 600;
+  color: var(--color-slate-deep);
+  margin-bottom: 16px;
+}
+.section-header p { color: var(--color-slate-mid); font-size: 1.05rem; line-height: 1.7; }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--space-xs); }
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 20px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease, padding 0.3s ease, border-bottom-color 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+.nav.scrolled {
+  background: rgba(250,247,242,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 14px 60px;
+  border-bottom-color: rgba(44,62,80,0.08);
+}
+.nav-logo img { width: 120px; height: auto; display: block; }
+.nav-links {
+  display: flex; align-items: center; gap: 36px;
+  list-style: none;
+  position: absolute; left: 50%; transform: translateX(-50%);
+}
+.nav-links a {
+  font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.9);
+  transition: color 0.3s ease;
+  position: relative; padding-bottom: 3px;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 1.5px; background: var(--color-sage);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--color-sage); }
+.nav-links a:hover::after { width: 100%; }
+.nav.scrolled .nav-links a { color: var(--color-slate-deep); }
+.nav.scrolled .nav-links a:hover { color: var(--color-sage); }
+.nav-cta {
+  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.9);
+  border: 1.5px solid rgba(255,255,255,0.6);
+  padding: 8px 18px; border-radius: 100px;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+.nav-cta:hover { background: var(--color-sage); border-color: var(--color-sage); color: #fff; }
+.nav.scrolled .nav-cta { color: var(--color-slate-deep); border-color: rgba(44,62,80,0.5); }
+.nav.scrolled .nav-cta:hover { background: var(--color-sage); border-color: var(--color-sage); color: #fff; }
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px; padding: 6px; cursor: pointer;
+}
+.nav-hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: #fff; border-radius: 2px; transition: background 0.3s ease;
+}
+.nav.scrolled .nav-hamburger span { background: var(--color-slate-deep); }
 
-    /* Eyebrows: near-black by default (light sections). Override for dark. */
-    .eyebrow {
-      font-family: var(--f-sc);
-      font-size: .75rem;
-      font-weight: 500;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--c-text);
-    }
-    .eyebrow-on-dark {
-      color: var(--c-gold);
-      font-size: .875rem;
-      font-weight: 600;
-    }
+/* Mobile nav */
+.mobile-nav {
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(26,26,46,0.97);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.mobile-nav.open { opacity: 1; pointer-events: all; }
+.mobile-nav-close {
+  position: absolute; top: 24px; right: 24px;
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.4rem; cursor: pointer;
+}
+.mobile-nav-links { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.mobile-nav-links li {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.mobile-nav.open .mobile-nav-links li:nth-child(1) { opacity:1; transform:none; transition-delay:0.05s; }
+.mobile-nav.open .mobile-nav-links li:nth-child(2) { opacity:1; transform:none; transition-delay:0.10s; }
+.mobile-nav.open .mobile-nav-links li:nth-child(3) { opacity:1; transform:none; transition-delay:0.15s; }
+.mobile-nav.open .mobile-nav-links li:nth-child(4) { opacity:1; transform:none; transition-delay:0.20s; }
+.mobile-nav.open .mobile-nav-links li:nth-child(5) { opacity:1; transform:none; transition-delay:0.25s; }
+.mobile-nav-links a {
+  font-size: 2rem; font-weight: 500; color: #fff;
+  display: block; padding: 12px 32px;
+  transition: color 0.2s ease;
+}
+.mobile-nav-links a:hover { color: var(--color-sage); }
+.mobile-nav-phone {
+  margin-top: 32px; color: rgba(255,255,255,0.45); font-size: 0.9rem;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.3s ease 0.3s, transform 0.3s ease 0.3s;
+}
+.mobile-nav.open .mobile-nav-phone { opacity: 1; transform: none; }
 
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--c-gold);
-      color: var(--c-emerald-dk);
-      padding: 14px 32px;
-      font-family: var(--f-sans);
-      font-size: .8125rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .btn-primary { transition: background 220ms ease, transform 220ms ease; }
-      .btn-primary:hover { background: var(--c-gold-lt); transform: scale(1.02); }
-      .btn-primary:active { transform: scale(.97); }
-    }
-    .btn-primary:focus-visible { outline: 3px solid var(--c-canvas); outline-offset: 3px; }
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero { position: relative; height: 100vh; min-height: 600px; overflow: hidden; }
+.hero-slides { position: absolute; inset: 0; will-change: transform; }
+.hero-slide {
+  position: absolute; inset: 0;
+  opacity: 0; transition: opacity 1.2s ease-in-out;
+  background-size: cover; background-position: center;
+}
+.hero-slide.active { opacity: 1; animation: kenBurns 7s ease-out forwards; }
+@keyframes kenBurns { from { transform: scale(1.0); } to { transform: scale(1.08); } }
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to right, rgba(26,26,46,0.72) 0%, rgba(26,26,46,0.45) 55%, rgba(26,26,46,0.1) 100%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  height: 100%; display: flex; flex-direction: column; justify-content: center;
+  padding: 0 80px; max-width: 700px;
+  padding-top: 80px;
+}
+.hero-eyebrow {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--color-sage-light);
+  display: block; margin-bottom: 18px;
+}
+.hero h1 {
+  font-size: clamp(2.8rem, 6vw, 5.5rem); font-weight: 700;
+  color: #fff; line-height: 1.08; letter-spacing: -0.03em;
+  margin-bottom: 22px;
+}
+.hero-sub {
+  font-size: 1.05rem; color: rgba(255,255,255,0.78);
+  line-height: 1.7; margin-bottom: 36px; max-width: 440px;
+}
+.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.btn-primary {
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #fff;
+  background: var(--color-sage); padding: 14px 32px;
+  border-radius: 3px;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  display: inline-block;
+}
+.btn-primary:hover {
+  background: var(--color-sage-light); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124,154,126,0.35);
+}
+.btn-secondary {
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #fff;
+  background: transparent; border: 1.5px solid rgba(255,255,255,0.7);
+  padding: 14px 32px; border-radius: 3px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+.hero-tagline { font-style: italic; color: rgba(255,255,255,0.6); font-size: 0.9rem; font-family: var(--font-display); }
+.hero-dots {
+  position: absolute; bottom: 90px; left: 50%; transform: translateX(-50%);
+  z-index: 3; display: flex; gap: 10px;
+}
+.hero-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.35); border: none; cursor: pointer; padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.hero-dot.active { background: var(--color-gold); transform: scale(1.35); }
+.hero-wave-wrap { position: absolute; bottom: 0; left: 0; right: 0; z-index: 3; line-height: 0; }
+.hero-wave-wrap svg { display: block; width: 100%; height: 70px; }
 
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--c-canvas);
-      border: 1.5px solid rgba(253,252,248,.5);
-      padding: 13px 28px;
-      font-family: var(--f-sans);
-      font-size: .8125rem;
-      font-weight: 500;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .btn-ghost { transition: border-color 220ms, background 220ms, transform 220ms; }
-      .btn-ghost:hover { border-color: var(--c-canvas); background: rgba(253,252,248,.1); transform: scale(1.02); }
-    }
-    .btn-ghost:focus-visible { outline: 3px solid var(--c-gold); outline-offset: 3px; }
+/* ============================================================
+   STATS BAR
+   ============================================================ */
+.stats-bar { background: var(--color-charcoal); padding: 80px 60px 0; position: relative; }
+.stats-container {
+  max-width: 900px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  padding-bottom: 80px;
+}
+.stat-item { flex: 1; text-align: center; padding: 0 40px; }
+.stat-divider { width: 1px; height: 44px; background: rgba(200,169,110,0.3); flex-shrink: 0; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700;
+  color: var(--color-gold); display: block; line-height: 1; margin-bottom: 12px;
+}
+.stat-label {
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--color-gold-light);
+}
 
-    .aos { opacity: 0; transform: translateY(24px); }
-    @media (prefers-reduced-motion: no-preference) {
-      .aos { transition: opacity 600ms ease, transform 600ms ease; }
-      .aos.visible { opacity: 1; transform: translateY(0); }
-      .aos-delay-1 { transition-delay: 100ms; }
-      .aos-delay-2 { transition-delay: 200ms; }
-      .aos-delay-3 { transition-delay: 300ms; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .aos { opacity: 1; transform: none; }
-    }
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.section-about { background: var(--color-cream); padding: 120px 80px 0; position: relative; }
+.about-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 55fr 45fr;
+  gap: 80px; align-items: center; padding-bottom: 100px;
+}
+.about-text h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 600;
+  color: var(--color-slate-deep); margin-bottom: 24px;
+}
+.about-text p { color: var(--color-slate-mid); line-height: 1.75; margin-bottom: 20px; }
+.about-bullets { list-style: none; margin: 28px 0; display: flex; flex-direction: column; gap: 14px; }
+.about-bullets li { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; }
+.check-icon { width: 20px; height: 20px; flex-shrink: 0; color: var(--color-sage); }
+.about-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--color-sage); font-weight: 500; font-size: 0.95rem;
+  transition: gap 0.2s ease;
+}
+.about-cta:hover { gap: 10px; }
+.about-collage { position: relative; height: 520px; }
+.collage-img-main {
+  position: absolute; top: 0; left: 0; right: 0; height: 340px;
+  border-radius: 8px; overflow: hidden;
+  box-shadow: 0 16px 40px rgba(26,26,46,0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.collage-img-main:hover { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(26,26,46,0.18); }
+.collage-img-main img { width: 100%; height: 100%; object-fit: cover; }
+.collage-img-small {
+  position: absolute; bottom: 0; width: 47%; height: 200px;
+  border-radius: 8px; overflow: hidden;
+  box-shadow: 0 12px 32px rgba(26,26,46,0.14);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.collage-img-small:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(26,26,46,0.2); }
+.collage-img-small img { width: 100%; height: 100%; object-fit: cover; }
+.collage-img-small.left { left: 0; }
+.collage-img-small.right { right: 0; }
 
-    /* ── NAVBAR ── */
-    .navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      height: var(--nav-h);
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .navbar { transition: background 300ms ease, box-shadow 300ms ease; }
-    }
+/* ============================================================
+   PRODUCT CATEGORIES
+   ============================================================ */
+.section-categories { background: var(--color-mist); padding: 120px 80px 0; position: relative; }
+.categories-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 28px;
+  padding-bottom: 100px;
+}
+.category-card {
+  position: relative; border-radius: 10px; overflow: hidden;
+  aspect-ratio: 3/4; cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 8px 24px rgba(26,26,46,0.1);
+}
+.category-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(26,26,46,0.18); }
+.category-card:hover .category-img { transform: scale(1.04); }
+.category-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+.category-gradient {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,26,46,0.85) 0%, transparent 60%);
+}
+.category-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 24px; }
+.category-tag {
+  display: inline-block; font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #fff; background: var(--color-sage);
+  padding: 4px 10px; border-radius: 100px; margin-bottom: 10px;
+}
+.category-content h3 {
+  font-size: clamp(1.2rem,2vw,1.6rem); font-weight: 600;
+  color: #fff; margin-bottom: 6px;
+}
+.category-content p { font-size: 0.85rem; color: rgba(255,255,255,0.75); }
 
-    /* Fallback navbar bg for all browsers */
-    .navbar:not(.scrolled) {
-      background: rgba(15,32,25,.4);
-    }
-    /* Progressive enhancement: blur if supported */
-    @supports (backdrop-filter: blur(8px)) {
-      .navbar:not(.scrolled) {
-        background: rgba(15,32,25,.15);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-      }
-    }
-    .navbar.scrolled {
-      background: var(--c-canvas);
-      box-shadow: 0 1px 0 var(--c-border);
-    }
-    .navbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--space-xs);
-    }
-    .logo { display: flex; align-items: center; gap: 10px; overflow: hidden; }
-    .logo-img { width: 180px; height: auto; display: block; margin-top: -28px; margin-bottom: -28px; }
-    .logo-img-footer { width: 220px; margin-top: -32px; margin-bottom: -32px; }
+/* ============================================================
+   FEATURED PRODUCTS
+   ============================================================ */
+.section-feature { position: relative; padding: 100px 80px; }
+.section-feature.bg-cream { background: var(--color-cream); }
+.section-feature.bg-mist  { background: var(--color-mist); }
+.feature-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+}
+.feature-inner.flipped .feature-image { order: 2; }
+.feature-inner.flipped .feature-text  { order: 1; }
+.feature-image { border-radius: 8px; overflow: hidden; box-shadow: 0 16px 40px rgba(26,26,46,0.12); }
+.feature-image img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: transform 0.6s ease; }
+.feature-image:hover img { transform: scale(1.03); }
+.feature-text h3 {
+  font-size: clamp(1.2rem,2.5vw,1.8rem); font-weight: 500;
+  color: var(--color-slate-deep); margin-bottom: 16px;
+}
+.feature-text p { line-height: 1.75; margin-bottom: 24px; }
+.feature-reasons { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.feature-reasons li { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
+.feature-check { color: var(--color-sage); font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+.feature-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--color-sage); font-weight: 500; font-size: 0.95rem;
+  transition: gap 0.2s ease;
+}
+.feature-link:hover { gap: 10px; }
+.feature-divider { max-width: 1200px; margin: 0 auto; height: 1px; background: var(--color-gold-light); opacity: 0.5; }
 
-    .navbar:not(.scrolled) .logo-mark,
-    .navbar:not(.scrolled) .logo-name { color: var(--c-canvas); }
-    .navbar.scrolled .logo-mark,
-    .navbar.scrolled .logo-name { color: var(--c-text); }
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.section-testimonials { background: var(--color-charcoal); padding: 120px 0 0; position: relative; overflow: hidden; }
+.testimonials-header { text-align: center; padding: 0 60px; margin-bottom: 60px; }
+.testimonials-header .eyebrow { color: var(--color-gold); }
+.testimonials-header h2 { font-size: clamp(2rem,4vw,3.2rem); font-weight: 600; color: #fff; }
+.testimonials-wrap { position: relative; padding: 0 80px; }
+.testimonials-viewport { overflow: hidden; }
+.testimonials-track { display: flex; gap: 24px; will-change: transform; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
+.testimonial-card {
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 36px;
+}
+.t-quote { font-family: var(--font-display); font-size: 5rem; line-height: 1; color: var(--color-gold); opacity: 0.35; display: block; margin-bottom: -18px; }
+.t-text { font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.8; margin-bottom: 24px; font-size: 0.95rem; }
+.t-sep { width: 40px; height: 1px; background: var(--color-gold-light); margin-bottom: 16px; }
+.t-name { font-weight: 600; color: var(--color-gold); font-size: 0.95rem; margin-bottom: 4px; }
+.t-location { color: rgba(255,255,255,0.45); font-size: 0.8rem; }
+.carousel-arrows {
+  position: absolute; top: 50%; left: 0; right: 0;
+  transform: translateY(-50%); display: flex; justify-content: space-between;
+  pointer-events: none; padding: 0 16px; z-index: 10;
+}
+.carousel-arrow {
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1.5px solid var(--color-gold); background: transparent;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; pointer-events: all;
+  transition: background 0.3s ease, color 0.3s ease;
+  color: var(--color-gold);
+}
+.carousel-arrow:hover { background: var(--color-gold); color: #fff; }
+.carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 40px; padding: 0 60px 80px; }
+.carousel-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(200,169,110,0.3); border: none; cursor: pointer; padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.carousel-dot.active { background: var(--color-gold); transform: scale(1.35); }
 
-    .nav-center { display: flex; align-items: center; gap: 32px; position: absolute; left: 50%; transform: translateX(-50%); }
-    .nav-center a {
-      font-family: var(--f-sans);
-      font-size: .7rem;
-      font-weight: 500;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      position: relative;
-      padding-bottom: 2px;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .nav-center a { transition: color 200ms, opacity 200ms; }
-      .nav-center a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: currentColor; transition: width 220ms ease; }
-      .nav-center a:hover::after { width: 100%; }
-    }
-    .navbar:not(.scrolled) .nav-center a { color: rgba(253,252,248,.8); }
-    .navbar:not(.scrolled) .nav-center a:hover { color: var(--c-canvas); }
-    .navbar.scrolled .nav-center a { color: var(--c-muted); }
-    .navbar.scrolled .nav-center a:hover { color: var(--c-text); }
+/* ============================================================
+   GALLERY
+   ============================================================ */
+.section-gallery { background: var(--color-cream); padding: 120px 80px 0; position: relative; }
+.gallery-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
+  padding-bottom: 100px;
+}
+.gallery-item {
+  position: relative; border-radius: 8px; overflow: hidden;
+  cursor: pointer; aspect-ratio: 4/3;
+}
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-overlay {
+  position: absolute; inset: 0;
+  background: rgba(26,26,46,0);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.3s ease;
+}
+.gallery-item:hover .gallery-overlay { background: rgba(26,26,46,0.45); }
+.gallery-plus {
+  color: var(--color-gold); font-size: 2rem; font-weight: 300;
+  opacity: 0; transform: scale(0.7);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.gallery-item:hover .gallery-plus { opacity: 1; transform: scale(1); }
 
-    .nav-phone {
-      font-family: var(--f-sans);
-      font-size: .75rem;
-      font-weight: 600;
-      letter-spacing: .06em;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      border: 1.5px solid var(--c-gold);
-      padding: 6px 14px;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .nav-phone { transition: color 200ms, background 200ms; }
-    }
-    .navbar:not(.scrolled) .nav-phone { color: var(--c-canvas); border-color: rgba(196,137,45,.6); }
-    .navbar:not(.scrolled) .nav-phone:hover { background: rgba(196,137,45,.15); border-color: var(--c-gold); }
-    .navbar.scrolled .nav-phone { color: var(--c-emerald); border-color: var(--c-gold); }
-    .navbar.scrolled .nav-phone:hover { background: var(--c-gold); color: var(--c-canvas); }
+/* Lightbox */
+.lightbox {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.92);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+.lightbox.active { opacity: 1; pointer-events: all; }
+.lightbox-img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; display: block; }
+.lightbox-close {
+  position: absolute; top: 24px; right: 24px;
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  color: #fff; font-size: 1.2rem;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  transition: background 0.3s ease; background: transparent;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.1); }
+.lightbox-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.3); background: transparent;
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background 0.3s ease;
+}
+.lightbox-arrow:hover { background: rgba(255,255,255,0.1); }
+.lightbox-arrow.prev { left: 24px; }
+.lightbox-arrow.next { right: 24px; }
 
-    .hamburger {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 44px; height: 44px;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .hamburger { transition: color 300ms; }
-    }
-    .navbar:not(.scrolled) .hamburger { color: var(--c-canvas); }
-    .navbar.scrolled .hamburger { color: var(--c-text); }
-    .hamburger:focus-visible { outline: 2px solid var(--c-gold); }
+/* ============================================================
+   FIND US
+   ============================================================ */
+.section-visit { background: var(--color-charcoal); padding: 120px 80px; position: relative; }
+.visit-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.visit-info .eyebrow { color: var(--color-gold); }
+.visit-info h2 { font-size: clamp(2rem,4vw,3rem); font-weight: 600; color: #fff; margin-bottom: 48px; }
+.info-blocks { display: flex; flex-direction: column; gap: 32px; margin-bottom: 40px; }
+.info-block { display: flex; align-items: flex-start; gap: 16px; }
+.info-icon {
+  width: 40px; height: 40px; background: rgba(124,154,126,0.15); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: var(--color-sage);
+}
+.info-label {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--color-gold); margin-bottom: 6px;
+}
+.info-content { color: rgba(255,255,255,0.72); line-height: 1.7; font-size: 0.95rem; }
+.info-content a { color: rgba(255,255,255,0.72); transition: color 0.2s ease; }
+.info-content a:hover { color: var(--color-sage); }
+.btn-maps {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--color-sage); color: #fff;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 14px 28px; border-radius: 3px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.btn-maps:hover { background: var(--color-sage-light); transform: translateY(-2px); }
+.visit-map iframe {
+  width: 100%; height: 450px; border: none; border-radius: 10px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3); display: block;
+}
 
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--c-emerald-dk);
-      z-index: 200;
-      flex-direction: column;
-    }
-    .mobile-nav.open { display: flex; }
-    .mobile-nav-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 var(--space-xs);
-      height: var(--nav-h);
-      border-bottom: 1px solid rgba(253,252,248,.08);
-      flex-shrink: 0;
-      color: var(--c-canvas);
-    }
-    .mobile-nav-body { padding: 40px var(--space-xs); flex: 1; display: flex; flex-direction: column; }
-    .mobile-nav-body a {
-      display: block;
-      font-family: var(--f-display);
-      font-size: 2rem;
-      font-weight: 300;
-      color: rgba(253,252,248,.75);
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(253,252,248,.08);
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .mobile-nav-body a { transition: color 200ms; }
-    }
-    .mobile-nav-body a:hover { color: var(--c-gold-lt); }
-    .mobile-nav-foot {
-      padding: var(--space-xs);
-      border-top: 1px solid rgba(253,252,248,.08);
-    }
-    .mobile-nav-foot a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--c-gold-lt);
-      font-size: .875rem;
-      font-weight: 600;
-    }
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer { background: #111120; padding: 96px 80px 0; }
+.footer-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+  gap: 56px; padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand-logo img { width: 110px; margin-bottom: 20px; opacity: 0.9; }
+.footer-tagline { font-style: italic; color: rgba(255,255,255,0.45); font-size: 0.9rem; font-family: var(--font-display); margin-bottom: 24px; line-height: 1.6; }
+.footer-socials { display: flex; gap: 12px; }
+.social-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.18);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.45); transition: border-color 0.3s ease, color 0.3s ease;
+}
+.social-btn:hover { border-color: var(--color-gold); color: var(--color-gold); }
+.footer-col-title {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--color-gold); margin-bottom: 20px;
+}
+.footer-nav { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-nav a { color: rgba(255,255,255,0.55); font-size: 0.9rem; transition: color 0.2s ease; }
+.footer-nav a:hover { color: var(--color-gold); }
+.footer-contact-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; color: rgba(255,255,255,0.55); font-size: 0.9rem; line-height: 1.6; }
+.footer-contact-row svg { width: 15px; height: 15px; flex-shrink: 0; margin-top: 3px; color: var(--color-sage); }
+.footer-contact-row a { color: rgba(255,255,255,0.55); transition: color 0.2s ease; }
+.footer-contact-row a:hover { color: var(--color-gold); }
+.footer-hours-row { display: flex; justify-content: space-between; font-size: 0.88rem; color: rgba(255,255,255,0.55); padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.footer-hours-row:last-child { border-bottom: none; }
+.footer-hours-day { font-weight: 500; }
+.footer-hours-time { color: rgba(255,255,255,0.38); }
+.footer-bottom {
+  max-width: 1200px; margin: 0 auto; padding: 28px 0;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
 
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      height: 88vh;
-      min-height: 560px;
-      display: flex;
-      align-items: flex-end;
-      padding-bottom: 110px;
-      background-color: var(--c-emerald); /* fallback if images fail */
-    }
+/* ============================================================
+   WHATSAPP FAB
+   ============================================================ */
+.wa-fab {
+  position: fixed; bottom: 28px; right: 28px; z-index: 900;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+}
+.wa-fab:hover { transform: scale(1.08); box-shadow: 0 8px 32px rgba(37,211,102,0.5); }
+.wa-fab svg { width: 28px; height: 28px; fill: #fff; }
+.wa-tooltip {
+  position: absolute; right: 68px; top: 50%; transform: translateY(-50%);
+  background: var(--color-charcoal); color: #fff;
+  font-size: 0.78rem; white-space: nowrap; padding: 6px 12px; border-radius: 3px;
+  pointer-events: none; opacity: 0; transition: opacity 0.2s ease;
+}
+.wa-tooltip::after {
+  content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%);
+  border: 5px solid transparent; border-left-color: var(--color-charcoal);
+}
+.wa-fab:hover .wa-tooltip { opacity: 1; }
 
-    /* Crossfading photo slides */
-    .hero-slides {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-    }
-    .hero-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-    }
-    .hero-slide:first-child { opacity: 1; }
-    .hero-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-    }
+/* ============================================================
+   FOCUS & MOTION
+   ============================================================ */
+:focus-visible { outline: 2px solid var(--color-sage); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
 
-    @keyframes heroFade {
-      0%, 30%  { opacity: 1; }
-      38%, 100% { opacity: 0; }
-    }
-    @keyframes kenBurns {
-      from { transform: scale(1) translateX(0); }
-      to   { transform: scale(1.04) translateX(-1%); }
-    }
+/* ============================================================
+   RESPONSIVE — TABLET
+   ============================================================ */
+@media (max-width: 1024px) {
+  .nav { padding: 18px 32px; }
+  .nav.scrolled { padding: 12px 32px; }
+  .nav-links { gap: 22px; }
+  .hero-content { padding: 80px 48px 0; }
+  .section-about { padding: 96px 48px 0; }
+  .about-inner { grid-template-columns: 1fr; gap: 48px; }
+  .about-collage { height: 380px; }
+  .collage-img-main { height: 240px; }
+  .section-categories { padding: 96px 48px 0; }
+  .categories-grid { grid-template-columns: repeat(2,1fr); }
+  .section-feature { padding: 80px 48px; }
+  .feature-inner { gap: 48px; }
+  .testimonials-wrap { padding: 0 56px; }
+  .section-gallery { padding: 96px 48px 0; }
+  .gallery-grid { grid-template-columns: repeat(2,1fr); }
+  .section-visit { padding: 96px 48px; }
+  .visit-inner { gap: 48px; }
+  .footer { padding: 80px 48px 0; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
 
-    @media (prefers-reduced-motion: no-preference) {
-      .hero-slide {
-        animation:
-          heroFade  12s ease-in-out infinite,
-          kenBurns  12s ease-in-out infinite alternate;
-      }
-      .hero-slide:nth-child(1) { animation-delay: 0s,  0s; }
-      .hero-slide:nth-child(2) { animation-delay: 4s,  4s; }
-      .hero-slide:nth-child(3) { animation-delay: 8s,  8s; }
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to right,
-        rgba(15,32,25,.88) 0%,
-        rgba(15,32,25,.55) 55%,
-        rgba(15,32,25,.12) 100%
-      );
-      pointer-events: none;
-    }
-    .hero-overlay-bottom {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 200px;
-      background: linear-gradient(to top, rgba(15,32,25,.55), transparent);
-      pointer-events: none;
-    }
-
-    .hero-content-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--space-xs);
-      width: 100%;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-text-block { max-width: 640px; }
-
-    .hero-eyebrow {
-      display: inline-block;
-      font-family: var(--f-sc);
-      font-size: .7rem;
-      font-weight: 500;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      opacity: 0;
-      transform: translateY(12px);
-      animation: fadeUp 500ms ease forwards;
-    }
-
-    .hero-title {
-      margin-top: 18px;
-      font-family: var(--f-display);
-      font-weight: 300;
-      line-height: 1.05;
-      letter-spacing: -.03em;
-      opacity: 0;
-      transform: translateY(14px);
-      animation: fadeUp 550ms 150ms ease forwards;
-    }
-    .hero-h1-a {
-      display: block;
-      font-size: clamp(2.4rem, 5.5vw, 5rem);
-      font-weight: 300;
-      color: var(--c-canvas);
-    }
-    .hero-h1-b {
-      display: block;
-      font-size: clamp(3.2rem, 7.5vw, 7rem);
-      font-weight: 400;
-      font-style: italic;
-      color: var(--c-gold);
-      margin-top: -.08em;
-    }
-
-    .hero-rule {
-      width: 48px;
-      height: 1.5px;
-      background: var(--c-gold);
-      margin: 28px 0;
-      opacity: 0;
-      animation: fadeUp 500ms 300ms ease forwards;
-    }
-    .hero-sub {
-      font-family: var(--f-sans);
-      font-size: 1rem;
-      color: rgba(253,252,248,.7);
-      line-height: 1.75;
-      max-width: 400px;
-      opacity: 0;
-      animation: fadeUp 500ms 400ms ease forwards;
-    }
-    .hero-cta {
-      margin-top: 40px;
-      opacity: 0;
-      animation: fadeUp 500ms 520ms ease forwards;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
-    }
-
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeUpMascot {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 0.92; transform: translateY(0); }
-    }
-
-    .hero-mascot {
-      position: absolute;
-      bottom: 8%;
-      right: clamp(60px, 13%, 200px);
-      height: 76%;
-      max-height: 600px;
-      width: auto;
-      z-index: 1;
-      pointer-events: none;
-      user-select: none;
-      filter: drop-shadow(-4px 12px 28px rgba(15,32,25,.45));
-      opacity: 0;
-      animation: fadeUpMascot 700ms 500ms ease forwards;
-    }
-    @media (max-width: 900px) { .hero-mascot { height: 56%; right: 16px; bottom: 3%; } }
-    @media (max-width: 768px) { .hero-mascot { display: none; } }
-
-    .hero-tagline-stamp {
-      position: absolute;
-      bottom: 32px;
-      left: var(--space-xs);
-      font-family: var(--f-display);
-      font-style: italic;
-      font-size: .8rem;
-      font-weight: 300;
-      color: rgba(253,252,248,.3);
-      letter-spacing: .02em;
-      pointer-events: none;
-      user-select: none;
-      z-index: 1;
-    }
-    @media (max-width: 768px) { .hero-tagline-stamp { display: none; } }
-
-    /* ── MANIFESTO / TRUST BAR ── */
-    .manifesto {
-      background: var(--bg-trust);
-    }
-    .manifesto-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--space-xs);
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-    .manifesto-item {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 32px 40px;
-      border-right: 1px solid rgba(196,137,45,.2);
-    }
-    .manifesto-item:last-child { border-right: none; }
-    .manifesto-icon { color: var(--c-gold); flex-shrink: 0; opacity: .9; }
-    .manifesto-stat {
-      font-family: var(--f-display);
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: var(--c-gold);
-      line-height: 1;
-      margin-bottom: 4px;
-      letter-spacing: -.01em;
-    }
-    .manifesto-label {
-      font-family: var(--f-sans);
-      font-size: .6875rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--c-canvas);
-      margin-bottom: 4px;
-    }
-    .manifesto-desc {
-      font-family: var(--f-sans);
-      font-size: .8rem;
-      color: rgba(253,252,248,.45);
-      line-height: 1.4;
-    }
-
-    /* ── PRODUCT STRIPS ── */
-    .products { padding: 56px 0 0; background: var(--bg-products); }
-    .products-header { text-align: center; margin-bottom: 72px; }
-    .products-header .eyebrow { margin-bottom: 10px; }
-    .products-title {
-      font-family: var(--f-display);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 300;
-      color: var(--c-text);
-      letter-spacing: -.015em;
-      line-height: 1.15;
-    }
-
-    .product-strip {
-      display: grid;
-      grid-template-columns: 58% 42%;
-      height: 500px;
-      margin-bottom: 2px;
-    }
-    .product-strip.reverse { direction: rtl; }
-    .product-strip.reverse > * { direction: ltr; }
-
-    .ps-image {
-      position: relative;
-      overflow: hidden;
-      background: var(--c-surface);
-    }
-    .ps-image img:not(.product-inset) {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .ps-image img:not(.product-inset) { transition: transform 600ms ease; }
-      .product-strip:hover .ps-image img:not(.product-inset) { transform: scale(1.04); }
-    }
-    .ps-image::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(15,32,25,.12);
-      pointer-events: none;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .ps-image::after { transition: background 400ms; }
-      .product-strip:hover .ps-image::after { background: rgba(15,32,25,.04); }
-    }
-
-    .product-inset {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border: 3px solid var(--c-gold);
-      z-index: 2;
-      max-width: none;
-    }
-
-    .ps-body {
-      background: var(--bg-products);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 40px 56px;
-    }
-    .ps-category {
-      font-family: var(--f-sc);
-      font-size: .7rem;
-      font-weight: 500;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--c-text);
-      margin-bottom: 16px;
-    }
-    .ps-title {
-      font-family: var(--f-display);
-      font-size: clamp(1.75rem, 2.5vw, 2.5rem);
-      font-weight: 400;
-      color: var(--c-text);
-      line-height: 1.15;
-      letter-spacing: -.01em;
-      margin-bottom: 20px;
-    }
-    .ps-desc {
-      font-family: var(--f-sans);
-      font-size: .9375rem;
-      color: var(--c-muted);
-      line-height: 1.8;
-      max-width: 380px;
-    }
-    .ps-detail {
-      margin-top: 28px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--f-sans);
-      font-size: .75rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--c-emerald);
-    }
-
-    /* ── ABOUT ── */
-    .about { padding: var(--space-lg) 0; background: var(--bg-about); }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.5fr 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-    .about-img-wrap { position: relative; margin-top: -60px; }
-    .about-img-primary {
-      width: 100%;
-      height: 540px;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
-    .about-img-secondary {
-      position: absolute;
-      bottom: -20px;
-      right: -20px;
-      width: 150px;
-      height: 190px;
-      object-fit: cover;
-      border: 3px solid var(--c-gold);
-      z-index: 2;
-      max-width: none;
-    }
-    @media (max-width: 768px) { .about-img-secondary { display: none; } }
-
-    .about-img-caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 16px 20px;
-      background: linear-gradient(to top, rgba(15,32,25,.75), transparent);
-    }
-    .about-img-caption span {
-      font-family: var(--f-sans);
-      font-size: .6875rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(253,252,248,.75);
-    }
-    .about-stats { display: flex; flex-direction: column; gap: 0; padding-top: 8px; }
-    .stat-item {
-      padding: 32px 0;
-      border-bottom: 1px solid rgba(196,137,45,.2);
-    }
-    .stat-item:first-child { border-top: 1px solid rgba(196,137,45,.2); }
-    .stat-num {
-      font-family: var(--f-display);
-      font-size: 3rem;
-      font-weight: 300;
-      color: var(--c-gold);
-      line-height: 1;
-      letter-spacing: -.02em;
-    }
-    .stat-label {
-      font-family: var(--f-sans);
-      font-size: .75rem;
-      font-weight: 500;
-      color: rgba(253,252,248,.45);
-      margin-top: 6px;
-      letter-spacing: .04em;
-    }
-    .about-text { padding-top: 8px; }
-    .about-heading {
-      font-family: var(--f-display);
-      font-size: clamp(1.75rem, 2.5vw, 2.5rem);
-      font-weight: 300;
-      color: var(--c-canvas);
-      line-height: 1.2;
-      letter-spacing: -.01em;
-      margin: 16px 0 28px;
-    }
-    .about-body {
-      font-size: .9375rem;
-      color: rgba(253,252,248,.55);
-      line-height: 1.85;
-    }
-    .about-body p + p { margin-top: 16px; }
-    .about-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 36px;
-      padding: 10px 18px;
-      border: 1px solid rgba(196,137,45,.3);
-      font-family: var(--f-sans);
-      font-size: .75rem;
-      font-weight: 600;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: rgba(253,252,248,.55);
-    }
-
-    /* ── GALLERY ── */
-    .gallery {
-      background: var(--bg-gallery);
-      padding: var(--space-lg) 0 0;
-    }
-    .gallery-header {
-      text-align: center;
-      margin-bottom: 56px;
-      padding: 0 var(--space-xs);
-    }
-    .gallery-heading {
-      font-family: var(--f-display);
-      font-size: clamp(2.4rem, 4.5vw, 4rem);
-      font-weight: 300;
-      color: var(--c-canvas);
-      line-height: 1.1;
-      margin-top: 12px;
-      letter-spacing: -.03em;
-    }
-    .gallery-heading em { font-style: italic; }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 220px;
-      gap: 4px;
-    }
-    /* Base: every cell is 1×1 */
-    .gallery-cell { grid-column: span 1; grid-row: span 1; overflow: hidden; }
-    /* Specific overrides */
-    .gallery-cell:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-    .gallery-cell:nth-child(2) { grid-row: span 2; }
-    .gallery-cell:nth-child(9) { grid-column: span 2; }
-
-    .gallery-cell img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      max-width: none;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .gallery-cell img { transition: transform 400ms ease, filter 400ms ease; }
-      .gallery-cell:hover img { transform: scale(1.03); filter: brightness(1.06); }
-    }
-
-    /* ── TESTIMONIALS ── */
-    .testimonials {
-      background: var(--c-canvas);
-      padding: var(--space-md) 0 var(--space-lg);
-    }
-    .testimonials-header { text-align: center; margin-bottom: 48px; }
-    .testimonials-heading {
-      font-family: var(--f-display);
-      font-size: clamp(2rem, 3.5vw, 2.75rem);
-      font-weight: 300;
-      color: var(--c-text);
-      letter-spacing: -.02em;
-      line-height: 1.2;
-      margin-top: 12px;
-    }
-
-    /* Featured testimonial */
-    .tcard-featured {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto 56px;
-      padding: 40px 0;
-      border-top: 1px solid var(--c-border);
-      border-bottom: 1px solid var(--c-border);
-    }
-    .tcard-featured-stars {
-      display: flex;
-      gap: 4px;
-      justify-content: center;
-      margin-bottom: 24px;
-    }
-    .tcard-featured-stars svg { color: var(--c-gold); fill: var(--c-gold); }
-    .tcard-featured-quote {
-      font-family: var(--f-display);
-      font-style: italic;
-      font-size: clamp(1.3rem, 2.8vw, 1.9rem);
-      font-weight: 300;
-      color: var(--c-text);
-      line-height: 1.6;
-      margin-bottom: 28px;
-    }
-    .tcard-featured-name {
-      display: block;
-      font-family: var(--f-sans);
-      font-size: .75rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--c-text);
-      margin-bottom: 4px;
-    }
-    .tcard-featured-location {
-      font-family: var(--f-sans);
-      font-size: .6875rem;
-      color: var(--c-muted);
-    }
-
-    /* Grid of remaining cards */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .tcard {
-      background: rgba(255,255,255,.6);
-      border: none;
-      border-left: 2px solid var(--c-gold);
-      padding: 28px 28px 24px;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 4px 4px 24px rgba(26,32,30,.06);
-    }
-    .tcard-name {
-      font-family: var(--f-sans);
-      font-size: .6875rem;
-      font-weight: 600;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--c-text);
-    }
-    .tcard-stars { display: flex; gap: 3px; margin-top: 8px; }
-    .tcard-stars svg { color: var(--c-gold); fill: var(--c-gold); }
-    .tcard-body {
-      font-family: var(--f-display);
-      font-style: italic;
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--c-text);
-      line-height: 1.65;
-      margin-top: 16px;
-      flex: 1;
-    }
-    .tcard-location {
-      font-family: var(--f-sans);
-      font-size: .6875rem;
-      color: var(--c-muted);
-      margin-top: 16px;
-      letter-spacing: .05em;
-    }
-
-    /* ── VISIT US ── */
-    .visit {
-      background: var(--bg-visit);
-      padding: 56px 0 var(--space-lg);
-    }
-    .visit-header { margin-bottom: 64px; text-align: center; }
-    .visit-heading {
-      font-family: var(--f-display);
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 300;
-      color: var(--c-text);
-      letter-spacing: -.015em;
-      margin-top: 14px;
-      line-height: 1.1;
-    }
-    .visit-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .visit-info { display: flex; flex-direction: column; gap: 40px; }
-    .vi-label {
-      font-family: var(--f-sans);
-      font-size: .5625rem;
-      font-weight: 600;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      margin-bottom: 10px;
-    }
-    .vi-value {
-      font-family: var(--f-display);
-      font-size: 1.5rem;
-      font-weight: 300;
-      color: var(--c-text);
-      line-height: 1.5;
-    }
-    .vi-value a { color: var(--c-emerald); }
-    @media (prefers-reduced-motion: no-preference) {
-      .vi-value a { transition: color 200ms; }
-      .vi-value a:hover { color: var(--c-gold); }
-    }
-    .hours-grid { display: grid; grid-template-columns: auto 1fr; gap: 4px 24px; margin-top: 4px; }
-    .hours-day { font-family: var(--f-sans); font-size: 1rem; color: var(--c-muted); font-weight: 400; padding: 4px 0; }
-    .hours-time { font-family: var(--f-sans); font-size: 1rem; color: var(--c-text); font-weight: 500; padding: 4px 0; }
-    .hours-today { background: var(--c-gold); border-radius: 3px; padding: 2px 6px !important; color: var(--c-canvas) !important; font-weight: 600 !important; }
-
-    .visit-map { position: relative; }
-    .visit-map iframe {
-      width: 100%;
-      height: 460px;
-      border: none;
-      display: block;
-      filter: saturate(.7) contrast(1.05) sepia(.15);
-      position: relative;
-      z-index: 1;
-    }
-    .map-fallback {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      background: rgba(244,237,224,.8);
-      border: 1px solid rgba(196,137,45,.3);
-    }
-    .map-fallback-icon { color: var(--c-gold); opacity: .5; }
-    .map-fallback-text { font-family: var(--f-display); font-size: 1.125rem; color: var(--c-muted); text-align: center; font-weight: 300; }
-    .map-fallback-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(196,137,45,.5);
-      color: var(--c-gold);
-      padding: 10px 22px;
-      font-family: var(--f-sans);
-      font-size: .75rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .map-fallback-link { transition: border-color 200ms, background 200ms; }
-      .map-fallback-link:hover { border-color: var(--c-gold); background: rgba(196,137,45,.08); }
-    }
-
-    /* ── FOOTER ── */
-    .footer {
-      background: #0F2019;
-      padding: 72px 0 0;
-      border-top: 1px solid rgba(253,252,248,.04);
-      position: relative;
-      overflow: hidden;
-    }
-    .footer-watermark {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 520px;
-      max-width: 80%;
-      height: auto;
-      opacity: 0.04;
-      pointer-events: none;
-      user-select: none;
-    }
-    .footer-inner {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1.2fr;
-      gap: 64px;
-      padding-bottom: 48px;
-      border-bottom: 1px solid rgba(253,252,248,.06);
-      align-items: start;
-    }
-    .footer-brand { position: relative; z-index: 1; }
-    .footer-brand .logo { display: block; overflow: hidden; height: 70px; }
-    .footer-brand .logo-img-footer { width: 220px; height: auto; margin-top: -130px; margin-bottom: 0; }
-    .footer-tagline {
-      font-family: var(--f-display);
-      font-style: italic;
-      font-size: 1rem;
-      font-weight: 300;
-      color: rgba(253,252,248,.35);
-      margin-top: 16px;
-      line-height: 1.5;
-      width: 220px;
-      text-align: center;
-    }
-    .footer-col-label {
-      font-family: var(--f-sans);
-      font-size: .5625rem;
-      font-weight: 600;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--c-gold);
-      margin-bottom: 20px;
-    }
-    .footer-links { display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a {
-      font-family: var(--f-sans);
-      font-size: .875rem;
-      color: rgba(253,252,248,.45);
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .footer-links a { transition: color 200ms; }
-    }
-    .footer-links a:hover { color: var(--c-canvas); }
-    .footer-contact-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
-    .footer-contact-row .fc-icon { color: var(--c-gold); flex-shrink: 0; margin-top: 2px; }
-    .footer-contact-row p { font-size: .875rem; color: rgba(253,252,248,.45); line-height: 1.6; }
-    .footer-contact-row a { color: rgba(253,252,248,.45); }
-    @media (prefers-reduced-motion: no-preference) {
-      .footer-contact-row a { transition: color 200ms; }
-    }
-    .footer-contact-row a:hover { color: var(--c-gold-lt); }
-
-    .footer-bottom {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 28px 0;
-      border-top: 1px solid rgba(253,252,248,.06);
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .footer-copy { font-size: .75rem; color: rgba(253,252,248,.18); }
-    .footer-social { display: flex; gap: 16px; align-items: center; }
-    .footer-social-link {
-      color: rgba(253,252,248,.28);
-      display: flex;
-      align-items: center;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .footer-social-link { transition: color 200ms; }
-    }
-    .footer-social-link:hover { color: var(--c-gold); }
-
-    /* Large closing tagline */
-    .footer-close-tagline {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 56px var(--space-xs) 64px;
-    }
-    .footer-close-tagline p {
-      font-family: var(--f-display);
-      font-style: italic;
-      font-size: clamp(1.8rem, 4vw, 3.5rem);
-      font-weight: 300;
-      color: rgba(253,252,248,.12);
-      line-height: 1.3;
-      letter-spacing: -.02em;
-    }
-
-    /* ── WA FAB ── */
-    .wa-fab {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      z-index: 150;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: #25D366;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,.35), 0 1px 4px rgba(0,0,0,.2);
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .wa-fab { transition: transform 220ms ease, box-shadow 220ms ease; }
-      .wa-fab:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.45); }
-      .wa-fab:active { transform: scale(.94); }
-    }
-    .wa-fab:focus-visible { outline: 3px solid var(--c-gold); outline-offset: 4px; }
-    .wa-fab svg { width: 28px; height: 28px; fill: #fff; }
-    .wa-fab-label {
-      position: absolute;
-      right: 64px;
-      white-space: nowrap;
-      background: var(--c-emerald-dk);
-      color: var(--c-canvas);
-      font-family: var(--f-sans);
-      font-size: .8rem;
-      padding: 6px 12px;
-      border-radius: 4px;
-      opacity: 0;
-      pointer-events: none;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .wa-fab-label { transition: opacity 200ms ease; }
-      .wa-fab:hover .wa-fab-label { opacity: 1; }
-    }
-    @media (max-width: 768px) { .wa-fab-label { display: none; } }
-
-    /* ── BACK TO TOP ── */
-    .back-to-top {
-      position: fixed;
-      bottom: 92px;
-      right: 28px;
-      z-index: 149;
-      width: 44px;
-      height: 44px;
-      background: var(--c-emerald);
-      color: var(--c-canvas);
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      pointer-events: none;
-      box-shadow: 0 2px 12px rgba(15,32,25,.3);
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .back-to-top { transform: translateY(12px); transition: opacity 220ms, transform 220ms; }
-      .back-to-top.visible { transform: translateY(0); }
-      .back-to-top:hover { background: var(--c-emerald-dk); }
-    }
-    .back-to-top.visible { opacity: 1; pointer-events: auto; }
-    .back-to-top:focus-visible { outline: 3px solid var(--c-gold); outline-offset: 3px; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1024px) {
-      .ps-body { padding: 40px 40px; }
-      .product-inset { display: none; }
-      .about-grid { grid-template-columns: 1fr 1fr; }
-      .about-stats { grid-column: 2; grid-row: 1; }
-      .about-img-wrap { grid-column: 1; grid-row: 1 / 3; }
-      .about-text { grid-column: 2; grid-row: 2; }
-      .gallery-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 200px; }
-      .gallery-cell { grid-column: span 1; grid-row: span 1; }
-      .gallery-cell:first-child { grid-column: span 2; }
-      .gallery-cell:nth-child(2) { grid-row: span 1; }
-      .gallery-cell:nth-child(9) { grid-column: span 1; }
-    }
-    @media (max-width: 768px) {
-      .testimonials-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
-      .hamburger { display: flex; }
-      .nav-center, .nav-phone { display: none; }
-      .hero { height: 90vh; align-items: center; padding-bottom: 0; }
-      .product-strip { grid-template-columns: 1fr; min-height: auto; }
-      .product-strip.reverse { direction: ltr; }
-      .ps-image { height: 260px; }
-      .ps-body { padding: 32px 28px; }
-      .ps-body .ps-desc { max-width: 100%; }
-      .about-grid { grid-template-columns: 1fr; }
-      .about-img-primary { height: 320px; }
-      .about-stats { flex-direction: row; flex-wrap: wrap; gap: 0; padding: 0; }
-      .stat-item { flex: 1 1 45%; padding: 20px 16px; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
-      .gallery-cell { grid-column: span 1; grid-row: span 1; }
-      .gallery-cell:first-child { grid-column: span 2; }
-      .gallery-cell:nth-child(2) { grid-row: span 1; }
-      .gallery-cell:nth-child(9) { grid-column: span 1; }
-      .gallery-cell:nth-child(n+9) { display: none; }
-      .manifesto-inner { grid-template-columns: 1fr; }
-      .manifesto-item { border-right: none; border-bottom: 1px solid rgba(196,137,45,.2); padding: 24px var(--space-xs); }
-      .manifesto-item:last-child { border-bottom: none; }
-      .visit-layout { grid-template-columns: 1fr; gap: 40px; }
-      .visit-map iframe { height: 280px; }
-      .footer-inner { grid-template-columns: 1fr; gap: 40px; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-      .back-to-top { bottom: 84px; right: 20px; }
-      .wa-fab { bottom: 20px; right: 20px; }
-    }
-    @media (max-width: 480px) {
-      .testimonials-grid { grid-template-columns: 1fr; }
-      :root { --space-xs: 20px; }
-      .tcard-featured { padding: 32px 0; }
-    }
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+  .nav { padding: 16px 20px; }
+  .nav.scrolled { padding: 12px 20px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  .hero-content { padding: 80px 24px 0; max-width: 100%; }
+  .hero h1 { font-size: clamp(2.2rem,9vw,3.5rem); }
+  .hero-btns { flex-direction: column; }
+  .btn-primary, .btn-secondary { text-align: center; }
+  .hero-dots { bottom: 56px; }
+  .stats-bar { padding: 60px 24px 0; }
+  .stats-container { flex-direction: column; gap: 32px; padding-bottom: 60px; }
+  .stat-divider { width: 40px; height: 1px; }
+  .stat-item { padding: 0; }
+  .section-about { padding: 80px 24px 0; }
+  .about-collage { height: 320px; }
+  .collage-img-main { height: 200px; }
+  .section-categories { padding: 80px 24px 0; }
+  .categories-grid { grid-template-columns: 1fr; padding-bottom: 60px; }
+  .section-feature { padding: 60px 24px; }
+  .feature-inner { grid-template-columns: 1fr; gap: 32px; }
+  .feature-inner.flipped .feature-image { order: 0; }
+  .feature-inner.flipped .feature-text  { order: 0; }
+  .section-testimonials { padding: 80px 0 0; }
+  .testimonials-header { padding: 0 24px; }
+  .testimonials-wrap { padding: 0 44px; }
+  .carousel-dots { padding: 0 24px 60px; }
+  .section-gallery { padding: 80px 24px 0; }
+  .gallery-grid { grid-template-columns: 1fr; padding-bottom: 60px; }
+  .section-visit { padding: 80px 24px; }
+  .visit-inner { grid-template-columns: 1fr; gap: 40px; }
+  .visit-map iframe { height: 280px; }
+  .footer { padding: 64px 24px 0; }
+  .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-bottom { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .lightbox-arrow.prev { left: 8px; }
+  .lightbox-arrow.next { right: 8px; }
+  .section-header { margin-bottom: 40px; }
+}
   </style>
 </head>
 <body>
 
-<a href="#main" class="skip-link">Прескочи към съдържанието</a>
-
-<!-- Mobile Nav -->
-<nav class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Мобилна навигация">
-  <div class="mobile-nav-header">
-    <a href="#" class="logo" aria-label="Начало">
-      <img src="./images/Mlechko-Logo.png" alt="Млечен Магазин" class="logo-img">
-    </a>
-    <button class="hamburger" id="nav-close" aria-label="Затвори">
-      <i data-lucide="x" width="22" height="22"></i>
-    </button>
-  </div>
-  <div class="mobile-nav-body">
-    <a href="#products">Продукти</a>
-    <a href="#gallery">Галерия</a>
-    <a href="#about">За Нас</a>
-    <a href="#reviews">Ревюта</a>
-    <a href="#visit">Намерете Ни</a>
-  </div>
-  <div class="mobile-nav-foot">
-    <a href="tel:+359878232365">
-      <i data-lucide="phone" width="16" height="16"></i>
-      0878 232 365
-    </a>
-  </div>
-</nav>
-
-<!-- Navbar -->
-<header>
-  <nav class="navbar" id="navbar" aria-label="Главна навигация">
-    <div class="navbar-inner">
-      <a href="#" class="logo" aria-label="Начало, Млечен Магазин">
-        <img src="./images/Mlechko-Logo.png" alt="Млечен Магазин" class="logo-img">
-      </a>
-      <div class="nav-center" role="list">
-        <a href="#products" role="listitem">Продукти</a>
-        <a href="#gallery" role="listitem">Галерия</a>
-        <a href="#about" role="listitem">За Нас</a>
-        <a href="#reviews" role="listitem">Ревюта</a>
-        <a href="#visit" role="listitem">Намерете Ни</a>
-      </div>
-      <a href="tel:+359878232365" class="nav-phone" aria-label="Обадете се">
-        <i data-lucide="phone" width="13" height="13"></i>
-        0878 232 365
-      </a>
-      <button class="hamburger" id="nav-open" aria-label="Отвори меню" aria-expanded="false" aria-controls="mobile-nav">
-        <i data-lucide="menu" width="22" height="22"></i>
-      </button>
-    </div>
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<header class="nav" id="nav" role="banner">
+  <a href="#" class="nav-logo" aria-label="Млечко — начало">
+    <img src="images/Mlechko-Logo.png" alt="Млечко" width="120">
+  </a>
+  <nav aria-label="Основна навигация">
+    <ul class="nav-links">
+      <li><a href="#categories">Продукти</a></li>
+      <li><a href="#gallery">Галерия</a></li>
+      <li><a href="#about">За Нас</a></li>
+      <li><a href="#testimonials">Ревюта</a></li>
+      <li><a href="#visit">Намерете Ни</a></li>
+    </ul>
   </nav>
+  <a href="tel:0878232365" class="nav-cta">0878 232 365</a>
+  <button class="nav-hamburger" id="nav-open" aria-label="Отвори меню" aria-expanded="false" aria-controls="mobile-nav">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
-<main id="main">
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Мобилна навигация" aria-modal="true">
+  <button class="mobile-nav-close" id="nav-close" aria-label="Затвори меню">✕</button>
+  <ul class="mobile-nav-links">
+    <li><a href="#categories">Продукти</a></li>
+    <li><a href="#gallery">Галерия</a></li>
+    <li><a href="#about">За Нас</a></li>
+    <li><a href="#testimonials">Ревюта</a></li>
+    <li><a href="#visit">Намерете Ни</a></li>
+  </ul>
+  <p class="mobile-nav-phone">0878 232 365</p>
+</div>
 
-  <!-- HERO -->
-  <section class="hero" aria-label="Начален банер">
-    <div class="hero-slides" aria-hidden="true">
-      <div class="hero-slide">
-        <img src="./images/hero-header.png"
-             loading="eager" fetchpriority="high"
-             width="1920" height="1080"
-             alt="Интериор на магазин Млечко, Пловдив">
-      </div>
-      <div class="hero-slide">
-        <img src="./images/IMG_0702.jpg"
-             loading="lazy"
-             width="1920" height="1080"
-             alt="Витрина с млечни продукти в магазин Млечко">
-      </div>
-      <div class="hero-slide">
-        <img src="./images/IMG_0677.jpg"
-             loading="lazy"
-             width="1920" height="1080"
-             alt="Асортимент от сирена и млечни продукти">
-      </div>
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" aria-label="Начална секция">
+  <div class="hero-slides" id="hero-slides">
+    <div class="hero-slide active" style="background-image:url('images/hero-header.png')" role="img" aria-label="Интериор на магазина"></div>
+    <div class="hero-slide" style="background-image:url('images/IMG_0702.jpg')" role="img" aria-label="Екстериор на магазина"></div>
+    <div class="hero-slide" style="background-image:url('images/IMG_0677.jpg')" role="img" aria-label="Продукти на витрина"></div>
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Специализиран Магазин · Пловдив</span>
+    <h1>Специализиран<br>магазин.<br>Истински вкус.</h1>
+    <p class="hero-sub">Пресни млечни продукти, яйца и маслини,<br>подбрани с грижа и доставени всяка сутрин.</p>
+    <div class="hero-btns">
+      <a href="#categories" class="btn-primary">Нашите Продукти</a>
+      <a href="#visit" class="btn-secondary">Намерете Ни</a>
     </div>
-    <div class="hero-overlay" aria-hidden="true"></div>
-    <div class="hero-overlay-bottom" aria-hidden="true"></div>
-    <img src="./images/Dairy-Logo-Photoroom.png" alt="" class="hero-mascot" aria-hidden="true">
+    <p class="hero-tagline">„Нищо повече и нищо по-малко."</p>
+  </div>
+  <div class="hero-dots" role="tablist" aria-label="Слайдер навигация">
+    <button class="hero-dot active" role="tab" aria-selected="true"  aria-label="Слайд 1" data-index="0"></button>
+    <button class="hero-dot"        role="tab" aria-selected="false" aria-label="Слайд 2" data-index="1"></button>
+    <button class="hero-dot"        role="tab" aria-selected="false" aria-label="Слайд 3" data-index="2"></button>
+  </div>
+  <div class="hero-wave-wrap" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,35 C360,70 1080,0 1440,35 L1440,70 L0,70 Z" fill="#FAF7F2"/>
+    </svg>
+  </div>
+</section>
 
-    <div class="hero-content-inner">
-      <div class="hero-text-block">
-        <span class="hero-eyebrow">Специализиран Магазин · Пловдив</span>
-        <h1 class="hero-title">
-          <span class="hero-h1-a">Специализиран магазин.</span>
-          <span class="hero-h1-b">Истински вкус.</span>
-        </h1>
-        <div class="hero-rule" aria-hidden="true"></div>
-        <p class="hero-sub">Пресни млечни продукти, яйца и маслини, подбрани с грижа и доставяни всяка сутрин.</p>
-        <div class="hero-cta">
-          <a href="#visit" class="btn-primary">
-            Намерете Ни
-            <i data-lucide="map-pin" width="15" height="15"></i>
-          </a>
-          <a href="#products" class="btn-ghost">Нашите Продукти</a>
-        </div>
-      </div>
+<!-- ============================================================
+     STATS BAR
+     ============================================================ -->
+<section class="stats-bar" aria-label="Факти и статистики">
+  <div class="stats-container">
+    <div class="stat-item reveal">
+      <span class="stat-number">30+</span>
+      <span class="stat-label">Вида Продукти</span>
     </div>
-
-    <p class="hero-tagline-stamp" aria-hidden="true">„Нищо повече и нищо по-малко."</p>
-  </section>
-
-  <!-- TRUST BAR -->
-  <section class="manifesto" aria-label="Предимства">
-    <div class="manifesto-inner">
-      <div class="manifesto-item aos">
-        <i class="manifesto-icon" data-lucide="truck" width="30" height="30"></i>
-        <div>
-          <p class="manifesto-stat">Всеки ден</p>
-          <p class="manifesto-label">Пресна доставка</p>
-          <p class="manifesto-desc">Директно от производителя всяка сутрин</p>
-        </div>
-      </div>
-      <div class="manifesto-item aos aos-delay-1">
-        <i class="manifesto-icon" data-lucide="package" width="30" height="30"></i>
-        <div>
-          <p class="manifesto-stat">30+</p>
-          <p class="manifesto-label">Вида продукти</p>
-          <p class="manifesto-desc">Млечни продукти, яйца и маслини под един покрив</p>
-        </div>
-      </div>
-      <div class="manifesto-item aos aos-delay-2">
-        <i class="manifesto-icon" data-lucide="clock" width="30" height="30"></i>
-        <div>
-          <p class="manifesto-stat">6:00</p>
-          <p class="manifesto-label">Сутринта</p>
-          <p class="manifesto-desc">Часът на доставката — гарантирана прясност</p>
-        </div>
-      </div>
+    <div class="stat-divider" aria-hidden="true"></div>
+    <div class="stat-item reveal reveal-delay-1">
+      <span class="stat-number">Всеки Ден</span>
+      <span class="stat-label">Прясна Доставка</span>
     </div>
-  </section>
-
-  <!-- PRODUCTS -->
-  <section class="products" id="products" aria-labelledby="products-h">
-    <div class="products-header container aos">
-      <p class="eyebrow">Нашите Продукти</p>
-      <h2 class="products-title" id="products-h">Всичко прясно.<br>Всичко избрано.</h2>
+    <div class="stat-divider" aria-hidden="true"></div>
+    <div class="stat-item reveal reveal-delay-2">
+      <span class="stat-number">6:00</span>
+      <span class="stat-label">Час на Доставка</span>
     </div>
+  </div>
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,35 C480,0 960,70 1440,35 L1440,70 L0,70 Z" fill="#FAF7F2"/>
+    </svg>
+  </div>
+</section>
 
-    <!-- Strip 1: Dairy -->
-    <article class="product-strip aos">
-      <div class="ps-image">
-        <img src="./images/IMG_0677.jpg"
-             loading="eager"
-             width="900" height="600"
-             alt="Хладилници с кисело мляко, сирене и масло">
-        <img src="./images/IMG_0678.jpg"
-             loading="lazy"
-             width="400" height="400"
-             class="product-inset"
-             alt="Детайл — пресни млечни продукти">
-      </div>
-      <div class="ps-body">
-        <p class="ps-category">Млечни Продукти</p>
-        <h3 class="ps-title">Млечни Продукти</h3>
-        <p class="ps-desc">Над 30 вида прясно мляко, кисело мляко, сирене, кашкавал и масло, доставени всяка сутрин от проверени производители.</p>
-        <span class="ps-detail">
-          <i data-lucide="droplets" width="14" height="14"></i>
-          Ежедневна доставка
-        </span>
-      </div>
-    </article>
-
-    <!-- Strip 2: Eggs -->
-    <article class="product-strip reverse aos">
-      <div class="ps-image">
-        <img src="./images/IMG_0709.jpg"
-             loading="lazy"
-             width="900" height="600"
-             alt="Пресни яйца в магазина"
-             style="object-position:center 40%">
-        <img src="./images/IMG_0708.jpg"
-             loading="lazy"
-             width="400" height="400"
-             class="product-inset"
-             alt="Детайл — пресни яйца от местни ферми">
-      </div>
-      <div class="ps-body">
-        <p class="ps-category">Яйца</p>
-        <h3 class="ps-title">Яйца</h3>
-        <p class="ps-desc">Пресни яйца от проверени производители. Домашен вкус и естествено качество, достъпни за вас всеки ден.</p>
-        <span class="ps-detail">
-          <i data-lucide="sun" width="14" height="14"></i>
-          Прясност гарантирана
-        </span>
-      </div>
-    </article>
-
-    <!-- Strip 3: Olives -->
-    <article class="product-strip aos">
-      <div class="ps-image">
-        <img src="./images/IMG_0684.jpg"
-             loading="lazy"
-             width="900" height="600"
-             alt="Щанд с маслини по килограм и бяло сирене">
-        <img src="./images/IMG_0685.jpg"
-             loading="lazy"
-             width="400" height="400"
-             class="product-inset"
-             alt="Детайл — мариновани маслини">
-      </div>
-      <div class="ps-body">
-        <p class="ps-category">Маслини &amp; Деликатеси</p>
-        <h3 class="ps-title">Маслини &amp; Деликатеси</h3>
-        <p class="ps-desc">Внимателно подбрани маслини от различни сортове и деликатеси, за взискателната трапеза.</p>
-        <span class="ps-detail">
-          <i data-lucide="leaf" width="14" height="14"></i>
-          Внимателен подбор
-        </span>
-      </div>
-    </article>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about" aria-labelledby="about-h">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-img-wrap aos">
-          <img class="about-img-primary"
-               src="./images/IMG_0702.jpg"
-               loading="lazy"
-               width="700" height="540"
-               alt="Екстериор на Специализиран Магазин, бул. Пещерско шосе 26, Пловдив">
-          <img class="about-img-secondary"
-               src="./images/IMG_0703.jpg"
-               loading="lazy"
-               width="600" height="800"
-               alt="Екипът на магазин Млечко пред витрината">
-          <div class="about-img-caption">
-            <span>бул. Пещерско шосе 26 · Пловдив</span>
-          </div>
-        </div>
-        <div class="about-stats aos aos-delay-1">
-          <div class="stat-item">
-            <div class="stat-num">30+</div>
-            <div class="stat-label">вида млечни продукти</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num">Всеки ден</div>
-            <div class="stat-label">пресни доставки сутринта</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num">6:00</div>
-            <div class="stat-label">сутринта — час на доставка</div>
-          </div>
-        </div>
-        <div class="about-text aos aos-delay-2">
-          <p class="eyebrow eyebrow-on-dark">За Нас</p>
-          <h2 class="about-heading" id="about-h">Специализиран избор.<br>Традиционен вкус.</h2>
-          <div class="about-body">
-            <p>Млечко е роден от убеждението, че качествената храна не трябва да бъде лукс. Всяка сутрин пресни млечни продукти, яйца и маслини пристигат директно от проверени производители — без складове, без компромиси.</p>
-            <p>Избрахме да се специализираме в едно нещо и да го правим перфектно: да свържем пловдивските домакинства с истински вкусни, пресни продукти. Намирате ни на бул. Пещерско шосе 26 — елате да видите разликата сами.</p>
-          </div>
-          <span class="about-tag">
-            <i data-lucide="award" width="14" height="14"></i>
-            Специализиран магазин · Пловдив
-          </span>
-        </div>
-      </div>
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section class="section-about" id="about" aria-label="За нас">
+  <div class="about-inner">
+    <div class="about-text">
+      <span class="eyebrow reveal">За Нас</span>
+      <h2 class="reveal reveal-delay-1">Специализиран избор.<br>Традиционен вкус.</h2>
+      <p class="reveal reveal-delay-2">Млечко е роден от убеждението, че качествената храна не трябва да бъде лукс. Всяка сутрин пресни млечни продукти, яйца и маслини пристигат директно от проверени производители — без складове, без компромиси.</p>
+      <p class="reveal reveal-delay-2">Избрахме да се специализираме в едно нещо и да го правим перфектно: да свържем пловдивските домакинства с истински вкусни, пресни продукти. Намирате ни на бул. Пещерско шосе 26 — елате да видите разликата сами.</p>
+      <ul class="about-bullets">
+        <li class="reveal reveal-delay-3">
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Доставка директно от производителя
+        </li>
+        <li class="reveal reveal-delay-3">
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Гарантирана прясност всяка сутрин
+        </li>
+        <li class="reveal reveal-delay-3">
+          <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Над 30 вида продукти под един покрив
+        </li>
+      </ul>
+      <a href="#visit" class="about-cta reveal reveal-delay-4">
+        Намерете ни
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section class="gallery" id="gallery" aria-labelledby="gallery-h">
-    <div class="gallery-header aos">
-      <p class="eyebrow eyebrow-on-dark">Нашият Магазин</p>
-      <h2 class="gallery-heading" id="gallery-h">Добре дошли<br><em>в нашия магазин</em></h2>
-    </div>
-    <div class="gallery-grid">
-      <div class="gallery-cell">
-        <img src="./images/IMG_0676.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — витрина с млечни продукти">
+    <div class="about-collage reveal reveal-delay-1">
+      <div class="collage-img-main">
+        <img src="images/IMG_0702.jpg" alt="Екстериор на магазин Млечко" loading="lazy">
       </div>
-      <div class="gallery-cell">
-        <img src="./images/IMG_0679.jpg" loading="lazy" width="800" height="1000" alt="Магазин Млечко — детайл от щандовете">
+      <div class="collage-img-small left">
+        <img src="images/IMG_0682.jpg" alt="Продукти в магазина" loading="lazy">
       </div>
-      <div class="gallery-cell">
-        <img src="./images/IMG_0680.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — продукти на рафтовете">
-      </div>
-      <div class="gallery-cell">
-        <img src="./images/IMG_0681.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — пресни млечни продукти">
-      </div>
-      <div class="gallery-cell">
-        <img src="./images/IMG_0682.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — интериор">
-      </div>
-      <div class="gallery-cell">
-        <img src="./images/IMG_0683.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — маслини и деликатеси">
-      </div>
-      <div class="gallery-cell">
-        <img src="./images/IMG_0686.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — асортимент от сирена">
-      </div>
-      <div class="gallery-cell">
-        <img src="./images/IMG_0687.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — ежедневна доставка">
-      </div>
-      <div class="gallery-cell">
-        <img src="./images/IMG_0688.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — витрина с продукти">
-      </div>
-      <div class="gallery-cell">
-        <img src="./images/IMG_0689.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — пресни яйца">
-      </div>
-      <div class="gallery-cell">
-        <img src="./images/IMG_0690.jpg" loading="lazy" width="1200" height="900" alt="Магазин Млечко — поглед към магазина">
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials" id="reviews" aria-labelledby="testimonials-h">
-    <div class="container">
-      <div class="testimonials-header aos">
-        <p class="eyebrow">Какво казват клиентите</p>
-        <h2 class="testimonials-heading" id="testimonials-h">Думите на<br><em>нашите клиенти</em></h2>
-      </div>
-
-      <!-- Featured testimonial -->
-      <blockquote class="tcard-featured aos">
-        <div class="tcard-featured-stars" aria-label="5 звезди">
-          <i data-lucide="star" width="16" height="16"></i>
-          <i data-lucide="star" width="16" height="16"></i>
-          <i data-lucide="star" width="16" height="16"></i>
-          <i data-lucide="star" width="16" height="16"></i>
-          <i data-lucide="star" width="16" height="16"></i>
-        </div>
-        <p class="tcard-featured-quote">„Най-доброто кисело мляко, което съм яла от години. Маслините са различни — усеща се качеството. Препоръчвам го на всички мои познати."</p>
-        <footer>
-          <span class="tcard-featured-name">Снежана Маринова</span>
-          <span class="tcard-featured-location">Пловдив, Кичука</span>
-        </footer>
-      </blockquote>
-
-      <!-- Remaining 5 reviews -->
-      <div class="testimonials-grid">
-        <div class="tcard aos">
-          <p class="tcard-name">Мария Костова</p>
-          <div class="tcard-stars" aria-label="5 звезди">
-            <i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i>
-          </div>
-          <p class="tcard-body">Идвам тук всяка сутрин от две години. Млякото и киселото мляко са несравнимо по-добри от всичко в супермаркета. Истинска разлика се усеща веднага.</p>
-          <p class="tcard-location">Пловдив, Тракия</p>
-        </div>
-        <div class="tcard aos aos-delay-1">
-          <p class="tcard-name">Иван Петров</p>
-          <div class="tcard-stars" aria-label="5 звезди">
-            <i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i>
-          </div>
-          <p class="tcard-body">Намерих сирена и маслини, каквито не можах да намеря никъде другаде. Персоналът е изключително любезен и винаги помага с избора.</p>
-          <p class="tcard-location">Пловдив, Център</p>
-        </div>
-        <div class="tcard aos aos-delay-2">
-          <p class="tcard-name">Елена Стоянова</p>
-          <div class="tcard-stars" aria-label="5 звезди">
-            <i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i>
-          </div>
-          <p class="tcard-body">Пресни яйца всеки ден, прекрасен избор от сирена и маслини — всичко под един покрив. Децата ми обожават млякото оттук.</p>
-          <p class="tcard-location">Белащица</p>
-        </div>
-        <div class="tcard aos">
-          <p class="tcard-name">Георги Илиев</p>
-          <div class="tcard-stars" aria-label="5 звезди">
-            <i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i>
-          </div>
-          <p class="tcard-body">Страхотен магазин! Сиренето е невероятно прясно и вкусно. Идвам специално от другия край на Пловдив — струва си всеки път.</p>
-          <p class="tcard-location">Костиево</p>
-        </div>
-        <div class="tcard aos aos-delay-1">
-          <p class="tcard-name">Димитър Костов</p>
-          <div class="tcard-stars" aria-label="5 звезди">
-            <i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i><i data-lucide="star" width="13" height="13"></i>
-          </div>
-          <p class="tcard-body">Специализиран магазин с истинско отношение. Продуктите пристигат прясно всяка сутрин — усеща се разликата. Топло ви препоръчвам.</p>
-          <p class="tcard-location">Крумово</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VISIT US -->
-  <section class="visit" id="visit" aria-labelledby="visit-h">
-    <div class="container">
-      <div class="visit-header aos">
-        <p class="eyebrow">Намерете Ни</p>
-        <h2 class="visit-heading" id="visit-h">Елате при нас<br><em>в Пловдив</em></h2>
-      </div>
-      <div class="visit-layout">
-        <div class="visit-info">
-          <div class="visit-info-block aos">
-            <p class="vi-label">Адрес</p>
-            <div class="vi-value">
-              бул. Пещерско шосе 26<br>
-              гк. Младежки хълм<br>
-              4002 Пловдив
-            </div>
-          </div>
-          <div class="visit-info-block aos aos-delay-1">
-            <p class="vi-label">Работно Време</p>
-            <div class="hours-grid" id="hours-grid">
-              <span class="hours-day">Пон – Пет</span><span class="hours-time">08:00 – 20:00</span>
-              <span class="hours-day">Събота</span><span class="hours-time">09:00 – 18:00</span>
-              <span class="hours-day">Неделя</span><span class="hours-time">10:00 – 16:00</span>
-            </div>
-          </div>
-          <div class="visit-info-block aos aos-delay-2">
-            <p class="vi-label">Телефон</p>
-            <div class="vi-value">
-              <a href="tel:+359878232365">0878 232 365</a>
-            </div>
-          </div>
-        </div>
-        <div class="visit-map aos aos-delay-1">
-          <div class="map-fallback" aria-hidden="true">
-            <i class="map-fallback-icon" data-lucide="map-pin" width="36" height="36"></i>
-            <p class="map-fallback-text">бул. Пещерско шосе 26<br>Пловдив</p>
-            <a href="https://maps.google.com/?q=бул.+Пещерско+шосе+26,+Пловдив" target="_blank" rel="noopener noreferrer" class="map-fallback-link">
-              <i data-lucide="external-link" width="12" height="12"></i>
-              Виж в Google Карти
-            </a>
-          </div>
-          <iframe src="https://maps.google.com/maps?q=бул.+Пещерско+шосе+26,+Пловдив&output=embed" title="Местоположение" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- FOOTER -->
-<footer class="footer" aria-label="Долен колонтитул">
-  <img src="./images/Dairy-Logo-Photoroom.png" alt="" class="footer-watermark" aria-hidden="true">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="#" class="logo" aria-label="Начало">
-          <img src="./images/Mlechko-Logo.png" alt="Млечен Магазин" class="logo-img logo-img-footer">
-        </a>
-        <p class="footer-tagline">„Нищо повече<br>и нищо по-малко."</p>
-      </div>
-      <div>
-        <p class="footer-col-label">Навигация</p>
-        <nav class="footer-links" aria-label="Долна навигация">
-          <a href="#">Начало</a>
-          <a href="#products">Продукти</a>
-          <a href="#gallery">Галерия</a>
-          <a href="#about">За Нас</a>
-          <a href="#visit">Намерете Ни</a>
-        </nav>
-      </div>
-      <div>
-        <p class="footer-col-label">Контакт</p>
-        <div class="footer-contact-row">
-          <i class="fc-icon" data-lucide="map-pin" width="14" height="14"></i>
-          <p>бул. Пещерско шосе 26<br>гк. Младежки хълм<br>4002 Пловдив</p>
-        </div>
-        <div class="footer-contact-row">
-          <i class="fc-icon" data-lucide="phone" width="14" height="14"></i>
-          <p><a href="tel:+359878232365">0878 232 365</a></p>
-        </div>
-        <div class="footer-contact-row">
-          <i class="fc-icon" data-lucide="clock" width="14" height="14"></i>
-          <p>Пон–Пет 08:00–20:00<br>Съб 09:00–18:00 · Нед 10:00–16:00</p>
-        </div>
-        <div class="footer-contact-row">
-          <i class="fc-icon" data-lucide="mail" width="14" height="14"></i>
-          <p><a href="mailto:info@mlechko.bg">info@mlechko.bg</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2026 Млечко. Всички права запазени.</p>
-      <div class="footer-social">
-        <a href="#" class="footer-social-link" aria-label="Facebook" target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        </a>
-        <a href="#" class="footer-social-link" aria-label="Instagram" target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        </a>
-        <a href="https://wa.me/359878232365" class="footer-social-link" aria-label="WhatsApp" target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        </a>
+      <div class="collage-img-small right">
+        <img src="images/IMG_0683.jpg" alt="Разнообразие от продукти" loading="lazy">
       </div>
     </div>
   </div>
-  <div class="footer-close-tagline" aria-hidden="true">
-    <p>„Нищо повече и нищо по-малко."</p>
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,35 C360,70 1080,0 1440,35 L1440,70 L0,70 Z" fill="#F0EDE8"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRODUCT CATEGORIES
+     ============================================================ -->
+<section class="section-categories" id="categories" aria-label="Продуктови категории">
+  <div class="section-header">
+    <span class="eyebrow reveal">Нашите Продукти</span>
+    <h2 class="reveal reveal-delay-1">Всичко пресно. Всичко избрано.</h2>
+    <p class="reveal reveal-delay-2">Три категории, един стандарт — прясност и качество всяка сутрин.</p>
+  </div>
+  <div class="categories-grid">
+    <article class="category-card reveal">
+      <img class="category-img" src="images/IMG_0677.jpg" alt="Млечни продукти" loading="lazy">
+      <div class="category-gradient" aria-hidden="true"></div>
+      <div class="category-content">
+        <span class="category-tag">Ежедневно</span>
+        <h3>Млечни Продукти</h3>
+        <p>Над 30 вида · Ежедневна доставка</p>
+      </div>
+    </article>
+    <article class="category-card reveal reveal-delay-1">
+      <img class="category-img" src="images/IMG_0709.jpg" alt="Пресни яйца" loading="lazy">
+      <div class="category-gradient" aria-hidden="true"></div>
+      <div class="category-content">
+        <span class="category-tag">На Дрян</span>
+        <h3>Яйца</h3>
+        <p>Пресни · От проверени ферми</p>
+      </div>
+    </article>
+    <article class="category-card reveal reveal-delay-2">
+      <img class="category-img" src="images/IMG_0684.jpg" alt="Маслини и деликатеси" loading="lazy">
+      <div class="category-gradient" aria-hidden="true"></div>
+      <div class="category-content">
+        <span class="category-tag">Избор</span>
+        <h3>Маслини &amp; Деликатеси</h3>
+        <p>Внимателен подбор · Различни сортове</p>
+      </div>
+    </article>
+  </div>
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,35 C480,0 960,70 1440,35 L1440,70 L0,70 Z" fill="#FAF7F2"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURED PRODUCTS
+     ============================================================ -->
+<section class="section-feature bg-cream" aria-label="Млечни продукти">
+  <div class="feature-inner">
+    <div class="feature-image reveal">
+      <img src="images/IMG_0678.jpg" alt="Разнообразие от млечни продукти" loading="lazy">
+    </div>
+    <div class="feature-text reveal reveal-delay-1">
+      <span class="eyebrow">Нашата Специализация</span>
+      <h3>Над 30 вида млечни продукти</h3>
+      <p>Прясно мляко, кисело мляко, сирене, кашкавал и масло — всичко доставено директно от проверени производители тази сутрин.</p>
+      <ul class="feature-reasons">
+        <li class="reveal reveal-delay-2"><span class="feature-check" aria-hidden="true">✓</span> Ежедневна доставка до 6:00</li>
+        <li class="reveal reveal-delay-2"><span class="feature-check" aria-hidden="true">✓</span> Директно от производителя, без складове</li>
+        <li class="reveal reveal-delay-2"><span class="feature-check" aria-hidden="true">✓</span> Гарантирана прясност</li>
+      </ul>
+      <a href="#categories" class="feature-link">
+        Виж продуктите
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-feature bg-cream" style="padding-top:0;padding-bottom:0;" aria-hidden="true">
+  <div class="feature-divider"></div>
+</div>
+
+<section class="section-feature bg-mist" aria-label="Яйца">
+  <div class="feature-inner flipped">
+    <div class="feature-image reveal">
+      <img src="images/IMG_0708.jpg" alt="Пресни яйца от ферма" loading="lazy">
+    </div>
+    <div class="feature-text reveal reveal-delay-1">
+      <span class="eyebrow">Фермерски Продукт</span>
+      <h3>Пресни яйца всеки ден</h3>
+      <p>Яйца от проверени малки ферми — домашен вкус и естествено качество, достъпни за вас всяка сутрин.</p>
+      <ul class="feature-reasons">
+        <li class="reveal reveal-delay-2"><span class="feature-check" aria-hidden="true">✓</span> От малки, проверени ферми</li>
+        <li class="reveal reveal-delay-2"><span class="feature-check" aria-hidden="true">✓</span> Гарантирана прясност</li>
+        <li class="reveal reveal-delay-2"><span class="feature-check" aria-hidden="true">✓</span> Естествено качество</li>
+      </ul>
+      <a href="#visit" class="feature-link">
+        Намерете ни
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-feature bg-mist" style="padding-top:0;padding-bottom:0;" aria-hidden="true">
+  <div class="feature-divider"></div>
+</div>
+
+<section class="section-feature bg-cream" aria-label="Маслини и деликатеси">
+  <div class="feature-inner">
+    <div class="feature-image reveal">
+      <img src="images/IMG_0685.jpg" alt="Маслини и деликатеси" loading="lazy">
+    </div>
+    <div class="feature-text reveal reveal-delay-1">
+      <span class="eyebrow">Средиземноморски Избор</span>
+      <h3>Маслини и деликатеси за взискателната трапеза</h3>
+      <p>Внимателно подбрани маслини от различни сортове и деликатеси — истинско качество за онези, които не правят компромис.</p>
+      <ul class="feature-reasons">
+        <li class="reveal reveal-delay-2"><span class="feature-check" aria-hidden="true">✓</span> Различни сортове и произходи</li>
+        <li class="reveal reveal-delay-2"><span class="feature-check" aria-hidden="true">✓</span> Внимателен ръчен подбор</li>
+        <li class="reveal reveal-delay-2"><span class="feature-check" aria-hidden="true">✓</span> Уникален вкус</li>
+      </ul>
+      <a href="#visit" class="feature-link">
+        Намерете ни
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="wave-divider" aria-hidden="true" style="margin-top:80px;">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,35 C360,70 1080,0 1440,35 L1440,70 L0,70 Z" fill="#1A1A2E"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section class="section-testimonials" id="testimonials" aria-label="Отзиви от клиенти">
+  <div class="testimonials-header">
+    <span class="eyebrow">Отзиви</span>
+    <h2>Думите на нашите клиенти</h2>
+  </div>
+  <div class="testimonials-wrap">
+    <div class="testimonials-viewport" id="testimonials-viewport">
+      <div class="testimonials-track" id="testimonials-track"></div>
+    </div>
+    <div class="carousel-arrows" aria-label="Навигация">
+      <button class="carousel-arrow" id="carousel-prev" aria-label="Предишен отзив">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="carousel-arrow" id="carousel-next" aria-label="Следващ отзив">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Навигация на отзиви"></div>
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,35 C480,0 960,70 1440,35 L1440,70 L0,70 Z" fill="#FAF7F2"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALLERY
+     ============================================================ -->
+<section class="section-gallery" id="gallery" aria-label="Галерия на магазина">
+  <div class="section-header">
+    <span class="eyebrow reveal">Нашият Магазин</span>
+    <h2 class="reveal reveal-delay-1">Добре дошли в нашия магазин</h2>
+  </div>
+  <div class="gallery-grid" id="gallery-grid">
+    <div class="gallery-item reveal" data-index="0" role="button" tabindex="0" aria-label="Отвори снимка 1">
+      <img src="images/IMG_0676.jpg" alt="Магазин Млечко — интериор" loading="lazy">
+      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1" data-index="1" role="button" tabindex="0" aria-label="Отвори снимка 2">
+      <img src="images/IMG_0679.jpg" alt="Млечни продукти на витрина" loading="lazy">
+      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2" data-index="2" role="button" tabindex="0" aria-label="Отвори снимка 3">
+      <img src="images/IMG_0680.jpg" alt="Пресни продукти" loading="lazy">
+      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-1" data-index="3" role="button" tabindex="0" aria-label="Отвори снимка 4">
+      <img src="images/IMG_0681.jpg" alt="Разнообразие в магазина" loading="lazy">
+      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2" data-index="4" role="button" tabindex="0" aria-label="Отвори снимка 5">
+      <img src="images/IMG_0682.jpg" alt="Продукти на рафта" loading="lazy">
+      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-3" data-index="5" role="button" tabindex="0" aria-label="Отвори снимка 6">
+      <img src="images/IMG_0683.jpg" alt="Маслини и деликатеси" loading="lazy">
+      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-2" data-index="6" role="button" tabindex="0" aria-label="Отвори снимка 7">
+      <img src="images/IMG_0686.jpg" alt="Пресни яйца" loading="lazy">
+      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-3" data-index="7" role="button" tabindex="0" aria-label="Отвори снимка 8">
+      <img src="images/IMG_0687.jpg" alt="Интериор на магазина" loading="lazy">
+      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
+    </div>
+    <div class="gallery-item reveal reveal-delay-4" data-index="8" role="button" tabindex="0" aria-label="Отвори снимка 9">
+      <img src="images/IMG_0688.jpg" alt="Млечко магазин Пловдив" loading="lazy">
+      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
+    </div>
+  </div>
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,35 C360,70 1080,0 1440,35 L1440,70 L0,70 Z" fill="#1A1A2E"/>
+    </svg>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Снимка в пълен размер">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Затвори">✕</button>
+  <button class="lightbox-arrow prev" id="lightbox-prev" aria-label="Предишна снимка">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  <button class="lightbox-arrow next" id="lightbox-next" aria-label="Следваща снимка">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<!-- ============================================================
+     FIND US
+     ============================================================ -->
+<section class="section-visit" id="visit" aria-label="Намерете ни">
+  <div class="visit-inner">
+    <div class="visit-info">
+      <span class="eyebrow reveal">Намерете Ни</span>
+      <h2 class="reveal reveal-delay-1">Елате при нас в Пловдив</h2>
+      <div class="info-blocks">
+        <div class="info-block reveal reveal-delay-2">
+          <div class="info-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <p class="info-label">Адрес</p>
+            <p class="info-content">бул. Пещерско шосе 26<br>гк. Младежки хълм, 4002 Пловдив</p>
+          </div>
+        </div>
+        <div class="info-block reveal reveal-delay-2">
+          <div class="info-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <p class="info-label">Работно Време</p>
+            <p class="info-content">Пон – Пет: 08:00 – 20:00<br>Събота: 09:00 – 18:00<br>Неделя: 10:00 – 16:00</p>
+          </div>
+        </div>
+        <div class="info-block reveal reveal-delay-2">
+          <div class="info-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6 6l.86-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.41 15z"/></svg>
+          </div>
+          <div>
+            <p class="info-label">Телефон</p>
+            <p class="info-content"><a href="tel:0878232365">0878 232 365</a></p>
+          </div>
+        </div>
+      </div>
+      <a href="https://maps.google.com/?q=бул.+Пещерско+шосе+26,+Пловдив" target="_blank" rel="noopener noreferrer" class="btn-maps reveal reveal-delay-3">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Виж в Google Карти
+      </a>
+    </div>
+    <div class="visit-map reveal reveal-delay-2">
+      <iframe src="https://maps.google.com/maps?q=бул.+Пещерско+шосе+26,+Пловдив&output=embed"
+              title="Местоположение на Млечко в Пловдив"
+              allowfullscreen loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" aria-label="Футър">
+  <div class="footer-grid">
+    <div class="reveal">
+      <div class="footer-brand-logo">
+        <img src="images/Mlechko-Logo.png" alt="Млечко" width="110" loading="lazy">
+      </div>
+      <p class="footer-tagline">„Нищо повече и нищо по-малко."</p>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://wa.me/359878232365" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <p class="footer-col-title">Навигация</p>
+      <ul class="footer-nav">
+        <li><a href="#">Начало</a></li>
+        <li><a href="#categories">Продукти</a></li>
+        <li><a href="#gallery">Галерия</a></li>
+        <li><a href="#about">За Нас</a></li>
+        <li><a href="#visit">Намерете Ни</a></li>
+        <li><a href="#testimonials">Ревюта</a></li>
+      </ul>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <p class="footer-col-title">Контакт</p>
+      <div class="footer-contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>бул. Пещерско шосе 26, гк. Младежки хълм, 4002 Пловдив</span>
+      </div>
+      <div class="footer-contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6 6l.86-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.41 15z"/></svg>
+        <a href="tel:0878232365">0878 232 365</a>
+      </div>
+      <div class="footer-contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:info@mlechko.bg">info@mlechko.bg</a>
+      </div>
+    </div>
+    <div class="reveal reveal-delay-3">
+      <p class="footer-col-title">Работно Време</p>
+      <div class="footer-hours-row"><span class="footer-hours-day">Пон – Пет</span><span class="footer-hours-time">08:00 – 20:00</span></div>
+      <div class="footer-hours-row"><span class="footer-hours-day">Събота</span><span class="footer-hours-time">09:00 – 18:00</span></div>
+      <div class="footer-hours-row"><span class="footer-hours-day">Неделя</span><span class="footer-hours-time">10:00 – 16:00</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Млечко. Всички права запазени.</p>
+    <p>Специализиран магазин · Пловдив</p>
   </div>
 </footer>
 
-<!-- WhatsApp FAB -->
-<a href="https://wa.me/359878232365"
-   class="wa-fab"
-   aria-label="Пишете ни в WhatsApp"
-   target="_blank"
-   rel="noopener noreferrer">
+<!-- WHATSAPP FAB -->
+<a href="https://wa.me/359878232365" class="wa-fab" aria-label="Пишете ни в WhatsApp" target="_blank" rel="noopener noreferrer">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-  <span class="wa-fab-label" aria-hidden="true">Пишете ни в WhatsApp</span>
+  <span class="wa-tooltip" aria-hidden="true">Пишете ни в WhatsApp</span>
 </a>
 
-<!-- Back to top -->
-<button class="back-to-top" id="back-to-top" aria-label="Върни се нагоре">
-  <i data-lucide="arrow-up" width="18" height="18"></i>
-</button>
-
 <script>
-  if (window.lucide) lucide.createIcons();
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+if (navigator.webdriver) document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
 
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+const nav = document.getElementById('nav');
+const navOpen = document.getElementById('nav-open');
+const navClose = document.getElementById('nav-close');
+const mobileNav = document.getElementById('mobile-nav');
 
-  const navOpen  = document.getElementById('nav-open');
-  const navClose = document.getElementById('nav-close');
-  const mobileNav = document.getElementById('mobile-nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 80), { passive: true });
 
-  function openNav() {
-    mobileNav.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    navOpen.setAttribute('aria-expanded', 'true');
-    navClose.focus();
-  }
-  function closeNav() {
-    mobileNav.classList.remove('open');
-    document.body.style.overflow = '';
-    navOpen.setAttribute('aria-expanded', 'false');
-    navOpen.focus();
-  }
+function openNav() { mobileNav.classList.add('open'); document.body.style.overflow = 'hidden'; navOpen.setAttribute('aria-expanded','true'); navClose.focus(); }
+function closeNav() { mobileNav.classList.remove('open'); document.body.style.overflow = ''; navOpen.setAttribute('aria-expanded','false'); navOpen.focus(); }
+navOpen.addEventListener('click', openNav);
+navClose.addEventListener('click', closeNav);
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav(); });
 
-  navOpen.addEventListener('click', openNav);
-  navClose.addEventListener('click', closeNav);
-  mobileNav.querySelectorAll('a').forEach(l => l.addEventListener('click', closeNav));
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav();
+/* ============================================================
+   HERO SLIDESHOW
+   ============================================================ */
+const heroSlides = document.querySelectorAll('.hero-slide');
+const heroDots   = document.querySelectorAll('.hero-dot');
+let hIdx = 0, hTimer;
+
+function gotoHero(i) {
+  heroSlides[hIdx].classList.remove('active');
+  heroDots[hIdx].classList.remove('active');
+  heroDots[hIdx].setAttribute('aria-selected','false');
+  hIdx = (i + heroSlides.length) % heroSlides.length;
+  heroSlides[hIdx].classList.add('active');
+  heroDots[hIdx].classList.add('active');
+  heroDots[hIdx].setAttribute('aria-selected','true');
+}
+function startHero() { hTimer = setInterval(() => gotoHero(hIdx + 1), 6000); }
+heroDots.forEach(d => d.addEventListener('click', () => { clearInterval(hTimer); gotoHero(+d.dataset.index); startHero(); }));
+startHero();
+
+/* ============================================================
+   TESTIMONIALS CAROUSEL
+   ============================================================ */
+const TESTIMONIALS = [
+  { name:'Снежана Маринова', location:'Пловдив, Център', text:'Най-доброто кисело мляко, което съм яла от години. Маслините са различни — среща се качеството. Препоръчвам го на всички мои познати.' },
+  { name:'Мария Костова',    location:'Пловдив, Тракия', text:'Идвам тук всяка сутрин от две години. Млякото и киселото мляко са несравнимо по-добри от всичко в супермаркета. Истинска разлика се среща веднага.' },
+  { name:'Иван Петров',      location:'Пловдив, Център', text:'Намерих сирена и маслини, каквито не можах да намеря никъде другаде. Персоналът е изключително любезен и винаги помага с избора.' },
+  { name:'Елена Стоянова',   location:'Белащица',        text:'Пресни яйца всеки ден, прекрасен избор от сирена и маслини — всичко под един покрив. Децата ми обожават млякото оттук.' },
+  { name:'Георги Алиев',     location:'Горни Воден',     text:'Страхотен магазин! Сиренето е невероятно пресно и вкусно. Идвам специално от другия край на Пловдив — струва си всеки път.' },
+  { name:'Димитър Попов',    location:'Куртово',         text:'Специализиран магазин с истинско отношение. Продуктите пристигат пресно всяка сутрин — среща се разликата. Топло ви препоръчвам.' },
+  { name:'Петя Василева',    location:'Пловдив, Център', text:'Обслужването е на ниво и продуктите са с несравнимо качество. Веднъж опиташ ли разликата, не можеш да се върнеш към супермаркета.' },
+  { name:'Николай Димитров', location:'Пловдив, Смирненски', text:'Истинска находка за Пловдив. Пресно, качествено и на достъпна цена. Вече са ни любимият магазин за млечни продукти.' }
+];
+
+const track    = document.getElementById('testimonials-track');
+const viewport = document.getElementById('testimonials-viewport');
+const dotsEl   = document.getElementById('carousel-dots');
+let visCount = 3, cIdx = 0, cGap = 0, cAuto, isDrag = false, dragX0 = 0, dragX1 = 0;
+
+function getVis() { return window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3; }
+
+function buildCarousel() {
+  track.innerHTML = ''; dotsEl.innerHTML = '';
+  visCount = getVis();
+  TESTIMONIALS.forEach(t => {
+    const c = document.createElement('div');
+    c.className = 'testimonial-card';
+    c.innerHTML = `<span class="t-quote" aria-hidden="true">"</span><p class="t-text">${t.text}</p><div class="t-sep" aria-hidden="true"></div><p class="t-name">${t.name}</p><p class="t-location">${t.location}</p>`;
+    track.appendChild(c);
   });
 
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  requestAnimationFrame(() => {
+    const cards = Array.from(track.querySelectorAll('.testimonial-card'));
+    const gap = 24;
+    const vw = viewport.offsetWidth;
+    const cw = (vw - gap * (visCount - 1)) / visCount;
+    cards.forEach(c => { c.style.width = cw + 'px'; c.style.flexShrink = '0'; });
+    cGap = cw + gap;
+
+    const cloneB = cards.slice(-visCount).map(c => { const cl = c.cloneNode(true); cl.setAttribute('aria-hidden','true'); return cl; });
+    const cloneA = cards.slice(0, visCount).map(c => { const cl = c.cloneNode(true); cl.setAttribute('aria-hidden','true'); return cl; });
+    cloneB.forEach(c => track.insertBefore(c, track.firstChild));
+    cloneA.forEach(c => track.appendChild(c));
+
+    cIdx = visCount;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(-${cIdx * cGap}px)`;
+
+    TESTIMONIALS.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('role','tab');
+      d.setAttribute('aria-label', `Отзив ${i+1}`);
+      d.addEventListener('click', () => { clearCauto(); goC(i + visCount); startCauto(); });
+      dotsEl.appendChild(d);
     });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.aos').forEach(el => io.observe(el));
+  });
+}
 
-  if (navigator.webdriver) {
-    document.querySelectorAll('.aos').forEach(el => el.classList.add('visible'));
-  }
+function updateCdots() {
+  const ri = ((cIdx - visCount) % TESTIMONIALS.length + TESTIMONIALS.length) % TESTIMONIALS.length;
+  document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === ri));
+}
 
-  // Highlight today's working hours
-  const dayMap = [0, 1, 1, 1, 1, 1, 2];
-  const today  = dayMap[new Date().getDay()];
-  const grid   = document.getElementById('hours-grid');
-  if (grid) {
-    const rows = grid.querySelectorAll('.hours-day');
-    if (rows[today]) {
-      rows[today].classList.add('hours-today');
-      rows[today].nextElementSibling.classList.add('hours-today');
-    }
-  }
+function goC(i) {
+  cIdx = i;
+  track.style.transition = 'transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)';
+  track.style.transform = `translateX(-${cIdx * cGap}px)`;
+  updateCdots();
+}
 
-  // Back to top
-  const btt = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    btt.classList.toggle('visible', window.scrollY > 600);
-  }, { passive: true });
-  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+track.addEventListener('transitionend', () => {
+  const n = TESTIMONIALS.length;
+  if (cIdx >= n + visCount) { cIdx = visCount; track.style.transition = 'none'; track.style.transform = `translateX(-${cIdx * cGap}px)`; }
+  else if (cIdx < visCount) { cIdx = n + visCount - 1; track.style.transition = 'none'; track.style.transform = `translateX(-${cIdx * cGap}px)`; }
+  updateCdots();
+});
+
+document.getElementById('carousel-next').addEventListener('click', () => { clearCauto(); goC(cIdx + 1); startCauto(); });
+document.getElementById('carousel-prev').addEventListener('click', () => { clearCauto(); goC(cIdx - 1); startCauto(); });
+
+function startCauto() { cAuto = setInterval(() => goC(cIdx + 1), 5000); }
+function clearCauto() { clearInterval(cAuto); }
+
+viewport.addEventListener('mouseenter', clearCauto);
+viewport.addEventListener('mouseleave', startCauto);
+
+viewport.addEventListener('pointerdown', e => { isDrag = true; dragX0 = e.clientX; clearCauto(); viewport.setPointerCapture(e.pointerId); });
+viewport.addEventListener('pointermove', e => { if (isDrag) dragX1 = e.clientX; });
+viewport.addEventListener('pointerup',   () => { if (!isDrag) return; isDrag = false; const d = dragX0 - dragX1; if (Math.abs(d) > 50) goC(cIdx + (d > 0 ? 1 : -1)); startCauto(); });
+
+buildCarousel();
+startCauto();
+window.addEventListener('resize', () => { clearCauto(); buildCarousel(); startCauto(); });
+
+/* ============================================================
+   GALLERY LIGHTBOX
+   ============================================================ */
+const items   = document.querySelectorAll('.gallery-item');
+const lb      = document.getElementById('lightbox');
+const lbImg   = document.getElementById('lightbox-img');
+const srcs    = Array.from(items).map(el => ({ src: el.querySelector('img').src, alt: el.querySelector('img').alt }));
+let lbIdx = 0;
+
+function openLB(i)  { lbIdx = i; lbImg.src = srcs[i].src; lbImg.alt = srcs[i].alt; lb.classList.add('active'); document.body.style.overflow = 'hidden'; document.getElementById('lightbox-close').focus(); }
+function closeLB()  { lb.classList.remove('active'); document.body.style.overflow = ''; }
+function prevLB()   { lbIdx = (lbIdx - 1 + srcs.length) % srcs.length; lbImg.src = srcs[lbIdx].src; lbImg.alt = srcs[lbIdx].alt; }
+function nextLB()   { lbIdx = (lbIdx + 1) % srcs.length; lbImg.src = srcs[lbIdx].src; lbImg.alt = srcs[lbIdx].alt; }
+
+items.forEach((el, i) => {
+  el.addEventListener('click', () => openLB(i));
+  el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLB(i); } });
+});
+document.getElementById('lightbox-close').addEventListener('click', closeLB);
+document.getElementById('lightbox-prev').addEventListener('click', prevLB);
+document.getElementById('lightbox-next').addEventListener('click', nextLB);
+lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('active')) return;
+  if (e.key === 'Escape') closeLB();
+  if (e.key === 'ArrowLeft') prevLB();
+  if (e.key === 'ArrowRight') nextLB();
+});
 </script>
 </body>
 </html>
