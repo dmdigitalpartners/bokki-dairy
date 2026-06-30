@@ -77,12 +77,14 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 }
 .wave-divider {
   display: block;
-  width: 100%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
   overflow: hidden;
   line-height: 0;
   margin-top: -1px;
   margin-bottom: -1px;
-  position: relative;
   z-index: 1;
 }
 .wave-divider svg { display: block; width: 100%; height: 70px; }
@@ -204,7 +206,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 /* ============================================================
    HERO
    ============================================================ */
-.hero { position: relative; height: 100vh; min-height: 600px; overflow: hidden; }
+.hero { position: relative; height: calc(100vh - 140px); min-height: 500px; overflow: hidden; }
 .hero-video {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; z-index: 0; pointer-events: none;
@@ -301,23 +303,45 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 /* ============================================================
    STATS BAR
    ============================================================ */
-.stats-bar { background: var(--color-warm-white); padding: 80px 60px 0; position: relative; }
-.stats-container {
-  max-width: 900px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: center;
-  padding-bottom: 80px;
+.stats-bar {
+  background: var(--color-cream);
+  height: 140px;
+  display: flex; align-items: center;
+  position: relative; padding: 0;
 }
-.stat-item { flex: 1; text-align: center; padding: 0 40px; }
-.stat-divider { width: 1px; height: 44px; background: rgba(44,62,80,0.14); flex-shrink: 0; }
+.stats-container {
+  max-width: 1100px; margin: 0 auto; width: 100%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 60px;
+}
+.stat-item {
+  flex: 1; text-align: center; padding: 0 28px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.stat-icon {
+  width: 22px; height: 22px; margin: 0 auto 9px;
+  color: var(--color-sage); opacity: 0.72; flex-shrink: 0;
+}
+.stat-icon svg { width: 100%; height: 100%; }
+.stat-divider { width: 1px; height: 48px; background: rgba(44,62,80,0.11); flex-shrink: 0; }
 .stat-number {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700;
-  color: var(--color-charcoal); display: block; line-height: 1; margin-bottom: 12px;
+  font-size: clamp(1.35rem, 2.4vw, 2.1rem); font-weight: 700;
+  color: var(--color-charcoal); display: block; line-height: 1.1; margin-bottom: 5px;
+  letter-spacing: -0.02em;
+}
+.stat-unit {
+  font-size: 0.58em; letter-spacing: 0.06em; vertical-align: middle;
+  font-weight: 600; font-family: var(--font-sans);
 }
 .stat-label {
-  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+  font-size: 0.63rem; font-weight: 600; letter-spacing: 0.13em;
   text-transform: uppercase; color: var(--color-slate-mid);
+  line-height: 1.5;
 }
+
+.stats-about-wave { display: block; background: var(--color-cream); line-height: 0; margin-top: -1px; }
+.stats-about-wave svg { display: block; width: 100%; height: 70px; }
 
 /* ============================================================
    ABOUT
@@ -401,8 +425,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
    FEATURED PRODUCTS
    ============================================================ */
 .section-feature { position: relative; padding: 100px 80px; background: var(--color-warm-white); }
-.section-feature.bg-cream { background: var(--color-warm-white); }
-.section-feature.bg-mist  { background: var(--color-warm-white); }
+.section-feature.bg-cream { background: var(--color-cream); }
+.section-feature.bg-mist  { background: var(--color-mist); }
 .feature-inner {
   max-width: 1200px; margin: 0 auto;
   display: grid; grid-template-columns: 1fr 1fr;
@@ -629,8 +653,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .footer-hours-day { font-weight: 500; }
 .footer-hours-time { color: rgba(255,255,255,0.38); }
 .footer-bottom {
-  max-width: 1200px; margin: 0 auto; padding: 28px 0;
-  display: flex; justify-content: space-between; align-items: center;
+  max-width: 1200px; margin: 0 auto; padding: 16px 0;
+  display: flex; justify-content: center; align-items: center; gap: 32px;
   position: relative; z-index: 2;
 }
 .footer-bottom p { font-size: 0.92rem; color: rgba(255,255,255,0.55); }
@@ -664,6 +688,137 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
    FOCUS & MOTION
    ============================================================ */
 :focus-visible { outline: 2px solid var(--color-sage); outline-offset: 3px; }
+/* ============================================================
+   WHY US
+   ============================================================ */
+.section-why-us {
+  background: var(--color-cream);
+  padding: 120px 80px 0;
+  text-align: center;
+}
+.why-us-header {
+  max-width: 680px;
+  margin: 0 auto 80px;
+}
+.why-us-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 600;
+  color: var(--color-charcoal);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.why-us-header p {
+  font-size: 1.05rem;
+  color: var(--color-slate-mid);
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.why-us-journey {
+  max-width: 1100px;
+  margin: 0 auto 72px;
+  position: relative;
+}
+.journey-connector {
+  position: absolute;
+  top: 32px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 0;
+  border-top: 1.5px dashed rgba(200,169,110,0.4);
+  z-index: 0;
+}
+.journey-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+.journey-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+.journey-num {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 18px rgba(200,169,110,0.38);
+}
+.journey-step-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-charcoal);
+  line-height: 1.3;
+  margin: 0;
+}
+.journey-step-desc {
+  font-size: 0.875rem;
+  color: var(--color-slate-mid);
+  line-height: 1.65;
+  margin: 0;
+}
+.why-us-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto 80px;
+}
+.why-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 36px 32px;
+  text-align: left;
+  box-shadow: 0 4px 24px rgba(26,26,46,0.07), 0 1px 4px rgba(26,26,46,0.04);
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 44px rgba(26,26,46,0.12), 0 2px 8px rgba(26,26,46,0.06);
+}
+.why-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: rgba(124,154,126,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: var(--color-sage);
+}
+.why-card-icon svg { width: 22px; height: 22px; }
+.why-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--color-charcoal);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.why-card p {
+  font-size: 0.9rem;
+  color: var(--color-slate-mid);
+  line-height: 1.72;
+  margin: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   .reveal { opacity: 1; transform: none; }
@@ -676,6 +831,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .nav { padding: 0 32px; }
   .nav-logo img { width: 140px; }
   .nav-links { gap: 22px; }
+  .hero { height: calc(100vh - 124px); }
+  .stats-bar { height: 124px; }
   .hero-panel { padding: 90px 40px 48px; }
   .section-about { padding: 96px 48px 0; }
   .about-inner { grid-template-columns: 1fr; gap: 48px; }
@@ -685,6 +842,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .categories-grid { grid-template-columns: repeat(2,1fr); }
   .section-feature { padding: 80px 48px; }
   .feature-inner { gap: 48px; }
+  .section-why-us { padding: 96px 48px 0; }
+  .why-us-header { margin-bottom: 64px; }
+  .why-us-journey { margin-bottom: 56px; }
   .testimonials-wrap { padding: 0 80px; }
   .carousel-arrows { padding: 0 28px; }
   .section-gallery { padding: 96px 48px 0; }
@@ -709,10 +869,12 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .hero-panel h1 { font-size: clamp(2.1rem,8.5vw,3.2rem); }
   .hero-btns { flex-direction: column; align-items: center; }
   .btn-primary, .btn-secondary { text-align: center; width: 100%; max-width: 260px; }
-  .stats-bar { padding: 60px 24px 0; }
-  .stats-container { flex-direction: column; gap: 32px; padding-bottom: 60px; }
-  .stat-divider { width: 40px; height: 1px; }
-  .stat-item { padding: 0; }
+  .hero { height: calc(100vh - 272px); min-height: 420px; }
+  .stats-bar { height: auto; min-height: 272px; display: flex; align-items: center; padding: 16px 0; }
+  .stats-container { flex-direction: column; gap: 0; padding: 0 24px; }
+  .stat-divider { width: 36px; height: 1px; margin: 6px auto; }
+  .stat-item { padding: 12px 16px; }
+  .stat-icon { width: 20px; height: 20px; margin-bottom: 7px; }
   .section-about { padding: 80px 24px 0; }
   .about-collage { height: 320px; }
   .collage-img-main { height: 200px; }
@@ -722,6 +884,16 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .feature-inner { grid-template-columns: 1fr; gap: 32px; }
   .feature-inner.flipped .feature-image { order: 0; }
   .feature-inner.flipped .feature-text  { order: 0; }
+  .section-why-us { padding: 80px 24px 0; }
+  .why-us-header { margin-bottom: 52px; }
+  .journey-connector { display: none; }
+  .journey-steps { grid-template-columns: 1fr; gap: 0; }
+  .journey-step { flex-direction: row; align-items: flex-start; text-align: left; gap: 20px; padding: 20px 0; border-bottom: 1px solid rgba(200,169,110,0.2); }
+  .journey-step:last-child { border-bottom: none; }
+  .journey-step-title, .journey-step-desc { max-width: none; }
+  .why-us-journey { margin-bottom: 48px; }
+  .why-us-cards { grid-template-columns: 1fr; gap: 16px; }
+  .why-card { padding: 28px 24px; }
   .section-testimonials { padding: 80px 0 0; }
   .testimonials-header { padding: 0 24px; }
   .testimonials-wrap { padding: 0 44px; }
@@ -827,26 +999,46 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 <section class="stats-bar" aria-label="Факти и статистики">
   <div class="stats-container">
     <div class="stat-item reveal">
-      <span class="stat-number">30+</span>
-      <span class="stat-label">Вида Продукти</span>
+      <div class="stat-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2.5C12 2.5 5 9.5 5 15a7 7 0 0014 0C19 9.5 12 2.5 12 2.5z"/>
+          <path d="M9.5 18a3.5 3.5 0 005.5-1.5" stroke-width="1.2" opacity="0.45"/>
+        </svg>
+      </div>
+      <span class="stat-number">100+</span>
+      <span class="stat-label">Вида Млечни Продукти</span>
     </div>
     <div class="stat-divider" aria-hidden="true"></div>
     <div class="stat-item reveal reveal-delay-1">
-      <span class="stat-number">Всеки Ден</span>
-      <span class="stat-label">Прясна Доставка</span>
+      <div class="stat-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8.5" r="5.5"/>
+          <path d="M8.21 13.38L7 23l5-3 5 3-1.21-9.62"/>
+          <polyline points="10 8 12 10 14.5 7"/>
+        </svg>
+      </div>
+      <span class="stat-number">Гарантирано</span>
+      <span class="stat-label">Високо Качество</span>
     </div>
     <div class="stat-divider" aria-hidden="true"></div>
     <div class="stat-item reveal reveal-delay-2">
-      <span class="stat-number">6:00</span>
-      <span class="stat-label">Час на Доставка</span>
+      <div class="stat-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 10.5L12 3l9 7.5"/>
+          <path d="M5 9v10a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1V9"/>
+        </svg>
+      </div>
+      <span class="stat-number">20+ <span class="stat-unit">години</span></span>
+      <span class="stat-label">Домашно Производство</span>
     </div>
   </div>
-  <div class="wave-divider" aria-hidden="true">
-    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,35 C480,0 960,70 1440,35 L1440,70 L0,70 Z" fill="#1A1A2E"/>
-    </svg>
-  </div>
 </section>
+
+<div class="stats-about-wave" aria-hidden="true">
+  <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,35 C480,0 960,70 1440,35 L1440,70 L0,70 Z" fill="#1A1A2E"/>
+  </svg>
+</div>
 
 <!-- ============================================================
      ABOUT
@@ -1018,7 +1210,102 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   </div>
   <div class="wave-divider" aria-hidden="true">
     <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,35 C360,70 1080,0 1440,35 L1440,70 L0,70 Z" fill="#1A1A2E"/>
+      <path d="M0,35 C360,70 1080,0 1440,35 L1440,70 L0,70 Z" fill="#FAF7F2"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY US
+     ============================================================ -->
+<section class="section-why-us" id="why-us" aria-label="Защо да изберете нас">
+
+  <!-- Header -->
+  <div class="why-us-header">
+    <span class="eyebrow reveal">Защо да изберете нас</span>
+    <h2 class="reveal reveal-delay-1">Свежест, на която<br>можете да разчитате</h2>
+    <p class="reveal reveal-delay-2">Всяка сутрин пресни продукти пристигат директно от проверени производители — без складове, без компромиси.</p>
+  </div>
+
+  <!-- Journey -->
+  <div class="why-us-journey">
+    <div class="journey-connector" aria-hidden="true"></div>
+    <div class="journey-steps">
+      <div class="journey-step reveal">
+        <div class="journey-num" aria-hidden="true">1</div>
+        <div>
+          <h3 class="journey-step-title">Производител</h3>
+          <p class="journey-step-desc">Избрани ферми с гарантирано качество и проверен произход.</p>
+        </div>
+      </div>
+      <div class="journey-step reveal reveal-delay-1">
+        <div class="journey-num" aria-hidden="true">2</div>
+        <div>
+          <h3 class="journey-step-title">Ежедневна доставка</h3>
+          <p class="journey-step-desc">Всяка сутрин до 6:00 — прясно, без складово съхранение.</p>
+        </div>
+      </div>
+      <div class="journey-step reveal reveal-delay-2">
+        <div class="journey-num" aria-hidden="true">3</div>
+        <div>
+          <h3 class="journey-step-title">Магазин Млечко</h3>
+          <p class="journey-step-desc">Внимателен подбор — само продукти, на които се доверяваме лично.</p>
+        </div>
+      </div>
+      <div class="journey-step reveal reveal-delay-3">
+        <div class="journey-num" aria-hidden="true">4</div>
+        <div>
+          <h3 class="journey-step-title">Вашата трапеза</h3>
+          <p class="journey-step-desc">Вкусът, по който се разпознава истинската прясност.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust Cards -->
+  <div class="why-us-cards">
+    <div class="why-card reveal">
+      <div class="why-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+          <polyline points="2 17 12 22 22 17"/>
+          <polyline points="2 12 12 17 22 12"/>
+        </svg>
+      </div>
+      <h3>Над 30 продукта</h3>
+      <p>Млечни продукти, яйца, маслини и деликатеси — всичко избрано с грижа под един покрив.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-1">
+      <div class="why-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 18a5 5 0 0 0-10 0"/>
+          <line x1="12" y1="9" x2="12" y2="2"/>
+          <line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/>
+          <line x1="1" y1="18" x2="3" y2="18"/>
+          <line x1="21" y1="18" x2="23" y2="18"/>
+          <line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/>
+        </svg>
+      </div>
+      <h3>Ежедневна свежест</h3>
+      <p>Купувате днешното, не вчерашното. Доставка всяка сутрин — прясност, за която супермаркетът не може да се похвали.</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <div class="why-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1" y="3" width="15" height="13" rx="1"/>
+          <path d="M16 8h4l3 3v5h-7V8z"/>
+          <circle cx="5.5" cy="18.5" r="2.5"/>
+          <circle cx="18.5" cy="18.5" r="2.5"/>
+        </svg>
+      </div>
+      <h3>Директно от производителя</h3>
+      <p>Без складове, без посредници. Работим само с производители, в чийто продукт вярваме лично.</p>
+    </div>
+  </div>
+
+  <div class="wave-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,35 C480,0 960,70 1440,35 L1440,70 L0,70 Z" fill="#1A1A2E"/>
     </svg>
   </div>
 </section>
