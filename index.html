@@ -349,7 +349,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .section-about { background: var(--color-charcoal); padding: 120px 80px 0; position: relative; }
 .about-inner {
   max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: 55fr 45fr;
+  display: grid; grid-template-columns: 45fr 55fr;
   gap: 80px; align-items: center; padding-bottom: 100px;
 }
 .about-text h2 {
@@ -366,25 +366,55 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   transition: gap 0.2s ease, color 0.2s ease;
 }
 .about-cta:hover { gap: 10px; color: #fff; }
+
+/* Lacrima-style overlapping collage */
 .about-collage { position: relative; height: 520px; }
 .collage-img-main {
-  position: absolute; top: 0; left: 0; right: 0; height: 340px;
-  border-radius: 8px; overflow: hidden;
-  box-shadow: 0 16px 40px rgba(26,26,46,0.12);
+  position: absolute; top: 0; left: 0;
+  width: 68%; height: 100%;
+  border-radius: 10px; overflow: hidden;
+  box-shadow: 0 20px 52px rgba(26,26,46,0.35);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-.collage-img-main:hover { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(26,26,46,0.18); }
+.collage-img-main:hover { transform: translateY(-4px); box-shadow: 0 28px 64px rgba(26,26,46,0.42); }
 .collage-img-main img { width: 100%; height: 100%; object-fit: cover; }
 .collage-img-small {
-  position: absolute; bottom: 0; width: 47%; height: 200px;
-  border-radius: 8px; overflow: hidden;
-  box-shadow: 0 12px 32px rgba(26,26,46,0.14);
+  position: absolute; top: 48px; right: 0;
+  width: 44%; height: 56%;
+  border-radius: 10px; overflow: hidden;
+  box-shadow: 0 16px 44px rgba(26,26,46,0.32);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  z-index: 1;
 }
-.collage-img-small:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(26,26,46,0.2); }
+.collage-img-small:hover { transform: translateY(-4px); box-shadow: 0 22px 56px rgba(26,26,46,0.4); }
 .collage-img-small img { width: 100%; height: 100%; object-fit: cover; }
-.collage-img-small.left { left: 0; }
+.collage-img-small.left { display: none; }
 .collage-img-small.right { right: 0; }
+.collage-badge {
+  position: absolute; bottom: 52px; left: 44%;
+  transform: translateX(-50%);
+  background: var(--color-gold);
+  border-radius: 14px; padding: 20px 26px;
+  text-align: center; z-index: 2;
+  box-shadow: 0 10px 32px rgba(200,169,110,0.45);
+}
+.collage-badge-label {
+  display: block; font-family: var(--font-sans);
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.8); margin-bottom: 4px;
+}
+.collage-badge-num {
+  display: block; font-family: var(--font-display);
+  font-size: 3rem; font-weight: 700;
+  color: #fff; line-height: 1;
+}
+.collage-badge-sub {
+  display: block; font-family: var(--font-sans);
+  font-size: 0.75rem; font-weight: 500;
+  color: rgba(255,255,255,0.82); margin-top: 5px;
+  letter-spacing: 0.04em;
+}
 
 /* ============================================================
    PRODUCT CATEGORIES
@@ -836,8 +866,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .hero-panel { padding: 90px 40px 48px; }
   .section-about { padding: 96px 48px 0; }
   .about-inner { grid-template-columns: 1fr; gap: 48px; }
-  .about-collage { height: 380px; }
-  .collage-img-main { height: 240px; }
+  .about-collage { height: 400px; }
+  .collage-badge { bottom: 28px; left: 42%; padding: 16px 22px; }
+  .collage-badge-num { font-size: 2.4rem; }
   .section-categories { padding: 96px 48px 0; }
   .categories-grid { grid-template-columns: repeat(2,1fr); }
   .section-feature { padding: 80px 48px; }
@@ -876,8 +907,11 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .stat-item { padding: 12px 16px; }
   .stat-icon { width: 20px; height: 20px; margin-bottom: 7px; }
   .section-about { padding: 80px 24px 0; }
-  .about-collage { height: 320px; }
-  .collage-img-main { height: 200px; }
+  .about-collage { height: 300px; }
+  .collage-badge { bottom: 16px; left: 42%; padding: 12px 18px; }
+  .collage-badge-num { font-size: 1.9rem; }
+  .collage-badge-label { font-size: 0.6rem; }
+  .collage-badge-sub { font-size: 0.68rem; }
   .section-categories { padding: 80px 24px 0; }
   .categories-grid { grid-template-columns: 1fr; padding-bottom: 60px; }
   .section-feature { padding: 60px 24px; }
@@ -1045,6 +1079,19 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
      ============================================================ -->
 <section class="section-about" id="about" aria-label="За нас">
   <div class="about-inner">
+    <div class="about-collage reveal">
+      <div class="collage-img-main">
+        <img src="images/IMG_0702.jpg" alt="Екстериор на магазин Млечко" loading="lazy">
+      </div>
+      <div class="collage-img-small right">
+        <img src="images/IMG_0683.jpg" alt="Разнообразие от продукти" loading="lazy">
+      </div>
+      <div class="collage-badge" aria-label="Над 30 вида продукти">
+        <span class="collage-badge-label">Над</span>
+        <span class="collage-badge-num">30+</span>
+        <span class="collage-badge-sub">вида продукти</span>
+      </div>
+    </div>
     <div class="about-text">
       <span class="eyebrow reveal">За Нас</span>
       <h2 class="reveal reveal-delay-1">Специализиран избор.<br>Традиционен вкус.</h2>
@@ -1068,17 +1115,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
         Намерете ни
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
-    </div>
-    <div class="about-collage reveal reveal-delay-1">
-      <div class="collage-img-main">
-        <img src="images/IMG_0702.jpg" alt="Екстериор на магазин Млечко" loading="lazy">
-      </div>
-      <div class="collage-img-small left">
-        <img src="images/IMG_0682.jpg" alt="Продукти в магазина" loading="lazy">
-      </div>
-      <div class="collage-img-small right">
-        <img src="images/IMG_0683.jpg" alt="Разнообразие от продукти" loading="lazy">
-      </div>
     </div>
   </div>
   <div class="wave-divider" aria-hidden="true">
