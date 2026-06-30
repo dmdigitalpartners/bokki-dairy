@@ -61,6 +61,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
 
 /* ============================================================
    SHARED UTILITIES
@@ -513,6 +515,18 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 }
 .feature-btn-secondary:hover { border-color: var(--color-sage); color: var(--color-sage); transform: translateY(-2px); }
 .feature-divider { max-width: 1200px; margin: 0 auto; height: 1px; background: var(--color-gold-light); opacity: 0.5; }
+.feature-trust-strip {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-top: 2rem; padding-top: 1.5rem;
+  border-top: 1px solid rgba(124,154,126,0.2);
+}
+.feature-trust-strip span {
+  font-size: 0.82rem; color: var(--color-slate-mid); letter-spacing: 0.01em;
+  display: flex; align-items: center; gap: 8px; line-height: 1.5;
+}
+.feature-trust-strip span::before {
+  content: '·'; color: var(--color-sage); font-size: 1.4em; line-height: 1; flex-shrink: 0;
+}
 
 /* ============================================================
    TESTIMONIALS
@@ -749,6 +763,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .collage-badge-num { font-size: 2.4rem; }
   .section-categories { padding: 96px 48px 0; }
   .categories-grid { grid-template-columns: repeat(2,1fr); }
+  .categories-grid .category-card:last-child { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
   .section-feature { padding: 80px 48px; }
   .feature-inner { gap: 48px; }
   .testimonials-wrap { padding: 0 80px; }
@@ -791,14 +806,18 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .section-categories { padding: 80px 24px 0; }
   .categories-grid { grid-template-columns: 1fr; padding-bottom: 60px; }
   .section-feature { padding: 60px 24px; }
-  .feature-inner { grid-template-columns: 1fr; gap: 32px; }
+  .feature-inner { grid-template-columns: 1fr; gap: 28px; }
   .feature-inner.flipped .feature-image { order: 0; }
   .feature-inner.flipped .feature-text  { order: 0; }
+  .feature-image img { aspect-ratio: 16/9; }
+  .feature-text h3 { font-size: 1.45rem; }
+  .feature-trust-strip { margin-top: 1.25rem; padding-top: 1.1rem; gap: 8px; }
+  .wa-fab { bottom: calc(20px + env(safe-area-inset-bottom,0px)); }
   .section-testimonials { padding: 80px 0 0; }
   .testimonials-header { padding: 0 24px; }
   .testimonials-wrap { padding: 0 44px; }
   .section-gallery { padding: 80px 24px 0; }
-  .gallery-grid { grid-template-columns: 1fr; padding-bottom: 60px; }
+  .gallery-grid { grid-template-columns: repeat(2,1fr); padding-bottom: 60px; }
   .section-visit { padding: 80px 24px; }
   .visit-inner { grid-template-columns: 1fr; gap: 40px; }
   .visit-map iframe { height: 280px; }
@@ -917,8 +936,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
           <polyline points="10 8 12 10 14.5 7"/>
         </svg>
       </div>
-      <span class="stat-number">Гарантирано</span>
-      <span class="stat-label">Високо Качество</span>
+      <span class="stat-number">Гарантирана</span>
+      <span class="stat-label">Прясност всяка сутрин</span>
     </div>
     <div class="stat-divider" aria-hidden="true"></div>
     <div class="stat-item reveal reveal-delay-2">
@@ -929,7 +948,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
         </svg>
       </div>
       <span class="stat-number">20+ <span class="stat-unit">години</span></span>
-      <span class="stat-label">Домашно Производство</span>
+      <span class="stat-label">Опит в бранша</span>
     </div>
   </div>
 </section>
@@ -962,7 +981,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       <span class="eyebrow reveal">За Нас</span>
       <h2 class="reveal reveal-delay-1">Специализиран избор.<br>Традиционен вкус.</h2>
       <p class="reveal reveal-delay-2">Млечко работи от 2010 година с едно убеждение: качествената храна не трябва да бъде лукс. Всяка сутрин пресни млечни продукти, яйца и маслини пристигат директно от проверени производители — без посредници, без компромиси.</p>
-      <p class="reveal reveal-delay-2">Специализираме се в едно нещо и го правим с последователност: да свържем пловдивските домакинства с истински пресни продукти. Намирате ни на бул. Пещерско шосе 26 — елате да видите разликата сами.</p>
+      <p class="reveal reveal-delay-2">Специализираме се в едно нещо и го правим с последователност: да свържем пловдивските домакинства с истински пресни продукти — ден след ден, без компромиси с качеството.</p>
       <ul class="about-bullets">
         <li class="reveal reveal-delay-3">
           <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1053,17 +1072,18 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       <img src="images/IMG_0678.jpg" alt="Разнообразие от млечни продукти" loading="lazy">
     </div>
     <div class="feature-text reveal reveal-delay-1">
-      <span class="eyebrow">Нашата Специализация</span>
+      <span class="eyebrow">Млечни Продукти</span>
       <h3>Над 30 вида млечни продукти</h3>
-      <p>Прясно мляко, кисело мляко, сирене, кашкавал и масло — всичко доставено директно от проверени производители тази сутрин.</p>
+      <p>Прясно мляко, кисело мляко, сирене, кашкавал и масло — доставени тази сутрин директно от производителя.</p>
       <ul class="feature-reasons">
         <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Ежедневна доставка до 6:00</li>
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Директно от производителя, без складове</li>
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Над 30 вида — намерете любимото си</li>
+        <li class="reveal reveal-delay-3"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Директно от производителя, без складове</li>
+        <li class="reveal reveal-delay-4"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Над 30 вида — намерете любимото си</li>
       </ul>
-      <div class="feature-cta-group">
-        <a href="#visit" class="feature-btn-primary">Елате в магазина</a>
-        <a href="tel:0878232365" class="feature-btn-secondary">Обадете се</a>
+      <div class="feature-trust-strip reveal reveal-delay-5">
+        <span>Доставка до 06:00 всяка сутрин</span>
+        <span>Без складиране · директно от производителя</span>
+        <span>Кисело мляко, сирена, масло, кашкавал и още</span>
       </div>
     </div>
   </div>
@@ -1079,17 +1099,18 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       <img src="images/IMG_0708.jpg" alt="Пресни яйца от ферма" loading="lazy">
     </div>
     <div class="feature-text reveal reveal-delay-1">
-      <span class="eyebrow">Фермерски Продукт</span>
+      <span class="eyebrow">Пресни Яйца</span>
       <h3>Пресни яйца, събрани днес</h3>
-      <p>Яйца от проверени малки ферми — домашен вкус и естествено качество, достъпни за вас всяка сутрин.</p>
+      <p>Яйца от малки семейни ферми — домашен вкус, без антибиотици, доставени всяка сутрин.</p>
       <ul class="feature-reasons">
         <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> От малки, проверени ферми</li>
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Събрани същата сутрин</li>
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Без антибиотици и хормони</li>
+        <li class="reveal reveal-delay-3"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Събрани същата сутрин</li>
+        <li class="reveal reveal-delay-4"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Без антибиотици и хормони</li>
       </ul>
-      <div class="feature-cta-group">
-        <a href="#visit" class="feature-btn-primary">Елате в магазина</a>
-        <a href="tel:0878232365" class="feature-btn-secondary">Обадете се</a>
+      <div class="feature-trust-strip reveal reveal-delay-5">
+        <span>Събрани в деня на доставката</span>
+        <span>Малки семейни ферми · без антибиотици</span>
+        <span>Категории: M / L / XL и домашни</span>
       </div>
     </div>
   </div>
@@ -1107,15 +1128,16 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     <div class="feature-text reveal reveal-delay-1">
       <span class="eyebrow">Средиземноморски Избор</span>
       <h3>Маслини и деликатеси от цял свят</h3>
-      <p>Внимателно подбрани маслини от различни сортове и деликатеси — истинско качество за онези, които не правят компромис.</p>
+      <p>Внимателно подбрани маслини от Гърция, Испания и Близкия Изток — различни сортове, на кило или предварително опаковани.</p>
       <ul class="feature-reasons">
         <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Подбрани от Гърция, Испания и Близкия Изток</li>
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> На кило или предварително опаковани</li>
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Нови сортове редовно — питайте на място</li>
+        <li class="reveal reveal-delay-3"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> На кило или предварително опаковани</li>
+        <li class="reveal reveal-delay-4"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Нови сортове редовно — питайте на място</li>
       </ul>
-      <div class="feature-cta-group">
-        <a href="#visit" class="feature-btn-primary">Елате в магазина</a>
-        <a href="tel:0878232365" class="feature-btn-secondary">Обадете се</a>
+      <div class="feature-trust-strip reveal reveal-delay-5">
+        <span>Зелени, черни и мариновани сортове</span>
+        <span>На кило или предварително опаковани</span>
+        <span>Питайте на място за актуалния асортимент</span>
       </div>
     </div>
   </div>
@@ -1351,7 +1373,7 @@ const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 if (navigator.webdriver) document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
 
