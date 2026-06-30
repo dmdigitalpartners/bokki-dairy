@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mlechko.bg/sitemap.xml

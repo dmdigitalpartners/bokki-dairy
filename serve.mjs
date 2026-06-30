@@ -19,13 +19,14 @@ const MIME = {
   '.svg': 'image/svg+xml',
   '.webp': 'image/webp',
   '.ico': 'image/x-icon',
+  '.mp4': 'video/mp4',
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
   '.ttf': 'font/ttf',
 };
 
 createServer(async (req, res) => {
-  let pathname = req.url.split('?')[0];
+  let pathname = decodeURIComponent(req.url.split('?')[0]);
   if (pathname === '/') pathname = '/index.html';
 
   const filePath = join(__dirname, pathname);

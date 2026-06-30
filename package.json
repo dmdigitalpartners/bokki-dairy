@@ -1,5 +1,5 @@
 {
-  "name": "bokki-dairy",
+  "name": "mlechko-dairy",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,6 +11,8 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "axe-core": "^4.12.1",
+    "lighthouse": "^13.4.0",
     "puppeteer": "^25.2.1"
   }
 }

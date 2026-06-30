@@ -5,9 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#2C3E50">
   <meta name="description" content="Млечко — специализиран магазин за пресни млечни продукти, яйца и маслини в Пловдив. Доставка всяка сутрин директно от производителите.">
+  <meta property="og:title" content="Млечко — Специализиран магазин за млечни продукти · Пловдив">
+  <meta property="og:description" content="Пресни млечни продукти, яйца и маслини. Доставка всяка сутрин директно от производителите.">
+  <meta property="og:image" content="https://mlechko.bg/images/Mlechko-Logo.png">
+  <meta property="og:type" content="business.business">
+  <meta property="og:locale" content="bg_BG">
+  <meta property="og:url" content="https://mlechko.bg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Млечко — Специализиран магазин · Пловдив">
+  <meta name="twitter:description" content="Пресни млечни продукти, яйца и маслини. Доставка всяка сутрин.">
+  <link rel="canonical" href="https://mlechko.bg">
   <title>Млечко — Специализиран Магазин · Пловдив</title>
   <link rel="icon" type="image/png" href="images/Mlechko-Logo.png">
-  <link rel="preload" as="image" href="images/hero-header.png" fetchpriority="high">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/Mlechko-Logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -29,6 +39,21 @@
   --font-display: 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', system-ui, sans-serif;
 }
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 1rem;
+  z-index: 9999;
+  padding: 12px 20px;
+  background: var(--color-sage);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.skip-link:focus { left: 1rem; }
 
 /* ============================================================
    RESET & BASE
@@ -126,7 +151,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .nav-logo {
   display: flex; align-items: center;
   text-decoration: none;
-  margin-left: 20px;
+  margin-left: 48px;
 }
 .nav-logo img { width: 170px; height: auto; display: block; }
 .nav-links {
@@ -150,14 +175,27 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .nav-links a:hover { color: var(--color-sage); }
 .nav-links a:hover::after { width: 100%; }
 .nav-cta {
-  display: flex; align-items: center; gap: 7px;
-  font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em;
-  color: var(--color-slate-deep);
-  transition: color 0.25s ease;
-  margin-right: 20px;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #4d7a50;
+  padding: 11px 26px;
+  border-radius: 3px;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  margin-right: 48px;
 }
 .nav-cta svg { flex-shrink: 0; }
-.nav-cta:hover { color: var(--color-sage); }
+.nav-cta:hover {
+  background: var(--color-sage-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124,154,126,0.3);
+}
+.nav-cta:focus-visible {
+  outline: 2px solid var(--color-sage);
+  outline-offset: 3px;
+}
+.nav-cta:active { transform: translateY(0); box-shadow: none; }
 .nav-hamburger {
   display: none; flex-direction: column; gap: 5px; padding: 6px; cursor: pointer;
 }
@@ -255,7 +293,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .btn-primary {
   font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em;
   text-transform: uppercase; color: #fff;
-  background: var(--color-sage); padding: 14px 36px;
+  background: #4d7a50; padding: 14px 36px;
   border-radius: 3px;
   transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   display: inline-block;
@@ -301,6 +339,16 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 }
 .hero-wave-wrap { position: absolute; bottom: -1px; left: 0; right: 0; z-index: 3; line-height: 0; }
 .hero-wave-wrap svg { display: block; width: 100%; height: 70px; }
+.hero-dots {
+  position: absolute; bottom: 88px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 10px; z-index: 10;
+}
+.hero-dot {
+  width: 8px; height: 8px; border-radius: 50%; border: none;
+  background: rgba(255,255,255,0.35); cursor: pointer; padding: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.hero-dot.active { background: #fff; transform: scale(1.3); }
 
 /* ============================================================
    STATS BAR
@@ -405,7 +453,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   display: block; font-family: var(--font-sans);
   font-size: 0.68rem; font-weight: 600;
   letter-spacing: 0.14em; text-transform: uppercase;
-  color: rgba(255,255,255,0.8); margin-bottom: 4px;
+  color: #2C3E50; margin-bottom: 4px;
 }
 .collage-badge-num {
   display: block; font-family: var(--font-display);
@@ -531,20 +579,20 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 /* ============================================================
    TESTIMONIALS
    ============================================================ */
-.section-testimonials { background: var(--color-charcoal); padding: 120px 0 80px; position: relative; overflow: hidden; }
+.section-testimonials { background: var(--color-charcoal); padding: 120px 0 0; position: relative; overflow: hidden; }
 .testimonials-header { text-align: center; padding: 0 60px; margin-bottom: 20px; }
 .testimonials-header .eyebrow { color: var(--color-gold); }
 .testimonials-header h2 { font-size: clamp(2rem,4vw,3.2rem); font-weight: 600; color: #fff; margin-bottom: 12px; }
 .testimonials-sub { color: rgba(255,255,255,0.52); font-size: 1rem; line-height: 1.65; margin-bottom: 52px; }
 .testimonials-wrap { position: relative; padding: 0 148px; }
-.testimonials-viewport { overflow: hidden; }
-.testimonials-track { display: flex; gap: 20px; will-change: transform; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
+.testimonials-viewport { overflow: hidden; user-select: none; touch-action: pan-y; }
+.testimonials-track { display: flex; gap: 24px; will-change: transform; transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
 .testimonial-card {
   flex-shrink: 0;
   background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.09);
   border-radius: 12px; padding: 28px 30px; min-height: 220px;
 }
-.t-quote { font-family: var(--font-display); font-size: 4.5rem; line-height: 1; color: var(--color-gold); opacity: 0.3; display: block; margin-bottom: -14px; }
+.t-stars { color: var(--color-gold); font-size: 0.88rem; letter-spacing: 3px; margin-bottom: 14px; display: block; }
 .t-text { font-style: italic; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 22px; font-size: 0.93rem; }
 .t-sep { width: 36px; height: 1px; background: var(--color-gold-light); margin-bottom: 14px; opacity: 0.6; }
 .t-name { font-weight: 600; color: var(--color-gold); font-size: 0.92rem; margin-bottom: 4px; }
@@ -565,77 +613,19 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .carousel-arrow:hover { background: var(--color-gold); border-color: var(--color-gold); color: #fff; }
 
 /* ============================================================
-   GALLERY
-   ============================================================ */
-.section-gallery { background: var(--color-cream); padding: 120px 80px 0; position: relative; }
-.gallery-grid {
-  max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
-  padding-bottom: 100px;
-}
-.gallery-item {
-  position: relative; border-radius: 8px; overflow: hidden;
-  cursor: pointer; aspect-ratio: 4/3;
-}
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.gallery-item:hover img { transform: scale(1.05); }
-.gallery-overlay {
-  position: absolute; inset: 0;
-  background: rgba(26,26,46,0);
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.3s ease;
-}
-.gallery-item:hover .gallery-overlay { background: rgba(26,26,46,0.45); }
-.gallery-plus {
-  color: var(--color-gold); font-size: 2rem; font-weight: 300;
-  opacity: 0; transform: scale(0.7);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-.gallery-item:hover .gallery-plus { opacity: 1; transform: scale(1); }
-
-/* Lightbox */
-.lightbox {
-  position: fixed; inset: 0; z-index: 2000;
-  background: rgba(0,0,0,0.92);
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-}
-.lightbox.active { opacity: 1; pointer-events: all; }
-.lightbox-img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; display: block; }
-.lightbox-close {
-  position: absolute; top: 24px; right: 24px;
-  width: 48px; height: 48px; border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.4);
-  color: #fff; font-size: 1.2rem;
-  display: flex; align-items: center; justify-content: center; cursor: pointer;
-  transition: background 0.3s ease; background: transparent;
-}
-.lightbox-close:hover { background: rgba(255,255,255,0.1); }
-.lightbox-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  width: 48px; height: 48px; border-radius: 50%;
-  border: 1.5px solid rgba(255,255,255,0.3); background: transparent;
-  color: #fff; display: flex; align-items: center; justify-content: center;
-  cursor: pointer; transition: background 0.3s ease;
-}
-.lightbox-arrow:hover { background: rgba(255,255,255,0.1); }
-.lightbox-arrow.prev { left: 24px; }
-.lightbox-arrow.next { right: 24px; }
-
-/* ============================================================
    FIND US
    ============================================================ */
-.section-visit { background: var(--color-charcoal); padding: 120px 80px; position: relative; }
+.section-visit { background: #fff; padding: 120px 80px; position: relative; }
 .visit-inner {
   max-width: 1200px; margin: 0 auto;
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
 }
 .visit-info .eyebrow { color: var(--color-gold); }
-.visit-info h2 { font-size: clamp(2rem,4vw,3rem); font-weight: 600; color: #fff; margin-bottom: 48px; }
-.info-blocks { display: flex; flex-direction: column; gap: 32px; margin-bottom: 40px; }
+.visit-info h2 { font-size: clamp(2rem,4vw,3rem); font-weight: 600; color: var(--color-charcoal); margin-bottom: 28px; }
+.info-blocks { display: flex; flex-direction: column; gap: 28px; margin-bottom: 0; }
 .info-block { display: flex; align-items: flex-start; gap: 16px; }
 .info-icon {
-  width: 40px; height: 40px; background: rgba(124,154,126,0.15); border-radius: 50%;
+  width: 40px; height: 40px; background: rgba(124,154,126,0.1); border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0; color: var(--color-sage);
 }
@@ -643,21 +633,17 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--color-gold); margin-bottom: 6px;
 }
-.info-content { color: rgba(255,255,255,0.72); line-height: 1.7; font-size: 0.95rem; }
-.info-content a { color: rgba(255,255,255,0.72); transition: color 0.2s ease; }
+.info-content { color: rgba(26,26,46,0.68); line-height: 1.7; font-size: 0.95rem; }
+.info-content a { color: rgba(26,26,46,0.68); transition: color 0.2s ease; }
 .info-content a:hover { color: var(--color-sage); }
-.btn-maps {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--color-sage); color: #fff;
-  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
-  padding: 14px 28px; border-radius: 3px;
-  margin-top: 24px; margin-bottom: 40px;
-  transition: background 0.3s ease, transform 0.2s ease;
+.visit-map-heading {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--color-gold);
+  margin-bottom: 16px; display: block;
 }
-.btn-maps:hover { background: var(--color-sage-light); transform: translateY(-2px); }
 .visit-map iframe {
   width: 100%; height: 450px; border: none; border-radius: 10px;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.3); display: block;
+  box-shadow: 0 8px 40px rgba(26,26,46,0.1); display: block;
 }
 
 /* ============================================================
@@ -675,13 +661,13 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 }
 .footer-grid {
   max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+  display: grid; grid-template-columns: 1fr 1fr 1.5fr 1.5fr;
   gap: 56px; padding-bottom: 48px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   position: relative; z-index: 2;
 }
-.footer-brand-logo img { width: 110px; margin-bottom: 20px; opacity: 0.9; }
-.footer-tagline { font-style: italic; color: rgba(255,255,255,0.45); font-size: 0.9rem; font-family: var(--font-display); margin-bottom: 24px; line-height: 1.6; }
+.footer-brand-logo img { width: 130px; margin-bottom: 10px; opacity: 0.9; }
+.footer-tagline { font-style: italic; color: rgba(255,255,255,0.72); font-size: 0.9rem; font-family: var(--font-display); margin-bottom: 20px; line-height: 1.6; }
 .footer-socials { display: flex; gap: 12px; }
 .social-btn {
   width: 40px; height: 40px; border-radius: 50%;
@@ -752,8 +738,10 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
    ============================================================ */
 @media (max-width: 1024px) {
   .nav { padding: 0 32px; }
+  .nav-logo { margin-left: 24px; }
   .nav-logo img { width: 140px; }
   .nav-links { gap: 22px; }
+  .nav-cta { margin-right: 24px; }
   .hero { height: calc(100vh - 124px); }
   .stats-bar { height: 124px; }
   .hero-panel { padding: 90px 40px 48px; }
@@ -768,8 +756,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .feature-inner { gap: 48px; }
   .testimonials-wrap { padding: 0 80px; }
   .carousel-arrows { padding: 0 28px; }
-  .section-gallery { padding: 96px 48px 0; }
-  .gallery-grid { grid-template-columns: repeat(2,1fr); }
   .section-visit { padding: 96px 48px; }
   .visit-inner { gap: 48px; }
   .footer { padding: 80px 48px 0; }
@@ -816,21 +802,19 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .section-testimonials { padding: 80px 0 0; }
   .testimonials-header { padding: 0 24px; }
   .testimonials-wrap { padding: 0 44px; }
-  .section-gallery { padding: 80px 24px 0; }
-  .gallery-grid { grid-template-columns: repeat(2,1fr); padding-bottom: 60px; }
   .section-visit { padding: 80px 24px; }
   .visit-inner { grid-template-columns: 1fr; gap: 40px; }
   .visit-map iframe { height: 280px; }
   .footer { padding: 64px 24px 0; }
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
   .footer-bottom { flex-direction: column; gap: 8px; align-items: flex-start; }
-  .lightbox-arrow.prev { left: 8px; }
-  .lightbox-arrow.next { right: 8px; }
   .section-header { margin-bottom: 40px; }
 }
   </style>
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">Прескочи към съдържанието</a>
 
 <!-- ============================================================
      NAVIGATION
@@ -842,15 +826,14 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <nav aria-label="Основна навигация">
     <ul class="nav-links">
       <li><a href="#categories">Продукти</a></li>
-      <li><a href="#gallery">Галерия</a></li>
       <li><a href="#about">За Нас</a></li>
       <li><a href="#testimonials">Ревюта</a></li>
       <li><a href="#visit">Намерете Ни</a></li>
     </ul>
   </nav>
   <a href="tel:0878232365" class="nav-cta">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6 6l.86-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.41 15z"/></svg>
-    0878 232 365
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6 6l.86-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.41 15z"/></svg>
+    Свържете се
   </a>
   <button class="nav-hamburger" id="nav-open" aria-label="Отвори меню" aria-expanded="false" aria-controls="mobile-nav">
     <span></span><span></span><span></span>
@@ -862,7 +845,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <button class="mobile-nav-close" id="nav-close" aria-label="Затвори меню">✕</button>
   <ul class="mobile-nav-links">
     <li><a href="#categories">Продукти</a></li>
-    <li><a href="#gallery">Галерия</a></li>
     <li><a href="#about">За Нас</a></li>
     <li><a href="#testimonials">Ревюта</a></li>
     <li><a href="#visit">Намерете Ни</a></li>
@@ -870,15 +852,17 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <p class="mobile-nav-phone">0878 232 365</p>
 </div>
 
+<main id="main-content">
+
 <!-- ============================================================
      HERO
      ============================================================ -->
 <section class="hero" aria-label="Начална секция">
-  <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
+  <video class="hero-video" autoplay muted loop playsinline aria-hidden="true" poster="images/hero-header.png">
     <source src="Hero video.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay" aria-hidden="true"></div>
-  <div class="hero-panel active">
+  <div class="hero-panel active" aria-hidden="false">
     <span class="slide-tagline">Специализиран Магазин · Пловдив</span>
     <h1><span class="h-line">Специализиран магазин.</span><span class="h-line">Истински вкус.</span></h1>
     <p class="slide-sub">Пресни млечни продукти, яйца и маслини,<br>подбрани с грижа и доставени всяка сутрин.</p>
@@ -887,7 +871,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       <a href="#visit" class="btn-secondary">Намерете Ни</a>
     </div>
   </div>
-  <div class="hero-panel">
+  <div class="hero-panel" aria-hidden="true">
     <span class="slide-tagline">Намерете ни в Пловдив</span>
     <h1>Пловдивски дом<br>на качеството.</h1>
     <p class="slide-sub">На бул. Пещерско шосе 26 — отворени всяка сутрин<br>с прясна доставка директно от производителя.</p>
@@ -896,7 +880,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       <a href="#visit" class="btn-secondary">Намерете Ни</a>
     </div>
   </div>
-  <div class="hero-panel">
+  <div class="hero-panel" aria-hidden="true">
     <span class="slide-tagline">Всеки Ден · Прясна Доставка</span>
     <h1><span class="h-line">Над 30 вида продукти.</span><span class="h-line">Всеки ден пресни.</span></h1>
     <p class="slide-sub">Млечни продукти, яйца и маслини от проверени<br>производители — директно при вас всяка сутрин.</p>
@@ -904,6 +888,11 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       <a href="#categories" class="btn-primary">Нашите Продукти</a>
       <a href="#visit" class="btn-secondary">Намерете Ни</a>
     </div>
+  </div>
+  <div class="hero-dots" role="tablist" aria-label="Слайдове на героя">
+    <button class="hero-dot active" role="tab" aria-selected="true" aria-label="Слайд 1"></button>
+    <button class="hero-dot" role="tab" aria-selected="false" aria-label="Слайд 2"></button>
+    <button class="hero-dot" role="tab" aria-selected="false" aria-label="Слайд 3"></button>
   </div>
   <div class="hero-wave-wrap" aria-hidden="true">
     <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -936,8 +925,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
           <polyline points="10 8 12 10 14.5 7"/>
         </svg>
       </div>
-      <span class="stat-number">Гарантирана</span>
-      <span class="stat-label">Прясност всяка сутрин</span>
+      <span class="stat-number">365</span>
+      <span class="stat-label">Дни Прясност в Годината</span>
     </div>
     <div class="stat-divider" aria-hidden="true"></div>
     <div class="stat-item reveal reveal-delay-2">
@@ -1021,7 +1010,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <div class="categories-grid">
     <article class="category-card reveal">
       <a href="#dairy-feature" aria-label="Разгледайте млечните продукти">
-        <img class="category-img" src="images/IMG_0677.jpg" alt="Млечни продукти" loading="lazy">
+        <img class="category-img" src="Enhanced%20images/Category-Млечни%20Продукти.png" alt="Млечни продукти" loading="lazy">
         <div class="category-gradient" aria-hidden="true"></div>
         <div class="category-content">
           <span class="category-tag">Ежедневно</span>
@@ -1033,7 +1022,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     </article>
     <article class="category-card reveal reveal-delay-1">
       <a href="#eggs-feature" aria-label="Разгледайте яйцата">
-        <img class="category-img" src="images/IMG_0709.jpg" alt="Пресни яйца" loading="lazy">
+        <img class="category-img" src="Enhanced%20images/Category-Яйца.png" alt="Пресни яйца" loading="lazy">
         <div class="category-gradient" aria-hidden="true"></div>
         <div class="category-content">
           <span class="category-tag">Фермерски</span>
@@ -1045,7 +1034,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     </article>
     <article class="category-card reveal reveal-delay-2">
       <a href="#olives-feature" aria-label="Разгледайте маслините и деликатесите">
-        <img class="category-img" src="images/IMG_0684.jpg" alt="Маслини и деликатеси" loading="lazy">
+        <img class="category-img" src="Enhanced%20images/Category-Маслини%20%26%20Деликатеси.png" alt="Маслини и деликатеси" loading="lazy">
         <div class="category-gradient" aria-hidden="true"></div>
         <div class="category-content">
           <span class="category-tag">Избор</span>
@@ -1069,7 +1058,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 <section class="section-feature bg-cream" id="dairy-feature" aria-label="Млечни продукти">
   <div class="feature-inner">
     <div class="feature-image reveal">
-      <img src="images/IMG_0678.jpg" alt="Разнообразие от млечни продукти" loading="lazy">
+      <img src="Enhanced%20images/featured-Dairy%20Products.png" alt="Разнообразие от млечни продукти" loading="lazy">
     </div>
     <div class="feature-text reveal reveal-delay-1">
       <span class="eyebrow">Млечни Продукти</span>
@@ -1096,7 +1085,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 <section class="section-feature bg-mist" id="eggs-feature" aria-label="Яйца">
   <div class="feature-inner flipped">
     <div class="feature-image reveal">
-      <img src="images/IMG_0708.jpg" alt="Пресни яйца от ферма" loading="lazy">
+      <img src="Enhanced%20images/Featured-Eggs.png" alt="Пресни яйца от ферма" loading="lazy">
     </div>
     <div class="feature-text reveal reveal-delay-1">
       <span class="eyebrow">Пресни Яйца</span>
@@ -1123,7 +1112,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 <section class="section-feature bg-cream" id="olives-feature" aria-label="Маслини и деликатеси">
   <div class="feature-inner">
     <div class="feature-image reveal">
-      <img src="images/IMG_0685.jpg" alt="Маслини и деликатеси" loading="lazy">
+      <img src="Enhanced%20images/featured-Olives.png" alt="Маслини и деликатеси" loading="lazy">
     </div>
     <div class="feature-text reveal reveal-delay-1">
       <span class="eyebrow">Средиземноморски Избор</span>
@@ -1172,76 +1161,10 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   </div>
   <div class="wave-divider" aria-hidden="true">
     <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,35 C480,0 960,70 1440,35 L1440,70 L0,70 Z" fill="#FAF7F2"/>
+      <path d="M0,35 C480,70 960,0 1440,35 L1440,70 L0,70 Z" fill="#ffffff"/>
     </svg>
   </div>
 </section>
-
-<!-- ============================================================
-     GALLERY
-     ============================================================ -->
-<section class="section-gallery" id="gallery" aria-label="Галерия на магазина">
-  <div class="section-header">
-    <span class="eyebrow reveal">Нашият Магазин</span>
-    <h2 class="reveal reveal-delay-1">Добре дошли в нашия магазин</h2>
-    <p class="reveal reveal-delay-2">Прясност, качество и внимание към детайла — ден след ден.</p>
-  </div>
-  <div class="gallery-grid" id="gallery-grid">
-    <div class="gallery-item reveal" data-index="0" role="button" tabindex="0" aria-label="Отвори снимка 1">
-      <img src="images/IMG_0676.jpg" alt="Магазин Млечко — интериор" loading="lazy">
-      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
-    </div>
-    <div class="gallery-item reveal reveal-delay-1" data-index="1" role="button" tabindex="0" aria-label="Отвори снимка 2">
-      <img src="images/IMG_0679.jpg" alt="Млечни продукти на витрина" loading="lazy">
-      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
-    </div>
-    <div class="gallery-item reveal reveal-delay-2" data-index="2" role="button" tabindex="0" aria-label="Отвори снимка 3">
-      <img src="images/IMG_0680.jpg" alt="Пресни продукти" loading="lazy">
-      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
-    </div>
-    <div class="gallery-item reveal reveal-delay-1" data-index="3" role="button" tabindex="0" aria-label="Отвори снимка 4">
-      <img src="images/IMG_0681.jpg" alt="Разнообразие в магазина" loading="lazy">
-      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
-    </div>
-    <div class="gallery-item reveal reveal-delay-2" data-index="4" role="button" tabindex="0" aria-label="Отвори снимка 5">
-      <img src="images/IMG_0682.jpg" alt="Продукти на рафта" loading="lazy">
-      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
-    </div>
-    <div class="gallery-item reveal reveal-delay-3" data-index="5" role="button" tabindex="0" aria-label="Отвори снимка 6">
-      <img src="images/IMG_0683.jpg" alt="Маслини и деликатеси" loading="lazy">
-      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
-    </div>
-    <div class="gallery-item reveal reveal-delay-2" data-index="6" role="button" tabindex="0" aria-label="Отвори снимка 7">
-      <img src="images/IMG_0686.jpg" alt="Пресни яйца" loading="lazy">
-      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
-    </div>
-    <div class="gallery-item reveal reveal-delay-3" data-index="7" role="button" tabindex="0" aria-label="Отвори снимка 8">
-      <img src="images/IMG_0687.jpg" alt="Интериор на магазина" loading="lazy">
-      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
-    </div>
-    <div class="gallery-item reveal reveal-delay-4" data-index="8" role="button" tabindex="0" aria-label="Отвори снимка 9">
-      <img src="images/IMG_0688.jpg" alt="Млечко магазин Пловдив" loading="lazy">
-      <div class="gallery-overlay" aria-hidden="true"><span class="gallery-plus">+</span></div>
-    </div>
-  </div>
-  <div class="wave-divider" aria-hidden="true">
-    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,35 C360,70 1080,0 1440,35 L1440,70 L0,70 Z" fill="#1A1A2E"/>
-    </svg>
-  </div>
-</section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Снимка в пълен размер">
-  <button class="lightbox-close" id="lightbox-close" aria-label="Затвори">✕</button>
-  <button class="lightbox-arrow prev" id="lightbox-prev" aria-label="Предишна снимка">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-  </button>
-  <img class="lightbox-img" id="lightbox-img" src="" alt="">
-  <button class="lightbox-arrow next" id="lightbox-next" aria-label="Следваща снимка">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-  </button>
-</div>
 
 <!-- ============================================================
      FIND US
@@ -1251,10 +1174,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     <div class="visit-info">
       <span class="eyebrow reveal">Намерете Ни</span>
       <h2 class="reveal reveal-delay-1">Елате при нас в Пловдив</h2>
-      <a href="https://maps.google.com/?q=бул.+Пещерско+шосе+26,+Пловдив" target="_blank" rel="noopener noreferrer" class="btn-maps reveal reveal-delay-2">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Виж в Google Карти
-      </a>
       <div class="info-blocks">
         <div class="info-block reveal reveal-delay-2">
           <div class="info-icon" aria-hidden="true">
@@ -1283,9 +1202,19 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
             <p class="info-content"><a href="tel:0878232365">0878 232 365</a></p>
           </div>
         </div>
+        <div class="info-block reveal reveal-delay-2">
+          <div class="info-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          </div>
+          <div>
+            <p class="info-label">Имейл</p>
+            <p class="info-content"><a href="mailto:info@mlechko.bg">info@mlechko.bg</a></p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="visit-map reveal reveal-delay-2">
+      <span class="visit-map-heading">Намерете ни на картата</span>
       <iframe src="https://maps.google.com/maps?q=бул.+Пещерско+шосе+26,+Пловдив&output=embed"
               title="Местоположение на Млечко в Пловдив"
               allowfullscreen loading="lazy"
@@ -1293,6 +1222,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- ============================================================
      FOOTER
@@ -1305,7 +1236,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <div class="footer-grid">
     <div class="reveal">
       <div class="footer-brand-logo">
-        <img src="images/Mlechko-Logo.png" alt="Млечко" width="110" loading="lazy">
+        <img src="images/Mlechko-Logo.png" alt="Млечко" width="130" loading="lazy">
       </div>
       <p class="footer-tagline">„Нищо повече и нищо по-малко."</p>
       <div class="footer-socials">
@@ -1325,7 +1256,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       <ul class="footer-nav">
         <li><a href="#">Начало</a></li>
         <li><a href="#categories">Продукти</a></li>
-        <li><a href="#gallery">Галерия</a></li>
         <li><a href="#about">За Нас</a></li>
         <li><a href="#visit">Намерете Ни</a></li>
         <li><a href="#testimonials">Ревюта</a></li>
@@ -1360,10 +1290,12 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 </footer>
 
 <!-- WHATSAPP FAB -->
-<a href="https://wa.me/359878232365" class="wa-fab" aria-label="Пишете ни в WhatsApp" target="_blank" rel="noopener noreferrer">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-  <span class="wa-tooltip" aria-hidden="true">Пишете ни в WhatsApp</span>
-</a>
+<aside aria-label="Контакт чрез WhatsApp">
+  <a href="https://wa.me/359878232365" class="wa-fab" aria-label="Пишете ни в WhatsApp" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    <span class="wa-tooltip" aria-hidden="true">Пишете ни в WhatsApp</span>
+  </a>
+</aside>
 
 <script>
 /* ============================================================
@@ -1398,33 +1330,40 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.
    HERO SLIDESHOW
    ============================================================ */
 const heroPanels = document.querySelectorAll('.hero-panel');
+const heroDots = document.querySelectorAll('.hero-dot');
 let hIdx = 0, hTimer;
 
 function gotoHero(i) {
   heroPanels[hIdx].classList.remove('active');
   hIdx = (i + heroPanels.length) % heroPanels.length;
   heroPanels[hIdx].classList.add('active');
+  heroPanels.forEach((p, idx) => p.setAttribute('aria-hidden', idx !== hIdx ? 'true' : 'false'));
+  heroDots.forEach((d, idx) => {
+    d.classList.toggle('active', idx === hIdx);
+    d.setAttribute('aria-selected', idx === hIdx ? 'true' : 'false');
+  });
 }
 function startHero() { hTimer = setInterval(() => gotoHero(hIdx + 1), 6000); }
+heroDots.forEach((dot, i) => dot.addEventListener('click', () => { clearInterval(hTimer); gotoHero(i); startHero(); }));
 startHero();
 
 /* ============================================================
    TESTIMONIALS CAROUSEL
    ============================================================ */
 const TESTIMONIALS = [
-  { name:'Снежана Маринова', location:'Пловдив, Център', text:'Най-доброто кисело мляко, което съм яла от години. Маслините са различни — среща се качеството. Препоръчвам го на всички мои познати.' },
+  { name:'Снежана Маринова', location:'Пловдив, Център', text:'Най-доброто кисело мляко, което съм яла от години. Маслините са различни, среща се качеството. Препоръчвам го на всички мои познати.' },
   { name:'Мария Костова',    location:'Пловдив, Тракия', text:'Идвам тук всяка сутрин от две години. Млякото и киселото мляко са несравнимо по-добри от всичко в супермаркета. Истинска разлика се среща веднага.' },
   { name:'Иван Петров',      location:'Пловдив, Център', text:'Намерих сирена и маслини, каквито не можах да намеря никъде другаде. Персоналът е изключително любезен и винаги помага с избора.' },
-  { name:'Елена Стоянова',   location:'Белащица',        text:'Пресни яйца всеки ден, прекрасен избор от сирена и маслини — всичко под един покрив. Децата ми обожават млякото оттук.' },
+  { name:'Елена Стоянова',   location:'Белащица',        text:'Пресни яйца всеки ден, прекрасен избор от сирена и маслини, всичко под един покрив. Децата ми обожават млякото оттук.' },
   { name:'Георги Алиев',     location:'Горни Воден',     text:'Страхотен магазин! Сиренето е невероятно пресно и вкусно. Идвам специално от другия край на Пловдив — струва си всеки път.' },
-  { name:'Димитър Попов',    location:'Куртово',         text:'Специализиран магазин с истинско отношение. Продуктите пристигат пресно всяка сутрин — среща се разликата. Топло ви препоръчвам.' },
+  { name:'Димитър Попов',    location:'Куртово',         text:'Специализиран магазин с истинско отношение. Продуктите пристигат пресно всяка сутрин. Качеството говори само за себе си. Топло ви препоръчвам.' },
   { name:'Петя Василева',    location:'Пловдив, Център', text:'Обслужването е на ниво и продуктите са с несравнимо качество. Веднъж опиташ ли разликата, не можеш да се върнеш към супермаркета.' },
   { name:'Николай Димитров', location:'Пловдив, Смирненски', text:'Истинска находка за Пловдив. Пресно, качествено и на достъпна цена. Вече са ни любимият магазин за млечни продукти.' }
 ];
 
 const track    = document.getElementById('testimonials-track');
 const viewport = document.getElementById('testimonials-viewport');
-let visCount = 3, cIdx = 0, cGap = 0, cAuto, isDrag = false, dragX0 = 0, dragX1 = 0;
+let visCount = 3, cIdx = 0, cGap = 0, cAuto, touchX0 = 0;
 
 function getVis() { return window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3; }
 
@@ -1434,7 +1373,7 @@ function buildCarousel() {
   TESTIMONIALS.forEach(t => {
     const c = document.createElement('div');
     c.className = 'testimonial-card';
-    c.innerHTML = `<span class="t-quote" aria-hidden="true">"</span><p class="t-text">${t.text}</p><div class="t-sep" aria-hidden="true"></div><p class="t-name">${t.name}</p><p class="t-location">${t.location}</p>`;
+    c.innerHTML = `<span class="t-stars" aria-label="5 звезди">★★★★★</span><p class="t-text">"${t.text}"</p><div class="t-sep" aria-hidden="true"></div><p class="t-name">${t.name}</p><p class="t-location">${t.location}</p>`;
     track.appendChild(c);
   });
 
@@ -1478,42 +1417,37 @@ function clearCauto() { clearInterval(cAuto); }
 viewport.addEventListener('mouseenter', clearCauto);
 viewport.addEventListener('mouseleave', startCauto);
 
-viewport.addEventListener('pointerdown', e => { isDrag = true; dragX0 = e.clientX; clearCauto(); viewport.setPointerCapture(e.pointerId); });
-viewport.addEventListener('pointermove', e => { if (isDrag) dragX1 = e.clientX; });
-viewport.addEventListener('pointerup',   () => { if (!isDrag) return; isDrag = false; const d = dragX0 - dragX1; if (Math.abs(d) > 50) goC(cIdx + (d > 0 ? 1 : -1)); startCauto(); });
+viewport.addEventListener('touchstart', e => { touchX0 = e.touches[0].clientX; clearCauto(); }, { passive: true });
+viewport.addEventListener('touchend',   e => { const d = touchX0 - e.changedTouches[0].clientX; if (Math.abs(d) > 50) goC(cIdx + (d > 0 ? 1 : -1)); startCauto(); }, { passive: true });
 
 buildCarousel();
 startCauto();
 window.addEventListener('resize', () => { clearCauto(); buildCarousel(); startCauto(); });
 
-/* ============================================================
-   GALLERY LIGHTBOX
-   ============================================================ */
-const items   = document.querySelectorAll('.gallery-item');
-const lb      = document.getElementById('lightbox');
-const lbImg   = document.getElementById('lightbox-img');
-const srcs    = Array.from(items).map(el => ({ src: el.querySelector('img').src, alt: el.querySelector('img').alt }));
-let lbIdx = 0;
+</script>
 
-function openLB(i)  { lbIdx = i; lbImg.src = srcs[i].src; lbImg.alt = srcs[i].alt; lb.classList.add('active'); document.body.style.overflow = 'hidden'; document.getElementById('lightbox-close').focus(); }
-function closeLB()  { lb.classList.remove('active'); document.body.style.overflow = ''; }
-function prevLB()   { lbIdx = (lbIdx - 1 + srcs.length) % srcs.length; lbImg.src = srcs[lbIdx].src; lbImg.alt = srcs[lbIdx].alt; }
-function nextLB()   { lbIdx = (lbIdx + 1) % srcs.length; lbImg.src = srcs[lbIdx].src; lbImg.alt = srcs[lbIdx].alt; }
-
-items.forEach((el, i) => {
-  el.addEventListener('click', () => openLB(i));
-  el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLB(i); } });
-});
-document.getElementById('lightbox-close').addEventListener('click', closeLB);
-document.getElementById('lightbox-prev').addEventListener('click', prevLB);
-document.getElementById('lightbox-next').addEventListener('click', nextLB);
-lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
-document.addEventListener('keydown', e => {
-  if (!lb.classList.contains('active')) return;
-  if (e.key === 'Escape') closeLB();
-  if (e.key === 'ArrowLeft') prevLB();
-  if (e.key === 'ArrowRight') nextLB();
-});
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GroceryStore",
+  "name": "Млечко",
+  "description": "Специализиран магазин за пресни млечни продукти, яйца и маслини в Пловдив.",
+  "url": "https://mlechko.bg",
+  "telephone": "+359878232365",
+  "email": "info@mlechko.bg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "бул. Пещерско шосе 26",
+    "addressLocality": "Пловдив",
+    "postalCode": "4002",
+    "addressCountry": "BG"
+  },
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "20:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "18:00"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "16:00"}
+  ]
+}
 </script>
 </body>
 </html>
