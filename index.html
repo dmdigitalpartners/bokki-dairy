@@ -451,6 +451,14 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   color: #fff; margin-bottom: 6px;
 }
 .category-content p { font-size: 0.85rem; color: rgba(255,255,255,0.75); }
+.category-card a { display: block; text-decoration: none; color: inherit; height: 100%; }
+.category-cta {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--color-gold); margin-top: 10px; opacity: 0.9;
+  transition: opacity 0.2s ease, gap 0.2s ease;
+}
+.category-card:hover .category-cta { opacity: 1; gap: 8px; }
 
 /* ============================================================
    FEATURED PRODUCTS
@@ -989,35 +997,44 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <div class="section-header">
     <span class="eyebrow reveal">Нашите Продукти</span>
     <h2 class="reveal reveal-delay-1">Всичко пресно. Всичко избрано.</h2>
-    <p class="reveal reveal-delay-2">Три категории, един стандарт — прясност и качество всяка сутрин.</p>
+    <p class="reveal reveal-delay-2">Млечни продукти, пресни яйца и деликатеси — доставени тази сутрин.</p>
   </div>
   <div class="categories-grid">
     <article class="category-card reveal">
-      <img class="category-img" src="images/IMG_0677.jpg" alt="Млечни продукти" loading="lazy">
-      <div class="category-gradient" aria-hidden="true"></div>
-      <div class="category-content">
-        <span class="category-tag">Ежедневно</span>
-        <h3>Млечни Продукти</h3>
-        <p>Над 30 вида · Ежедневна доставка</p>
-      </div>
+      <a href="#dairy-feature" aria-label="Разгледайте млечните продукти">
+        <img class="category-img" src="images/IMG_0677.jpg" alt="Млечни продукти" loading="lazy">
+        <div class="category-gradient" aria-hidden="true"></div>
+        <div class="category-content">
+          <span class="category-tag">Ежедневно</span>
+          <h3>Млечни Продукти</h3>
+          <p>Над 30 вида · Ежедневна доставка</p>
+          <span class="category-cta">Разгледай →</span>
+        </div>
+      </a>
     </article>
     <article class="category-card reveal reveal-delay-1">
-      <img class="category-img" src="images/IMG_0709.jpg" alt="Пресни яйца" loading="lazy">
-      <div class="category-gradient" aria-hidden="true"></div>
-      <div class="category-content">
-        <span class="category-tag">На Дрян</span>
-        <h3>Яйца</h3>
-        <p>Пресни · От проверени ферми</p>
-      </div>
+      <a href="#eggs-feature" aria-label="Разгледайте яйцата">
+        <img class="category-img" src="images/IMG_0709.jpg" alt="Пресни яйца" loading="lazy">
+        <div class="category-gradient" aria-hidden="true"></div>
+        <div class="category-content">
+          <span class="category-tag">Фермерски</span>
+          <h3>Яйца</h3>
+          <p>Пресни · От проверени ферми</p>
+          <span class="category-cta">Разгледай →</span>
+        </div>
+      </a>
     </article>
     <article class="category-card reveal reveal-delay-2">
-      <img class="category-img" src="images/IMG_0684.jpg" alt="Маслини и деликатеси" loading="lazy">
-      <div class="category-gradient" aria-hidden="true"></div>
-      <div class="category-content">
-        <span class="category-tag">Избор</span>
-        <h3>Маслини &amp; Деликатеси</h3>
-        <p>Внимателен подбор · Различни сортове</p>
-      </div>
+      <a href="#olives-feature" aria-label="Разгледайте маслините и деликатесите">
+        <img class="category-img" src="images/IMG_0684.jpg" alt="Маслини и деликатеси" loading="lazy">
+        <div class="category-gradient" aria-hidden="true"></div>
+        <div class="category-content">
+          <span class="category-tag">Избор</span>
+          <h3>Маслини &amp; Деликатеси</h3>
+          <p>Внимателен подбор · Различни сортове</p>
+          <span class="category-cta">Разгледай →</span>
+        </div>
+      </a>
     </article>
   </div>
   <div class="wave-divider" aria-hidden="true">
@@ -1030,7 +1047,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 <!-- ============================================================
      FEATURED PRODUCTS
      ============================================================ -->
-<section class="section-feature bg-cream" aria-label="Млечни продукти">
+<section class="section-feature bg-cream" id="dairy-feature" aria-label="Млечни продукти">
   <div class="feature-inner">
     <div class="feature-image reveal">
       <img src="images/IMG_0678.jpg" alt="Разнообразие от млечни продукти" loading="lazy">
@@ -1042,11 +1059,11 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       <ul class="feature-reasons">
         <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Ежедневна доставка до 6:00</li>
         <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Директно от производителя, без складове</li>
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Гарантирана прясност</li>
+        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Над 30 вида — намерете любимото си</li>
       </ul>
       <div class="feature-cta-group">
-        <a href="#categories" class="feature-btn-primary">Виж детайли</a>
-        <a href="#visit" class="feature-btn-secondary">Посетете магазина ни</a>
+        <a href="#visit" class="feature-btn-primary">Елате в магазина</a>
+        <a href="tel:0878232365" class="feature-btn-secondary">Обадете се</a>
       </div>
     </div>
   </div>
@@ -1056,23 +1073,23 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <div class="feature-divider"></div>
 </div>
 
-<section class="section-feature bg-mist" aria-label="Яйца">
+<section class="section-feature bg-mist" id="eggs-feature" aria-label="Яйца">
   <div class="feature-inner flipped">
     <div class="feature-image reveal">
       <img src="images/IMG_0708.jpg" alt="Пресни яйца от ферма" loading="lazy">
     </div>
     <div class="feature-text reveal reveal-delay-1">
       <span class="eyebrow">Фермерски Продукт</span>
-      <h3>Пресни яйца всеки ден</h3>
+      <h3>Пресни яйца, събрани днес</h3>
       <p>Яйца от проверени малки ферми — домашен вкус и естествено качество, достъпни за вас всяка сутрин.</p>
       <ul class="feature-reasons">
         <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> От малки, проверени ферми</li>
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Гарантирана прясност</li>
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Естествено качество</li>
+        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Събрани същата сутрин</li>
+        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Без антибиотици и хормони</li>
       </ul>
       <div class="feature-cta-group">
-        <a href="#categories" class="feature-btn-primary">Виж детайли</a>
-        <a href="#visit" class="feature-btn-secondary">Посетете магазина ни</a>
+        <a href="#visit" class="feature-btn-primary">Елате в магазина</a>
+        <a href="tel:0878232365" class="feature-btn-secondary">Обадете се</a>
       </div>
     </div>
   </div>
@@ -1082,23 +1099,23 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <div class="feature-divider"></div>
 </div>
 
-<section class="section-feature bg-cream" aria-label="Маслини и деликатеси">
+<section class="section-feature bg-cream" id="olives-feature" aria-label="Маслини и деликатеси">
   <div class="feature-inner">
     <div class="feature-image reveal">
       <img src="images/IMG_0685.jpg" alt="Маслини и деликатеси" loading="lazy">
     </div>
     <div class="feature-text reveal reveal-delay-1">
       <span class="eyebrow">Средиземноморски Избор</span>
-      <h3>Маслини и деликатеси за взискателната трапеза</h3>
+      <h3>Маслини и деликатеси от цял свят</h3>
       <p>Внимателно подбрани маслини от различни сортове и деликатеси — истинско качество за онези, които не правят компромис.</p>
       <ul class="feature-reasons">
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Различни сортове и произходи</li>
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Внимателен ръчен подбор</li>
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Уникален вкус</li>
+        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Подбрани от Гърция, Испания и Близкия Изток</li>
+        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> На кило или предварително опаковани</li>
+        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Нови сортове редовно — питайте на място</li>
       </ul>
       <div class="feature-cta-group">
-        <a href="#categories" class="feature-btn-primary">Виж детайли</a>
-        <a href="#visit" class="feature-btn-secondary">Посетете магазина ни</a>
+        <a href="#visit" class="feature-btn-primary">Елате в магазина</a>
+        <a href="tel:0878232365" class="feature-btn-secondary">Обадете се</a>
       </div>
     </div>
   </div>
