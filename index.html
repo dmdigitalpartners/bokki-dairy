@@ -367,11 +367,11 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 }
 .about-cta:hover { gap: 10px; color: #fff; }
 
-/* Lacrima-style overlapping collage */
-.about-collage { position: relative; height: 520px; }
+/* Two-column image grid */
+.about-collage { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
 .collage-img-main {
-  position: absolute; top: 0; left: 0;
-  width: 68%; height: 100%;
+  position: relative;
+  width: 100%; aspect-ratio: 3/4;
   border-radius: 10px; overflow: hidden;
   box-shadow: 0 20px 52px rgba(26,26,46,0.35);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -379,24 +379,25 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .collage-img-main:hover { transform: translateY(-4px); box-shadow: 0 28px 64px rgba(26,26,46,0.42); }
 .collage-img-main img { width: 100%; height: 100%; object-fit: cover; }
 .collage-img-small {
-  position: absolute; top: 48px; right: 0;
-  width: 44%; height: 56%;
+  position: relative;
+  width: 100%; aspect-ratio: 4/5;
+  margin-top: 48px;
   border-radius: 10px; overflow: hidden;
   box-shadow: 0 16px 44px rgba(26,26,46,0.32);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  z-index: 1;
 }
 .collage-img-small:hover { transform: translateY(-4px); box-shadow: 0 22px 56px rgba(26,26,46,0.4); }
 .collage-img-small img { width: 100%; height: 100%; object-fit: cover; }
 .collage-img-small.left { display: none; }
-.collage-img-small.right { right: 0; }
+.collage-img-small.right { }
 .collage-badge {
-  position: absolute; bottom: 52px; left: 44%;
+  position: absolute; bottom: 20px; left: 50%;
   transform: translateX(-50%);
   background: var(--color-gold);
   border-radius: 14px; padding: 20px 26px;
   text-align: center; z-index: 2;
   box-shadow: 0 10px 32px rgba(200,169,110,0.45);
+  white-space: nowrap;
 }
 .collage-badge-label {
   display: block; font-family: var(--font-sans);
@@ -718,136 +719,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
    FOCUS & MOTION
    ============================================================ */
 :focus-visible { outline: 2px solid var(--color-sage); outline-offset: 3px; }
-/* ============================================================
-   WHY US
-   ============================================================ */
-.section-why-us {
-  background: var(--color-cream);
-  padding: 120px 80px 0;
-  text-align: center;
-}
-.why-us-header {
-  max-width: 680px;
-  margin: 0 auto 80px;
-}
-.why-us-header h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-  font-weight: 600;
-  color: var(--color-charcoal);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  margin-bottom: 20px;
-}
-.why-us-header p {
-  font-size: 1.05rem;
-  color: var(--color-slate-mid);
-  line-height: 1.75;
-  max-width: 520px;
-  margin: 0 auto;
-}
-.why-us-journey {
-  max-width: 1100px;
-  margin: 0 auto 72px;
-  position: relative;
-}
-.journey-connector {
-  position: absolute;
-  top: 32px;
-  left: 12.5%;
-  right: 12.5%;
-  height: 0;
-  border-top: 1.5px dashed rgba(200,169,110,0.4);
-  z-index: 0;
-}
-.journey-steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  position: relative;
-  z-index: 1;
-}
-.journey-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 16px;
-}
-.journey-num {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--color-gold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #fff;
-  flex-shrink: 0;
-  box-shadow: 0 4px 18px rgba(200,169,110,0.38);
-}
-.journey-step-title {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--color-charcoal);
-  line-height: 1.3;
-  margin: 0;
-}
-.journey-step-desc {
-  font-size: 0.875rem;
-  color: var(--color-slate-mid);
-  line-height: 1.65;
-  margin: 0;
-}
-.why-us-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1100px;
-  margin: 0 auto 80px;
-}
-.why-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 36px 32px;
-  text-align: left;
-  box-shadow: 0 4px 24px rgba(26,26,46,0.07), 0 1px 4px rgba(26,26,46,0.04);
-  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1);
-}
-.why-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 44px rgba(26,26,46,0.12), 0 2px 8px rgba(26,26,46,0.06);
-}
-.why-card-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
-  background: rgba(124,154,126,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  color: var(--color-sage);
-}
-.why-card-icon svg { width: 22px; height: 22px; }
-.why-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--color-charcoal);
-  margin-bottom: 10px;
-  line-height: 1.3;
-}
-.why-card p {
-  font-size: 0.9rem;
-  color: var(--color-slate-mid);
-  line-height: 1.72;
-  margin: 0;
-}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -866,16 +737,12 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .hero-panel { padding: 90px 40px 48px; }
   .section-about { padding: 96px 48px 0; }
   .about-inner { grid-template-columns: 1fr; gap: 48px; }
-  .about-collage { height: 400px; }
-  .collage-badge { bottom: 28px; left: 42%; padding: 16px 22px; }
+  .collage-badge { bottom: 20px; left: 50%; padding: 16px 22px; }
   .collage-badge-num { font-size: 2.4rem; }
   .section-categories { padding: 96px 48px 0; }
   .categories-grid { grid-template-columns: repeat(2,1fr); }
   .section-feature { padding: 80px 48px; }
   .feature-inner { gap: 48px; }
-  .section-why-us { padding: 96px 48px 0; }
-  .why-us-header { margin-bottom: 64px; }
-  .why-us-journey { margin-bottom: 56px; }
   .testimonials-wrap { padding: 0 80px; }
   .carousel-arrows { padding: 0 28px; }
   .section-gallery { padding: 96px 48px 0; }
@@ -907,8 +774,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .stat-item { padding: 12px 16px; }
   .stat-icon { width: 20px; height: 20px; margin-bottom: 7px; }
   .section-about { padding: 80px 24px 0; }
-  .about-collage { height: 300px; }
-  .collage-badge { bottom: 16px; left: 42%; padding: 12px 18px; }
+  .about-collage { grid-template-columns: 1fr; gap: 16px; }
+  .collage-img-small { margin-top: 0; }
+  .collage-badge { bottom: 16px; left: 50%; padding: 12px 18px; }
   .collage-badge-num { font-size: 1.9rem; }
   .collage-badge-label { font-size: 0.6rem; }
   .collage-badge-sub { font-size: 0.68rem; }
@@ -918,16 +786,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .feature-inner { grid-template-columns: 1fr; gap: 32px; }
   .feature-inner.flipped .feature-image { order: 0; }
   .feature-inner.flipped .feature-text  { order: 0; }
-  .section-why-us { padding: 80px 24px 0; }
-  .why-us-header { margin-bottom: 52px; }
-  .journey-connector { display: none; }
-  .journey-steps { grid-template-columns: 1fr; gap: 0; }
-  .journey-step { flex-direction: row; align-items: flex-start; text-align: left; gap: 20px; padding: 20px 0; border-bottom: 1px solid rgba(200,169,110,0.2); }
-  .journey-step:last-child { border-bottom: none; }
-  .journey-step-title, .journey-step-desc { max-width: none; }
-  .why-us-journey { margin-bottom: 48px; }
-  .why-us-cards { grid-template-columns: 1fr; gap: 16px; }
-  .why-card { padding: 28px 24px; }
   .section-testimonials { padding: 80px 0 0; }
   .testimonials-header { padding: 0 24px; }
   .testimonials-wrap { padding: 0 44px; }
@@ -1086,17 +944,17 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       <div class="collage-img-small right">
         <img src="images/IMG_0683.jpg" alt="Разнообразие от продукти" loading="lazy">
       </div>
-      <div class="collage-badge" aria-label="Над 30 вида продукти">
-        <span class="collage-badge-label">Над</span>
-        <span class="collage-badge-num">30+</span>
-        <span class="collage-badge-sub">вида продукти</span>
+      <div class="collage-badge" aria-label="В бизнеса от 2010 година">
+        <span class="collage-badge-label">От</span>
+        <span class="collage-badge-num">2010</span>
+        <span class="collage-badge-sub">година</span>
       </div>
     </div>
     <div class="about-text">
       <span class="eyebrow reveal">За Нас</span>
       <h2 class="reveal reveal-delay-1">Специализиран избор.<br>Традиционен вкус.</h2>
-      <p class="reveal reveal-delay-2">Млечко е роден от убеждението, че качествената храна не трябва да бъде лукс. Всяка сутрин пресни млечни продукти, яйца и маслини пристигат директно от проверени производители — без складове, без компромиси.</p>
-      <p class="reveal reveal-delay-2">Избрахме да се специализираме в едно нещо и да го правим перфектно: да свържем пловдивските домакинства с истински вкусни, пресни продукти. Намирате ни на бул. Пещерско шосе 26 — елате да видите разликата сами.</p>
+      <p class="reveal reveal-delay-2">Млечко работи от 2010 година с едно убеждение: качествената храна не трябва да бъде лукс. Всяка сутрин пресни млечни продукти, яйца и маслини пристигат директно от проверени производители — без посредници, без компромиси.</p>
+      <p class="reveal reveal-delay-2">Специализираме се в едно нещо и го правим с последователност: да свържем пловдивските домакинства с истински пресни продукти. Намирате ни на бул. Пещерско шосе 26 — елате да видите разликата сами.</p>
       <ul class="about-bullets">
         <li class="reveal reveal-delay-3">
           <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1108,7 +966,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
         </li>
         <li class="reveal reveal-delay-3">
           <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Над 30 вида продукти под един покрив
+          В бизнеса от 2010 година
         </li>
       </ul>
       <a href="#visit" class="about-cta reveal reveal-delay-4">
@@ -1247,101 +1105,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <div class="wave-divider" aria-hidden="true">
     <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,35 C360,70 1080,0 1440,35 L1440,70 L0,70 Z" fill="#FAF7F2"/>
-    </svg>
-  </div>
-</section>
-
-<!-- ============================================================
-     WHY US
-     ============================================================ -->
-<section class="section-why-us" id="why-us" aria-label="Защо да изберете нас">
-
-  <!-- Header -->
-  <div class="why-us-header">
-    <span class="eyebrow reveal">Защо да изберете нас</span>
-    <h2 class="reveal reveal-delay-1">Свежест, на която<br>можете да разчитате</h2>
-    <p class="reveal reveal-delay-2">Всяка сутрин пресни продукти пристигат директно от проверени производители — без складове, без компромиси.</p>
-  </div>
-
-  <!-- Journey -->
-  <div class="why-us-journey">
-    <div class="journey-connector" aria-hidden="true"></div>
-    <div class="journey-steps">
-      <div class="journey-step reveal">
-        <div class="journey-num" aria-hidden="true">1</div>
-        <div>
-          <h3 class="journey-step-title">Производител</h3>
-          <p class="journey-step-desc">Избрани ферми с гарантирано качество и проверен произход.</p>
-        </div>
-      </div>
-      <div class="journey-step reveal reveal-delay-1">
-        <div class="journey-num" aria-hidden="true">2</div>
-        <div>
-          <h3 class="journey-step-title">Ежедневна доставка</h3>
-          <p class="journey-step-desc">Всяка сутрин до 6:00 — прясно, без складово съхранение.</p>
-        </div>
-      </div>
-      <div class="journey-step reveal reveal-delay-2">
-        <div class="journey-num" aria-hidden="true">3</div>
-        <div>
-          <h3 class="journey-step-title">Магазин Млечко</h3>
-          <p class="journey-step-desc">Внимателен подбор — само продукти, на които се доверяваме лично.</p>
-        </div>
-      </div>
-      <div class="journey-step reveal reveal-delay-3">
-        <div class="journey-num" aria-hidden="true">4</div>
-        <div>
-          <h3 class="journey-step-title">Вашата трапеза</h3>
-          <p class="journey-step-desc">Вкусът, по който се разпознава истинската прясност.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Trust Cards -->
-  <div class="why-us-cards">
-    <div class="why-card reveal">
-      <div class="why-card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-          <polyline points="2 17 12 22 22 17"/>
-          <polyline points="2 12 12 17 22 12"/>
-        </svg>
-      </div>
-      <h3>Над 30 продукта</h3>
-      <p>Млечни продукти, яйца, маслини и деликатеси — всичко избрано с грижа под един покрив.</p>
-    </div>
-    <div class="why-card reveal reveal-delay-1">
-      <div class="why-card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M17 18a5 5 0 0 0-10 0"/>
-          <line x1="12" y1="9" x2="12" y2="2"/>
-          <line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/>
-          <line x1="1" y1="18" x2="3" y2="18"/>
-          <line x1="21" y1="18" x2="23" y2="18"/>
-          <line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/>
-        </svg>
-      </div>
-      <h3>Ежедневна свежест</h3>
-      <p>Купувате днешното, не вчерашното. Доставка всяка сутрин — прясност, за която супермаркетът не може да се похвали.</p>
-    </div>
-    <div class="why-card reveal reveal-delay-2">
-      <div class="why-card-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="1" y="3" width="15" height="13" rx="1"/>
-          <path d="M16 8h4l3 3v5h-7V8z"/>
-          <circle cx="5.5" cy="18.5" r="2.5"/>
-          <circle cx="18.5" cy="18.5" r="2.5"/>
-        </svg>
-      </div>
-      <h3>Директно от производителя</h3>
-      <p>Без складове, без посредници. Работим само с производители, в чийто продукт вярваме лично.</p>
-    </div>
-  </div>
-
-  <div class="wave-divider" aria-hidden="true">
-    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,35 C480,0 960,70 1440,35 L1440,70 L0,70 Z" fill="#1A1A2E"/>
     </svg>
   </div>
 </section>
