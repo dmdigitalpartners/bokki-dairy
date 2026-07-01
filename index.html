@@ -201,47 +201,69 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 }
 .nav-hamburger span {
   display: block; width: 24px; height: 2px;
-  background: var(--color-slate-deep); border-radius: 2px; transition: background 0.3s ease;
+  background: var(--color-slate-deep); border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
 }
+.nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* Mobile nav */
 .mobile-nav {
   position: fixed; inset: 0; z-index: 999;
-  background: rgba(26,26,46,0.97);
+  background: rgba(18,18,34,0.98);
   display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  align-items: stretch; justify-content: flex-start;
   opacity: 0; pointer-events: none;
   transition: opacity 0.3s ease;
 }
 .mobile-nav.open { opacity: 1; pointer-events: all; }
-.mobile-nav-close {
-  position: absolute; top: 24px; right: 24px;
-  width: 44px; height: 44px;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 1.4rem; cursor: pointer;
+.mobile-nav-top {
+  display: flex; align-items: center;
+  padding: 0 24px;
+  height: 64px; flex-shrink: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
 }
-.mobile-nav-links { list-style: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.mobile-nav-logo img { width: 120px; height: auto; opacity: 0.9; }
+.mobile-nav-body { flex: 1; overflow-y: auto; }
+.mobile-nav-links {
+  list-style: none; width: 100%; padding: 8px 0;
+  display: flex; flex-direction: column; gap: 0;
+}
 .mobile-nav-links li {
-  opacity: 0; transform: translateY(20px);
+  opacity: 0; transform: translateY(14px);
   transition: opacity 0.3s ease, transform 0.3s ease;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
 }
-.mobile-nav.open .mobile-nav-links li:nth-child(1) { opacity:1; transform:none; transition-delay:0.05s; }
-.mobile-nav.open .mobile-nav-links li:nth-child(2) { opacity:1; transform:none; transition-delay:0.10s; }
-.mobile-nav.open .mobile-nav-links li:nth-child(3) { opacity:1; transform:none; transition-delay:0.15s; }
-.mobile-nav.open .mobile-nav-links li:nth-child(4) { opacity:1; transform:none; transition-delay:0.20s; }
-.mobile-nav.open .mobile-nav-links li:nth-child(5) { opacity:1; transform:none; transition-delay:0.25s; }
+.mobile-nav.open .mobile-nav-links li:nth-child(1) { opacity:1; transform:none; transition-delay:0.06s; }
+.mobile-nav.open .mobile-nav-links li:nth-child(2) { opacity:1; transform:none; transition-delay:0.12s; }
+.mobile-nav.open .mobile-nav-links li:nth-child(3) { opacity:1; transform:none; transition-delay:0.18s; }
+.mobile-nav.open .mobile-nav-links li:nth-child(4) { opacity:1; transform:none; transition-delay:0.24s; }
 .mobile-nav-links a {
-  font-size: 2rem; font-weight: 500; color: #fff;
-  display: block; padding: 12px 32px;
-  transition: color 0.2s ease;
+  font-size: 1.45rem; font-weight: 500; color: rgba(255,255,255,0.88);
+  display: flex; align-items: center;
+  padding: 18px 24px;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease, padding-left 0.2s ease;
 }
-.mobile-nav-links a:hover { color: var(--color-sage); }
-.mobile-nav-phone {
-  margin-top: 32px; color: rgba(255,255,255,0.45); font-size: 0.9rem;
-  opacity: 0; transform: translateY(20px);
-  transition: opacity 0.3s ease 0.3s, transform 0.3s ease 0.3s;
+.mobile-nav-links a:hover,
+.mobile-nav-links a:focus-visible { color: var(--color-sage-light); padding-left: 32px; }
+.mobile-nav-bottom {
+  flex-shrink: 0; padding: 20px 24px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 0.3s ease 0.28s, transform 0.3s ease 0.28s;
 }
-.mobile-nav.open .mobile-nav-phone { opacity: 1; transform: none; }
+.mobile-nav.open .mobile-nav-bottom { opacity: 1; transform: none; }
+.mobile-nav-cta-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; background: #4d7a50; color: #fff;
+  padding: 15px 24px; border-radius: 4px;
+  font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  transition: background 0.25s ease;
+}
+.mobile-nav-cta-btn:hover { background: #3d6340; }
 
 /* ============================================================
    HERO
@@ -766,49 +788,81 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
    RESPONSIVE — MOBILE
    ============================================================ */
 @media (max-width: 768px) {
+  /* --- NAV --- */
   .nav { padding: 0 20px; height: 64px; }
   .nav-logo { margin-left: 0; }
   .nav-logo img { width: 120px; }
   .nav-links { display: none; }
   .nav-cta { display: none; }
   .nav-hamburger { display: flex; }
-  .hero-panel { padding: 80px 24px 48px; }
-  .hero-panel h1 { font-size: clamp(2.1rem,8.5vw,3.2rem); }
-  .hero-btns { flex-direction: column; align-items: center; }
-  .btn-primary, .btn-secondary { text-align: center; width: 100%; max-width: 260px; }
+
+  /* --- HERO --- */
   .hero { height: calc(100vh - 272px); min-height: 420px; }
+  .hero-panel { padding: 80px 24px 48px; }
+  .hero-panel h1 { font-size: clamp(1.7rem, 7.2vw, 2.4rem); }
+  .slide-sub { font-size: 0.88rem; line-height: 1.65; }
+  .hero-dots { display: none; }
+  .hero-btns { flex-direction: row; align-items: center; flex-wrap: nowrap; gap: 10px; justify-content: center; }
+  .btn-primary, .btn-secondary { width: auto; max-width: none; padding: 10px 16px; font-size: 0.72rem; text-align: center; }
+
+  /* --- STATS --- */
   .stats-bar { height: auto; min-height: 272px; display: flex; align-items: center; padding: 16px 0; }
   .stats-container { flex-direction: column; gap: 0; padding: 0 24px; }
   .stat-divider { width: 36px; height: 1px; margin: 6px auto; }
   .stat-item { padding: 12px 16px; }
   .stat-icon { width: 20px; height: 20px; margin-bottom: 7px; }
+
+  /* --- ABOUT --- */
   .section-about { padding: 80px 24px 0; }
-  .about-collage { grid-template-columns: 1fr; gap: 16px; }
+  .about-inner { display: flex; flex-direction: column; gap: 40px; padding-bottom: 60px; }
+  .about-text { order: 1; }
+  .about-collage { order: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; position: relative; }
   .collage-img-small { margin-top: 0; }
-  .collage-badge { bottom: 16px; left: 50%; padding: 12px 18px; }
-  .collage-badge-num { font-size: 1.9rem; }
-  .collage-badge-label { font-size: 0.6rem; }
-  .collage-badge-sub { font-size: 0.68rem; }
+  .collage-badge { bottom: 12px; left: 50%; transform: translateX(-50%); padding: 10px 14px; }
+  .collage-badge-num { font-size: 1.55rem; }
+  .collage-badge-label { font-size: 0.58rem; }
+  .collage-badge-sub { font-size: 0.63rem; }
+
+  /* --- CATEGORIES --- */
   .section-categories { padding: 80px 24px 0; }
   .categories-grid { grid-template-columns: 1fr; padding-bottom: 60px; }
+  .categories-grid .category-card:last-child { grid-column: auto; max-width: none; margin: 0; }
+
+  /* --- FEATURE SECTIONS --- */
   .section-feature { padding: 60px 24px; }
-  .feature-inner { grid-template-columns: 1fr; gap: 28px; }
-  .feature-inner.flipped .feature-image { order: 0; }
-  .feature-inner.flipped .feature-text  { order: 0; }
-  .feature-image img { aspect-ratio: 16/9; }
+  .feature-inner { display: flex; flex-direction: column; gap: 28px; align-items: stretch; }
+  .feature-image { order: 2; width: 100%; }
+  .feature-text { order: 1; width: 100%; }
+  .feature-image img { aspect-ratio: 16/9; width: 100%; }
   .feature-text h3 { font-size: 1.45rem; }
   .feature-trust-strip { margin-top: 1.25rem; padding-top: 1.1rem; gap: 8px; }
-  .wa-fab { bottom: calc(20px + env(safe-area-inset-bottom,0px)); }
+
+  /* --- TESTIMONIALS --- */
   .section-testimonials { padding: 80px 0 0; }
   .testimonials-header { padding: 0 24px; }
-  .testimonials-wrap { padding: 0 44px; }
+  .testimonials-wrap { padding: 0 20px; display: flex; flex-direction: column; }
+  .testimonials-viewport { order: 1; }
+  .carousel-arrows {
+    position: static; transform: none; order: 2;
+    display: flex; justify-content: center; gap: 20px;
+    padding: 24px 0 4px; pointer-events: all;
+  }
+  .testimonial-card { padding: 20px 22px; min-height: auto; }
+  .t-text { font-size: 0.86rem; line-height: 1.7; }
+
+  /* --- FIND US --- */
   .section-visit { padding: 80px 24px; }
   .visit-inner { grid-template-columns: 1fr; gap: 40px; }
   .visit-map iframe { height: 280px; }
+
+  /* --- FOOTER --- */
   .footer { padding: 64px 24px 0; }
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
   .footer-bottom { flex-direction: column; gap: 8px; align-items: flex-start; }
+
+  /* --- GENERAL --- */
   .section-header { margin-bottom: 40px; }
+  .wa-fab { bottom: calc(20px + env(safe-area-inset-bottom,0px)); }
 }
   </style>
 </head>
@@ -842,14 +896,25 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobile-nav" role="dialog" aria-label="Мобилна навигация" aria-modal="true">
-  <button class="mobile-nav-close" id="nav-close" aria-label="Затвори меню">✕</button>
-  <ul class="mobile-nav-links">
-    <li><a href="#categories">Продукти</a></li>
-    <li><a href="#about">За Нас</a></li>
-    <li><a href="#testimonials">Ревюта</a></li>
-    <li><a href="#visit">Намерете Ни</a></li>
-  </ul>
-  <p class="mobile-nav-phone">0878 232 365</p>
+  <div class="mobile-nav-top">
+    <a href="#" class="mobile-nav-logo" aria-label="Млечко — начало">
+      <img src="images/Mlechko-Logo.png" alt="Млечко" width="120">
+    </a>
+  </div>
+  <div class="mobile-nav-body">
+    <ul class="mobile-nav-links">
+      <li><a href="#categories">Продукти</a></li>
+      <li><a href="#about">За Нас</a></li>
+      <li><a href="#testimonials">Ревюта</a></li>
+      <li><a href="#visit">Намерете Ни</a></li>
+    </ul>
+  </div>
+  <div class="mobile-nav-bottom">
+    <a href="tel:0878232365" class="mobile-nav-cta-btn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6 6l.86-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.41 15z"/></svg>
+      Свържете се
+    </a>
+  </div>
 </div>
 
 <main id="main-content">
@@ -874,7 +939,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <div class="hero-panel" aria-hidden="true">
     <span class="slide-tagline">Намерете ни в Пловдив</span>
     <h1>Пловдивски дом<br>на качеството.</h1>
-    <p class="slide-sub">На бул. Пещерско шосе 26 — отворени всяка сутрин<br>с прясна доставка директно от производителя.</p>
+    <p class="slide-sub">На бул. Пещерско шосе 26, отворени всяка сутрин с прясна доставка директно от производителя.</p>
     <div class="hero-btns">
       <a href="#categories" class="btn-primary">Нашите Продукти</a>
       <a href="#visit" class="btn-secondary">Намерете Ни</a>
@@ -883,7 +948,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <div class="hero-panel" aria-hidden="true">
     <span class="slide-tagline">Всеки Ден · Прясна Доставка</span>
     <h1><span class="h-line">Над 30 вида продукти.</span><span class="h-line">Всеки ден пресни.</span></h1>
-    <p class="slide-sub">Млечни продукти, яйца и маслини от проверени<br>производители — директно при вас всяка сутрин.</p>
+    <p class="slide-sub">Млечни продукти, яйца и маслини от проверени производители, доставени всяка сутрин.</p>
     <div class="hero-btns">
       <a href="#categories" class="btn-primary">Нашите Продукти</a>
       <a href="#visit" class="btn-secondary">Намерете Ни</a>
@@ -1314,15 +1379,25 @@ if (navigator.webdriver) document.querySelectorAll('.reveal').forEach(el => el.c
    ============================================================ */
 const nav = document.getElementById('nav');
 const navOpen = document.getElementById('nav-open');
-const navClose = document.getElementById('nav-close');
 const mobileNav = document.getElementById('mobile-nav');
 
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 80), { passive: true });
 
-function openNav() { mobileNav.classList.add('open'); document.body.style.overflow = 'hidden'; navOpen.setAttribute('aria-expanded','true'); navClose.focus(); }
-function closeNav() { mobileNav.classList.remove('open'); document.body.style.overflow = ''; navOpen.setAttribute('aria-expanded','false'); navOpen.focus(); }
-navOpen.addEventListener('click', openNav);
-navClose.addEventListener('click', closeNav);
+function openNav() {
+  mobileNav.classList.add('open');
+  navOpen.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+  navOpen.setAttribute('aria-expanded', 'true');
+  navOpen.setAttribute('aria-label', 'Затвори меню');
+}
+function closeNav() {
+  mobileNav.classList.remove('open');
+  navOpen.classList.remove('is-open');
+  document.body.style.overflow = '';
+  navOpen.setAttribute('aria-expanded', 'false');
+  navOpen.setAttribute('aria-label', 'Отвори меню');
+}
+navOpen.addEventListener('click', () => mobileNav.classList.contains('open') ? closeNav() : openNav());
 mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav(); });
 
