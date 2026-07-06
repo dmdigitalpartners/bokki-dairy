@@ -467,6 +467,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .collage-img-small img { width: 100%; height: 100%; object-fit: cover; }
 .collage-img-small.left { display: none; }
 .collage-img-small.right { }
+.collage-stack { display: flex; flex-direction: column; gap: 16px; margin-top: 48px; }
+.collage-stack .collage-img-small { margin-top: 0; aspect-ratio: 4/3; }
 .collage-badge {
   position: absolute; bottom: 20px; left: 50%;
   transform: translateX(-50%);
@@ -823,10 +825,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .about-text { order: 1; }
   .about-collage { order: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; position: relative; }
   .collage-img-small { margin-top: 0; }
-  .collage-badge { bottom: 12px; left: 50%; transform: translateX(-50%); padding: 10px 14px; }
-  .collage-badge-num { font-size: 1.55rem; }
-  .collage-badge-label { font-size: 0.58rem; }
-  .collage-badge-sub { font-size: 0.63rem; }
+  .collage-stack { margin-top: 0; gap: 12px; }
 
   /* --- CATEGORIES --- */
   .section-categories { padding: 80px 24px 0; }
@@ -1027,12 +1026,13 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       <div class="collage-img-main">
         <img src="images/IMG_0702.jpg" alt="Екстериор на магазин Млечко" loading="lazy">
       </div>
-      <div class="collage-img-small right">
-        <img src="images/IMG_0683.jpg" alt="Разнообразие от продукти" loading="lazy">
-      </div>
-      <div class="collage-badge" aria-label="с 20+ години опит">
-        <span class="collage-badge-num">20+</span>
-        <span class="collage-badge-sub">години опит</span>
+      <div class="collage-stack">
+        <div class="collage-img-small right">
+          <img src="images/IMG_0683.jpg" alt="Разнообразие от продукти" loading="lazy">
+        </div>
+        <div class="collage-img-small">
+          <img src="images/Side of store image.jpg" alt="Страна на магазина" loading="lazy">
+        </div>
       </div>
     </div>
     <div class="about-text">
