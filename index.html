@@ -639,7 +639,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
   color: var(--color-gold);
 }
-.carousel-arrow:hover { background: var(--color-gold); border-color: var(--color-gold); color: #fff; }
+.carousel-arrow--active {
+  background: var(--color-gold); border-color: var(--color-gold); color: #fff;
+}
 
 /* ============================================================
    FIND US
@@ -1523,8 +1525,19 @@ track.addEventListener('transitionend', () => {
   isAnimating = false;
 });
 
-document.getElementById('carousel-next').addEventListener('click', () => { clearCauto(); goC(cIdx + 1); startCauto(); });
-document.getElementById('carousel-prev').addEventListener('click', () => { clearCauto(); goC(cIdx - 1); startCauto(); });
+['carousel-next','carousel-prev'].forEach(id => {
+  const btn = document.getElementById(id);
+  const dir = id === 'carousel-next' ? 1 : -1;
+  let tapTimer = null;
+  btn.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') btn.classList.add('carousel-arrow--active'); });
+  btn.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') btn.classList.remove('carousel-arrow--active'); });
+  btn.addEventListener('click', function() {
+    clearCauto(); goC(cIdx + dir); startCauto();
+    btn.classList.add('carousel-arrow--active');
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(() => btn.classList.remove('carousel-arrow--active'), 600);
+  });
+});
 
 function startCauto() { cAuto = setInterval(() => goC(cIdx + 1), 5000); }
 function clearCauto() { clearInterval(cAuto); }
