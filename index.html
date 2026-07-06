@@ -1388,10 +1388,30 @@ const mobileNav = document.getElementById('mobile-nav');
 
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 80), { passive: true });
 
+function smoothScrollTo(el, duration) {
+  const start = window.scrollY;
+  const end = el.getBoundingClientRect().top + window.scrollY;
+  const dist = end - start;
+  const t0 = performance.now();
+  function ease(t) { return t < 0.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1; }
+  (function step(now) {
+    const p = Math.min((now - t0) / duration, 1);
+    window.scrollTo(0, start + dist * ease(p));
+    if (p < 1) requestAnimationFrame(step);
+  })(t0);
+}
+
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', function(e) {
     const target = document.querySelector(this.getAttribute('href'));
-    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    if (!target) return;
+    e.preventDefault();
+    if (this.closest('#mobile-nav')) {
+      closeNav();
+      setTimeout(() => smoothScrollTo(target, 900), 50);
+    } else {
+      smoothScrollTo(target, 900);
+    }
   });
 });
 
@@ -1410,7 +1430,7 @@ function closeNav() {
   navOpen.setAttribute('aria-label', 'Отвори меню');
 }
 navOpen.addEventListener('click', () => mobileNav.classList.contains('open') ? closeNav() : openNav());
-mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+mobileNav.querySelectorAll('a:not([href^="#"])').forEach(a => a.addEventListener('click', closeNav));
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav(); });
 
 /* ============================================================
