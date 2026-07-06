@@ -1437,7 +1437,7 @@ const TESTIMONIALS = [
 
 const track    = document.getElementById('testimonials-track');
 const viewport = document.getElementById('testimonials-viewport');
-let visCount = 3, cIdx = 0, cGap = 0, cAuto, touchX0 = 0;
+let visCount = 3, cIdx = 0, cGap = 0, cAuto, touchX0 = 0, isAnimating = false;
 
 function getVis() { return window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3; }
 
@@ -1465,12 +1465,15 @@ function buildCarousel() {
     cloneA.forEach(c => track.appendChild(c));
 
     cIdx = visCount;
+    isAnimating = false;
     track.style.transition = 'none';
     track.style.transform = `translateX(-${cIdx * cGap}px)`;
   });
 }
 
 function goC(i) {
+  if (isAnimating) return;
+  isAnimating = true;
   cIdx = i;
   track.style.transition = 'transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)';
   track.style.transform = `translateX(-${cIdx * cGap}px)`;
@@ -1480,6 +1483,7 @@ track.addEventListener('transitionend', () => {
   const n = TESTIMONIALS.length;
   if (cIdx >= n + visCount) { cIdx = visCount; track.style.transition = 'none'; track.style.transform = `translateX(-${cIdx * cGap}px)`; }
   else if (cIdx < visCount) { cIdx = n + visCount - 1; track.style.transition = 'none'; track.style.transform = `translateX(-${cIdx * cGap}px)`; }
+  isAnimating = false;
 });
 
 document.getElementById('carousel-next').addEventListener('click', () => { clearCauto(); goC(cIdx + 1); startCauto(); });
