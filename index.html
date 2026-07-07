@@ -665,6 +665,10 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   text-transform: uppercase; color: var(--color-gold); margin-bottom: 6px;
 }
 .info-content { color: rgba(26,26,46,0.68); line-height: 1.7; font-size: 0.95rem; }
+.info-hours { display: flex; flex-direction: column; gap: 4px; }
+.info-hours-row { display: flex; justify-content: space-between; font-size: 0.95rem; }
+.info-hours-day { font-weight: 700; color: rgba(26,26,46,0.9); }
+.info-hours-time { color: rgba(26,26,46,0.55); }
 .info-content a { color: rgba(26,26,46,0.68); transition: color 0.2s ease; }
 .info-content a:hover { color: var(--color-sage); }
 .visit-map-heading {
@@ -720,7 +724,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .footer-contact-row a:hover { color: var(--color-gold); }
 .footer-hours-row { display: flex; justify-content: space-between; font-size: 0.88rem; color: rgba(255,255,255,0.55); padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
 .footer-hours-row:last-child { border-bottom: none; }
-.footer-hours-day { font-weight: 500; }
+.footer-hours-day { font-weight: 700; color: rgba(255,255,255,0.88); }
 .footer-hours-time { color: rgba(255,255,255,0.38); }
 .footer-bottom {
   max-width: 1200px; margin: 0 auto; padding: 16px 0;
@@ -1262,7 +1266,11 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
           </div>
           <div>
             <p class="info-label">Работно Време</p>
-            <p class="info-content">Пон – Пет: 09:30 – 20:00<br>Събота: 08:30 – 14:30<br>Неделя: Почивен ден</p>
+            <div class="info-hours">
+              <div class="info-hours-row"><span class="info-hours-day">Пон – Пет</span><span class="info-hours-time">09:30 – 20:00</span></div>
+              <div class="info-hours-row"><span class="info-hours-day">Събота</span><span class="info-hours-time">08:30 – 14:30</span></div>
+              <div class="info-hours-row"><span class="info-hours-day">Неделя</span><span class="info-hours-time">Почивен ден</span></div>
+            </div>
           </div>
         </div>
         <div class="info-block reveal reveal-delay-2">
