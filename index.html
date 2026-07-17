@@ -59,7 +59,7 @@
    RESET & BASE
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; background: #111120; }
 body {
   font-family: var(--font-sans);
   color: var(--color-slate-mid);
@@ -88,6 +88,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 .reveal-delay-5 { transition-delay: 0.5s; }
 .reveal-delay-6 { transition-delay: 0.6s; }
+.reveal-delay-7 { transition-delay: 0.7s; }
+.reveal-delay-8 { transition-delay: 0.8s; }
 
 /* ============================================================
    SHARED UTILITIES
@@ -202,7 +204,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .nav-hamburger span {
   display: block; width: 24px; height: 2px;
   background: var(--color-slate-deep); border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
 }
 .nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
@@ -264,6 +265,52 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   transition: background 0.25s ease;
 }
 .mobile-nav-cta-btn:hover { background: #3d6340; }
+
+.mobile-nav-close {
+  margin-left: auto; width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.5); border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.mobile-nav-close:hover { color: #fff; background: rgba(255,255,255,0.07); }
+.mobile-nav-close:focus-visible { outline: 2px solid var(--color-sage); outline-offset: 2px; }
+
+.mobile-nav-slogan {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 0.85rem; color: rgba(255,255,255,0.28);
+  text-align: center; padding: 18px 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  letter-spacing: 0.01em; line-height: 1.6;
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.mobile-nav.open .mobile-nav-slogan { opacity: 1; transform: none; transition-delay: 0.30s; }
+
+.mobile-nav-info {
+  padding: 14px 24px 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex; flex-direction: column; gap: 10px;
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.mobile-nav.open .mobile-nav-info { opacity: 1; transform: none; transition-delay: 0.34s; }
+.mobile-nav-info-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.77rem; color: rgba(255,255,255,0.45); line-height: 1.5;
+}
+.mobile-nav-info-item svg { flex-shrink: 0; margin-top: 1px; color: var(--color-sage); opacity: 0.8; }
+.mobile-nav-info-item a { color: rgba(255,255,255,0.45); transition: color 0.2s ease; }
+.mobile-nav-info-item a:hover { color: var(--color-sage-light); }
+.mobile-nav-info-hours {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 10px; display: flex; flex-direction: column; gap: 3px;
+}
+.mobile-nav-info-hours > div {
+  display: flex; justify-content: space-between;
+  font-size: 0.73rem; color: rgba(255,255,255,0.35);
+  padding: 0 0 0 24px;
+}
+.mobile-nav-info-hours > div span:first-child { color: rgba(255,255,255,0.5); }
 
 /* ============================================================
    HERO
@@ -819,11 +866,14 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .btn-primary, .btn-secondary { width: auto; max-width: none; padding: 10px 16px; font-size: 0.72rem; text-align: center; }
 
   /* --- STATS --- */
-  .stats-bar { height: auto; min-height: 272px; display: flex; align-items: center; padding: 16px 0; }
-  .stats-container { flex-direction: column; gap: 0; padding: 0 24px; }
-  .stat-divider { width: 36px; height: 1px; margin: 6px auto; }
-  .stat-item { padding: 12px 16px; }
-  .stat-icon { width: 20px; height: 20px; margin-bottom: 7px; }
+  .stats-bar { height: auto; min-height: unset; padding: 20px 0; }
+  .stats-container { flex-direction: row; padding: 0 10px; }
+  .stat-item { flex: 1; padding: 8px 4px; }
+  .stat-divider { width: 1px; height: 44px; margin: 0; background: rgba(44,62,80,0.11); flex-shrink: 0; }
+  .stat-icon { width: 18px; height: 18px; margin-bottom: 4px; }
+  .stat-number { font-size: 1.1rem; }
+  .stat-unit { font-size: 0.72rem; }
+  .stat-label { font-size: 0.51rem; letter-spacing: 0.09em; line-height: 1.4; }
 
   /* --- ABOUT --- */
   .section-about { padding: 80px 24px 0; }
@@ -835,8 +885,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 
   /* --- CATEGORIES --- */
   .section-categories { padding: 80px 24px 0; }
-  .categories-grid { grid-template-columns: 1fr; padding-bottom: 60px; }
-  .categories-grid .category-card:last-child { grid-column: auto; max-width: none; margin: 0; }
+  .categories-grid { grid-template-columns: 1fr 1fr; gap: 14px; padding-bottom: 60px; }
+  .categories-grid .category-card { aspect-ratio: 1; }
+  .categories-grid .category-card:last-child { grid-column: 1 / -1; aspect-ratio: 16/9; max-width: none; margin: 0; }
 
   /* --- FEATURE SECTIONS --- */
   .section-feature { padding: 60px 24px; }
@@ -848,17 +899,20 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .feature-trust-strip { margin-top: 1.25rem; padding-top: 1.1rem; gap: 8px; }
 
   /* --- TESTIMONIALS --- */
-  .section-testimonials { padding: 80px 0 0; }
+  .section-testimonials { padding: 64px 0 0; }
   .testimonials-header { padding: 0 24px; }
-  .testimonials-wrap { padding: 0 20px; display: flex; flex-direction: column; }
-  .testimonials-viewport { order: 1; }
+  .testimonials-sub { margin-bottom: 36px; }
+  .testimonials-wrap { padding: 0; display: flex; flex-direction: column; overflow: hidden; }
+  .testimonials-viewport { order: 1; overflow: visible; padding: 0 24px; }
   .carousel-arrows {
     position: static; transform: none; order: 2;
     display: flex; justify-content: center; gap: 20px;
-    padding: 24px 0 4px; pointer-events: all;
+    padding: 20px 0 4px; pointer-events: all;
   }
-  .testimonial-card { padding: 20px 22px; min-height: auto; }
-  .t-text { font-size: 0.86rem; line-height: 1.7; }
+  .testimonial-card { padding: 18px 20px; min-height: auto; }
+  .t-text { font-size: 0.83rem; line-height: 1.65; }
+  .t-stars { margin-bottom: 10px; }
+  .t-sep { margin-bottom: 10px; }
 
   /* --- FIND US --- */
   .section-visit { padding: 80px 24px; }
@@ -910,6 +964,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     <a href="#" class="mobile-nav-logo" aria-label="Млечко — начало">
       <img src="images/Mlechko-Logo.png" alt="Млечко" width="120">
     </a>
+    <button class="mobile-nav-close" id="mobile-close" aria-label="Затвори меню">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
   </div>
   <div class="mobile-nav-body">
     <ul class="mobile-nav-links">
@@ -918,6 +975,26 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       <li><a href="#testimonials">Ревюта</a></li>
       <li><a href="#visit">Намерете Ни</a></li>
     </ul>
+    <p class="mobile-nav-slogan">„Нищо повече и нищо по-малко."</p>
+    <div class="mobile-nav-info">
+      <div class="mobile-nav-info-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>бул. Пещерско шосе 26, Пловдив</span>
+      </div>
+      <div class="mobile-nav-info-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6 6l.86-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.41 15z"/></svg>
+        <a href="tel:0878232365">0878 232 365</a>
+      </div>
+      <div class="mobile-nav-info-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        <a href="mailto:lazarinrusinov@gmail.com">lazarinrusinov@gmail.com</a>
+      </div>
+      <div class="mobile-nav-info-hours">
+        <div><span>Пон – Пет</span><span>09:30 – 20:00</span></div>
+        <div><span>Събота</span><span>08:30 – 14:30</span></div>
+        <div><span>Неделя</span><span>Почивен ден</span></div>
+      </div>
+    </div>
   </div>
   <div class="mobile-nav-bottom">
     <a href="tel:0878232365" class="mobile-nav-cta-btn">
@@ -940,7 +1017,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <div class="hero-panel active" aria-hidden="false">
     <span class="slide-tagline">Специализиран Магазин · Пловдив</span>
     <h1><span class="h-line">Специализиран магазин.</span><span class="h-line">Истински вкус.</span></h1>
-    <p class="slide-sub">Пресни млечни продукти, яйца и маслини,<br>пристигат всяка сутрин директно от производителите.</p>
+    <p class="slide-sub">Пресни млечни продукти, яйца и маслини — всяка сутрин от производителя.</p>
     <div class="hero-btns">
       <a href="#categories" class="btn-primary">Нашите Продукти</a>
       <a href="#visit" class="btn-secondary">Намерете Ни</a>
@@ -949,7 +1026,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <div class="hero-panel" aria-hidden="true">
     <span class="slide-tagline">Намерете ни в Пловдив</span>
     <h1>Пловдивски дом<br>на качеството.</h1>
-    <p class="slide-sub">На бул. Пещерско шосе 26, отворени всяка сутрин с прясна доставка директно от производителя.</p>
+    <p class="slide-sub">На Пещерско шосе 26 — отворени всяка сутрин с прясна доставка.</p>
     <div class="hero-btns">
       <a href="#categories" class="btn-primary">Нашите Продукти</a>
       <a href="#visit" class="btn-secondary">Намерете Ни</a>
@@ -958,7 +1035,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <div class="hero-panel" aria-hidden="true">
     <span class="slide-tagline">Всеки Ден · Прясна Доставка</span>
     <h1><span class="h-line">Над 30 вида продукти.</span><span class="h-line">Всеки ден пресни.</span></h1>
-    <p class="slide-sub">Млечни продукти, яйца и маслини от проверени производители, доставени всяка сутрин.</p>
+    <p class="slide-sub">Над 30 продукта от проверени производители — доставени всяка сутрин.</p>
     <div class="hero-btns">
       <a href="#categories" class="btn-primary">Нашите Продукти</a>
       <a href="#visit" class="btn-secondary">Намерете Ни</a>
@@ -1028,15 +1105,15 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
      ============================================================ -->
 <section class="section-about" id="about" aria-label="За нас">
   <div class="about-inner">
-    <div class="about-collage reveal">
-      <div class="collage-img-main">
+    <div class="about-collage">
+      <div class="collage-img-main reveal">
         <img src="images/IMG_0702.jpg" alt="Екстериор на магазин Млечко" loading="lazy">
       </div>
       <div class="collage-stack">
-        <div class="collage-img-small right">
+        <div class="collage-img-small right reveal reveal-delay-1">
           <img src="images/IMG_0683.jpg" alt="Разнообразие от продукти" loading="lazy">
         </div>
-        <div class="collage-img-small">
+        <div class="collage-img-small reveal reveal-delay-2">
           <img src="images/Side%20of%20store%20image.jpg" alt="Страна на магазина" loading="lazy">
         </div>
       </div>
@@ -1045,23 +1122,23 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       <span class="eyebrow reveal">За Нас</span>
       <h2 class="reveal reveal-delay-1">Пресен продукт,<br>директно от производителя.</h2>
       <p class="reveal reveal-delay-2 about-text-desktop">Млечко работи от 2010 година с едно убеждение: качествената храна не трябва да бъде лукс. Всяка сутрин пресни млечни продукти, яйца и маслини пристигат директно от проверени производители, без посредници и надценки.</p>
-      <p class="reveal reveal-delay-2 about-text-desktop">Специализираме се в едно нещо и го правим с последователност: да свържем пловдивските домакинства с истински пресни продукти, всяка сутрин, без отстъпки от качеството.</p>
+      <p class="reveal reveal-delay-3 about-text-desktop">Специализираме се в едно нещо и го правим с последователност: да свържем пловдивските домакинства с истински пресни продукти, всяка сутрин, без отстъпки от качеството.</p>
       <p class="reveal reveal-delay-2 about-text-mobile">Качествена храна не трябва да бъде лукс. Пресни млечни продукти, яйца и маслини, доставени всяка сутрин директно от производителите, без посредници.</p>
       <ul class="about-bullets">
         <li class="reveal reveal-delay-3">
           <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           Доставка директно от производителя
         </li>
-        <li class="reveal reveal-delay-3">
+        <li class="reveal reveal-delay-4">
           <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           Гарантирана прясност всяка сутрин
         </li>
-        <li class="reveal reveal-delay-3">
+        <li class="reveal reveal-delay-5">
           <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           Доверен от стотици пловдивски семейства
         </li>
       </ul>
-      <a href="#visit" class="about-cta reveal reveal-delay-4">
+      <a href="#visit" class="about-cta reveal reveal-delay-6">
         Намерете ни
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
@@ -1136,16 +1213,16 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     <div class="feature-image reveal">
       <img src="Enhanced%20images/All%20Dairy%20Products.png" alt="Разнообразие от млечни продукти" loading="lazy">
     </div>
-    <div class="feature-text reveal reveal-delay-1">
-      <span class="eyebrow">Млечни Продукти</span>
-      <h3>Над 30 вида млечни продукти</h3>
-      <p>Прясно мляко, кисело мляко, сирене, кашкавал и масло, доставени тази сутрин директно от производителя.</p>
+    <div class="feature-text">
+      <span class="eyebrow reveal reveal-delay-1">Млечни Продукти</span>
+      <h3 class="reveal reveal-delay-2">Над 30 вида млечни продукти</h3>
+      <p class="reveal reveal-delay-3">Прясно мляко, кисело мляко, сирене, кашкавал и масло, доставени тази сутрин директно от производителя.</p>
       <ul class="feature-reasons">
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Ежедневна доставка до 6:00</li>
-        <li class="reveal reveal-delay-3"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Директно от производителя, без складове</li>
-        <li class="reveal reveal-delay-4"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Над 30 вида, намерете любимото си</li>
+        <li class="reveal reveal-delay-4"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Ежедневна доставка до 6:00</li>
+        <li class="reveal reveal-delay-5"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Директно от производителя, без складове</li>
+        <li class="reveal reveal-delay-6"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Над 30 вида, намерете любимото си</li>
       </ul>
-      <div class="feature-trust-strip reveal reveal-delay-5">
+      <div class="feature-trust-strip reveal reveal-delay-7">
         <span>Доставка до 06:00 всяка сутрин</span>
         <span>Без складиране · директно от производителя</span>
         <span>Кисело мляко, сирена, масло, кашкавал и още</span>
@@ -1163,16 +1240,16 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     <div class="feature-image reveal">
       <img src="Enhanced%20images/Featured-Eggs.png" alt="Пресни яйца от ферма" loading="lazy">
     </div>
-    <div class="feature-text reveal reveal-delay-1">
-      <span class="eyebrow">Пресни Яйца</span>
-      <h3>Пресни яйца, събрани днес</h3>
-      <p>Яйца от малки семейни ферми, доставени всяка сутрин.</p>
+    <div class="feature-text">
+      <span class="eyebrow reveal reveal-delay-1">Пресни Яйца</span>
+      <h3 class="reveal reveal-delay-2">Пресни яйца, събрани днес</h3>
+      <p class="reveal reveal-delay-3">Яйца от малки семейни ферми, доставени всяка сутрин.</p>
       <ul class="feature-reasons">
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> От малки, проверени ферми</li>
-        <li class="reveal reveal-delay-3"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Събрани същата сутрин</li>
-        <li class="reveal reveal-delay-4"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Кокошки от малки стопанства</li>
+        <li class="reveal reveal-delay-4"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> От малки, проверени ферми</li>
+        <li class="reveal reveal-delay-5"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Събрани същата сутрин</li>
+        <li class="reveal reveal-delay-6"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Кокошки от малки стопанства</li>
       </ul>
-      <div class="feature-trust-strip reveal reveal-delay-5">
+      <div class="feature-trust-strip reveal reveal-delay-7">
         <span>Събрани в деня на доставката</span>
         <span>Малки семейни ферми · от доверени стопани</span>
         <span>Категории: M / L / XL и домашни</span>
@@ -1190,16 +1267,16 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     <div class="feature-image reveal">
       <img src="Enhanced%20images/featured-Olives.png" alt="Маслини и деликатеси" loading="lazy">
     </div>
-    <div class="feature-text reveal reveal-delay-1">
-      <span class="eyebrow">Средиземноморски Избор</span>
-      <h3>Маслини и деликатеси от цял свят</h3>
-      <p>Маслини от Гърция, Испания и Близкия Изток, в различни сортове, на кило или предварително опаковани.</p>
+    <div class="feature-text">
+      <span class="eyebrow reveal reveal-delay-1">Средиземноморски Избор</span>
+      <h3 class="reveal reveal-delay-2">Маслини и деликатеси от цял свят</h3>
+      <p class="reveal reveal-delay-3">Маслини от Гърция, Испания и Близкия Изток, в различни сортове, на кило или предварително опаковани.</p>
       <ul class="feature-reasons">
-        <li class="reveal reveal-delay-2"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Подбрани от Гърция, Испания и Близкия Изток</li>
-        <li class="reveal reveal-delay-3"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> На кило или предварително опаковани</li>
-        <li class="reveal reveal-delay-4"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Нови сортове редовно, питайте ни на място</li>
+        <li class="reveal reveal-delay-4"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Подбрани от Гърция, Испания и Близкия Изток</li>
+        <li class="reveal reveal-delay-5"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> На кило или предварително опаковани</li>
+        <li class="reveal reveal-delay-6"><svg class="feature-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Нови сортове редовно, питайте ни на място</li>
       </ul>
-      <div class="feature-trust-strip reveal reveal-delay-5">
+      <div class="feature-trust-strip reveal reveal-delay-7">
         <span>Зелени, черни и мариновани сортове</span>
         <span>На кило или предварително опаковани</span>
         <span>Питайте на място за актуалния асортимент</span>
@@ -1260,7 +1337,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
             <p class="info-content">бул. Пещерско шосе 26<br>гк. Младежки хълм, 4002 Пловдив</p>
           </div>
         </div>
-        <div class="info-block reveal reveal-delay-2">
+        <div class="info-block reveal reveal-delay-3">
           <div class="info-icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
@@ -1273,7 +1350,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
             </div>
           </div>
         </div>
-        <div class="info-block reveal reveal-delay-2">
+        <div class="info-block reveal reveal-delay-4">
           <div class="info-icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6 6l.86-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.41 15z"/></svg>
           </div>
@@ -1282,7 +1359,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
             <p class="info-content"><a href="tel:0878232365">0878 232 365</a></p>
           </div>
         </div>
-        <div class="info-block reveal reveal-delay-2">
+        <div class="info-block reveal reveal-delay-5">
           <div class="info-icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
           </div>
@@ -1293,7 +1370,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
         </div>
       </div>
     </div>
-    <div class="visit-map reveal reveal-delay-2">
+    <div class="visit-map reveal reveal-delay-3">
       <span class="visit-map-heading">Намерете ни на картата</span>
       <iframe src="https://maps.google.com/maps?q=бул.+Пещерско+шосе+26,+Пловдив&output=embed"
               title="Местоположение на Млечко в Пловдив"
@@ -1404,10 +1481,10 @@ function smoothScrollTo(el) {
   const dist = end - start;
   const isMobile = window.matchMedia('(pointer: coarse)').matches;
   const duration = isMobile
-    ? Math.min(2200, Math.max(1400, Math.abs(dist) * 0.8))
-    : Math.min(1200, Math.max(700, Math.abs(dist) * 0.4));
+    ? Math.min(900, Math.max(450, Math.abs(dist) * 0.35))
+    : Math.min(750, Math.max(350, Math.abs(dist) * 0.25));
   const t0 = performance.now();
-  function ease(t) { return t < 0.5 ? 8*t*t*t*t : 1 - 8*(--t)*t*t*t; }
+  function ease(t) { return 1 - Math.pow(1 - t, 3); }
   (function step(now) {
     const p = Math.min((now - t0) / duration, 1);
     window.scrollTo(0, start + dist * ease(p));
@@ -1444,6 +1521,7 @@ function closeNav() {
   navOpen.setAttribute('aria-label', 'Отвори меню');
 }
 navOpen.addEventListener('click', () => mobileNav.classList.contains('open') ? closeNav() : openNav());
+document.getElementById('mobile-close').addEventListener('click', closeNav);
 mobileNav.querySelectorAll('a:not([href^="#"])').forEach(a => a.addEventListener('click', closeNav));
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav(); });
 
@@ -1502,7 +1580,10 @@ function buildCarousel() {
     const cards = Array.from(track.querySelectorAll('.testimonial-card'));
     const gap = 24;
     const vw = viewport.offsetWidth;
-    const cw = (vw - gap * (visCount - 1)) / visCount;
+    const isMobileCarousel = window.innerWidth < 768;
+    const cw = isMobileCarousel
+      ? window.innerWidth * 0.85 - 48
+      : (vw - gap * (visCount - 1)) / visCount;
     cards.forEach(c => { c.style.width = cw + 'px'; c.style.flexShrink = '0'; });
     cGap = cw + gap;
 
