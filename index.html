@@ -936,7 +936,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .testimonials-header { padding: 0 24px; }
   .testimonials-sub { margin-bottom: 36px; }
   .testimonials-wrap { padding: 0; display: flex; flex-direction: column; overflow: hidden; }
-  .testimonials-viewport { order: 1; overflow: visible; padding: 0 24px; }
+  .testimonials-viewport { order: 1; overflow: hidden; padding: 0; }
   .carousel-arrows {
     position: static; transform: none; order: 2;
     display: flex; justify-content: center; gap: 20px;
@@ -1602,7 +1602,7 @@ const TESTIMONIALS = [
 
 const track    = document.getElementById('testimonials-track');
 const viewport = document.getElementById('testimonials-viewport');
-let visCount = 3, cIdx = 0, cGap = 0, cAuto, touchX0 = 0, isAnimating = false, prevW = window.innerWidth;
+let visCount = 3, cIdx = 0, cGap = 0, cOffset = 0, cAuto, touchX0 = 0, isAnimating = false, prevW = window.innerWidth;
 
 function getVis() { return window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3; }
 
@@ -1622,10 +1622,11 @@ function buildCarousel() {
     const vw = viewport.offsetWidth;
     const isMobileCarousel = window.innerWidth < 768;
     const cw = isMobileCarousel
-      ? window.innerWidth * 0.85 - 48
+      ? window.innerWidth * 0.78
       : (vw - gap * (visCount - 1)) / visCount;
     cards.forEach(c => { c.style.width = cw + 'px'; c.style.flexShrink = '0'; });
     cGap = cw + gap;
+    cOffset = isMobileCarousel ? Math.round((viewport.offsetWidth - cw) / 2) : 0;
 
     const cloneB = cards.slice(-visCount).map(c => { const cl = c.cloneNode(true); cl.setAttribute('aria-hidden','true'); return cl; });
     const cloneA = cards.slice(0, visCount).map(c => { const cl = c.cloneNode(true); cl.setAttribute('aria-hidden','true'); return cl; });
@@ -1635,7 +1636,7 @@ function buildCarousel() {
     cIdx = visCount;
     isAnimating = false;
     track.style.transition = 'none';
-    track.style.transform = `translateX(-${cIdx * cGap}px)`;
+    track.style.transform = `translateX(${-(cIdx * cGap) + cOffset}px)`;
   });
 }
 
@@ -1644,13 +1645,13 @@ function goC(i) {
   isAnimating = true;
   cIdx = i;
   track.style.transition = 'transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)';
-  track.style.transform = `translateX(-${cIdx * cGap}px)`;
+  track.style.transform = `translateX(${-(cIdx * cGap) + cOffset}px)`;
 }
 
 track.addEventListener('transitionend', () => {
   const n = TESTIMONIALS.length;
-  if (cIdx >= n + visCount) { cIdx = visCount; track.style.transition = 'none'; track.style.transform = `translateX(-${cIdx * cGap}px)`; }
-  else if (cIdx < visCount) { cIdx = n + visCount - 1; track.style.transition = 'none'; track.style.transform = `translateX(-${cIdx * cGap}px)`; }
+  if (cIdx >= n + visCount) { cIdx = visCount; track.style.transition = 'none'; track.style.transform = `translateX(${-(cIdx * cGap) + cOffset}px)`; }
+  else if (cIdx < visCount) { cIdx = n + visCount - 1; track.style.transition = 'none'; track.style.transform = `translateX(${-(cIdx * cGap) + cOffset}px)`; }
   isAnimating = false;
 });
 
