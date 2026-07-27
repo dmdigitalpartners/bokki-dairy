@@ -79,6 +79,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .reveal {
   opacity: 0;
   transform: translateY(30px);
+  will-change: opacity, transform;
   transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -921,23 +922,12 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .category-content h3 { font-size: 1rem; margin-bottom: 4px; }
   .category-content p { font-size: 0.75rem; }
   .category-cta { margin-top: 6px; font-size: 0.65rem; }
-  @keyframes revealCard {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .category-card.reveal:not(.visible) { opacity: 0; transform: translateY(30px); }
-  .category-card.reveal.visible { animation: revealCard 0.7s cubic-bezier(0.16,1,0.3,1) backwards; }
-  .category-card.reveal-delay-1.visible { animation-delay: 0.1s; }
-  .category-card.reveal-delay-2.visible { animation-delay: 0.2s; }
-
   /* --- FEATURE SECTIONS --- */
   .section-feature { padding: 60px 24px; }
   .feature-inner { display: flex; flex-direction: column; gap: 28px; align-items: stretch; }
   .feature-image { order: 2; width: 100%; }
   .feature-text { order: 1; width: 100%; }
   .feature-image img { aspect-ratio: 16/9; width: 100%; }
-  .feature-image.reveal { will-change: opacity, transform; }
-  .feature-image.reveal.visible { will-change: auto; }
   .feature-text h3 { font-size: 1.45rem; }
   .feature-trust-strip { margin-top: 1.25rem; padding-top: 1.1rem; gap: 8px; }
 
@@ -1506,7 +1496,11 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
    ============================================================ */
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+      setTimeout(() => { e.target.style.willChange = 'auto'; }, 1600);
+    }
   });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
