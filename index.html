@@ -226,7 +226,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 .mobile-nav-logo img { width: 120px; height: auto; opacity: 0.9; }
-.mobile-nav-body { overflow-y: hidden; }
+.mobile-nav-body { flex: 1; overflow-y: hidden; }
 .mobile-nav-links {
   list-style: none; width: 100%; padding: 8px 0;
   display: flex; flex-direction: column; gap: 0;
@@ -292,6 +292,24 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   transition: opacity 0.3s ease 0.33s, transform 0.3s ease 0.33s;
 }
 .mobile-nav.open .mobile-nav-socials { opacity: 1; transform: none; }
+.mobile-nav-socials a[aria-label="Viber"] { background: rgba(255,255,255,0.95); border-color: rgba(255,255,255,0.2); }
+.mobile-nav-socials a[aria-label="Viber"] img { mix-blend-mode: multiply; }
+.mobile-nav-compact-info {
+  padding: 12px 24px 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex; flex-direction: column; gap: 6px;
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 0.3s ease 0.36s, transform 0.3s ease 0.36s;
+}
+.mobile-nav.open .mobile-nav-compact-info { opacity: 1; transform: none; }
+.mobile-nav-compact-info-address {
+  font-size: 0.75rem; color: rgba(255,255,255,0.38);
+  display: flex; align-items: center; gap: 6px;
+}
+.mobile-nav-compact-info-address svg { flex-shrink: 0; color: var(--color-sage); opacity: 0.7; }
+.mobile-nav-compact-hours { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; }
+.mobile-nav-compact-hours-row { display: flex; justify-content: space-between; font-size: 0.72rem; color: rgba(255,255,255,0.32); }
+.mobile-nav-compact-hours-row span:first-child { color: rgba(255,255,255,0.5); font-weight: 600; }
 
 .mobile-nav-info {
   padding: 14px 24px 20px;
@@ -993,6 +1011,17 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       <a href="viber://chat?number=%2B359878232365" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Viber">
         <img src="images/Viber%20Icon.png" alt="Viber" width="28" height="28" aria-hidden="true">
       </a>
+    </div>
+    <div class="mobile-nav-compact-info">
+      <div class="mobile-nav-compact-info-address">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>бул. Пещерско шосе 26, Пловдив</span>
+      </div>
+      <div class="mobile-nav-compact-hours">
+        <div class="mobile-nav-compact-hours-row"><span>Пон – Пет:</span><span>09:30 – 20:00</span></div>
+        <div class="mobile-nav-compact-hours-row"><span>Събота:</span><span>08:30 – 14:30</span></div>
+        <div class="mobile-nav-compact-hours-row"><span>Неделя:</span><span>Почивен ден</span></div>
+      </div>
     </div>
   </div>
   <div class="mobile-nav-bottom">
