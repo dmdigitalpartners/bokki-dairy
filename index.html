@@ -838,6 +838,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   .reveal { opacity: 1; transform: none; }
+  .category-card.reveal { opacity: 1; transform: none; }
 }
 
 /* ============================================================
@@ -918,8 +919,14 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .category-content h3 { font-size: 1rem; margin-bottom: 4px; }
   .category-content p { font-size: 0.75rem; }
   .category-cta { margin-top: 6px; font-size: 0.65rem; }
-  .category-card.reveal { transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
-  .category-card.reveal.visible { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+  @keyframes revealCard {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .category-card.reveal:not(.visible) { opacity: 0; transform: translateY(30px); }
+  .category-card.reveal.visible { animation: revealCard 0.7s cubic-bezier(0.16,1,0.3,1) backwards; }
+  .category-card.reveal-delay-1.visible { animation-delay: 0.1s; }
+  .category-card.reveal-delay-2.visible { animation-delay: 0.2s; }
 
   /* --- FEATURE SECTIONS --- */
   .section-feature { padding: 60px 24px; }
