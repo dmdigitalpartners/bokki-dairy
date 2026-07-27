@@ -1602,7 +1602,7 @@ const TESTIMONIALS = [
 
 const track    = document.getElementById('testimonials-track');
 const viewport = document.getElementById('testimonials-viewport');
-let visCount = 3, cIdx = 0, cGap = 0, cAuto, touchX0 = 0, isAnimating = false;
+let visCount = 3, cIdx = 0, cGap = 0, cAuto, touchX0 = 0, isAnimating = false, prevW = window.innerWidth;
 
 function getVis() { return window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3; }
 
@@ -1679,7 +1679,11 @@ viewport.addEventListener('touchend',   e => { const d = touchX0 - e.changedTouc
 
 buildCarousel();
 startCauto();
-window.addEventListener('resize', () => { clearCauto(); buildCarousel(); startCauto(); });
+window.addEventListener('resize', () => {
+  if (window.innerWidth === prevW) return;
+  prevW = window.innerWidth;
+  clearCauto(); buildCarousel(); startCauto();
+});
 
 </script>
 
