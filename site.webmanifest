@@ -1,0 +1,13 @@
+{
+  "name": "Млечко",
+  "short_name": "Млечко",
+  "description": "Специализиран магазин за пресни млечни продукти, яйца и маслини в Пловдив.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#2C3E50",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
