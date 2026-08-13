@@ -99,7 +99,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .reveal-delay-5 { transition-delay: 0.5s; }
 .reveal-delay-6 { transition-delay: 0.6s; }
 .reveal-delay-7 { transition-delay: 0.7s; }
-.reveal-delay-8 { transition-delay: 0.8s; }
 
 /* ============================================================
    SHARED UTILITIES
@@ -146,7 +145,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   padding: 0 60px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 80px;
   background: rgba(250,247,242,0.97);
   backdrop-filter: blur(12px);
@@ -321,31 +319,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .mobile-nav-compact-hours-row { display: flex; justify-content: space-between; font-size: 0.72rem; color: rgba(255,255,255,0.32); }
 .mobile-nav-compact-hours-row span:first-child { color: rgba(255,255,255,0.5); font-weight: 600; }
 
-.mobile-nav-info {
-  padding: 14px 24px 20px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  display: flex; flex-direction: column; gap: 10px;
-  opacity: 0; transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-.mobile-nav.open .mobile-nav-info { opacity: 1; transform: none; transition-delay: 0.34s; }
-.mobile-nav-info-item {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 0.77rem; color: rgba(255,255,255,0.45); line-height: 1.5;
-}
-.mobile-nav-info-item svg { flex-shrink: 0; margin-top: 1px; color: var(--color-sage); opacity: 0.8; }
-.mobile-nav-info-item a { color: rgba(255,255,255,0.45); transition: color 0.2s ease; }
-.mobile-nav-info-item a:hover { color: var(--color-sage-light); }
-.mobile-nav-info-hours {
-  border-top: 1px solid rgba(255,255,255,0.05);
-  padding-top: 10px; display: flex; flex-direction: column; gap: 3px;
-}
-.mobile-nav-info-hours > div {
-  display: flex; justify-content: space-between;
-  font-size: 0.73rem; color: rgba(255,255,255,0.35);
-  padding: 0 0 0 24px;
-}
-.mobile-nav-info-hours > div span:first-child { color: rgba(255,255,255,0.5); }
 
 /* ============================================================
    HERO
@@ -547,36 +520,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 }
 .collage-img-small:hover { transform: translateY(-4px); box-shadow: 0 22px 56px rgba(26,26,46,0.4); }
 .collage-img-small img { width: 100%; height: 100%; object-fit: cover; }
-.collage-img-small.left { display: none; }
-.collage-img-small.right { }
 .collage-stack { display: flex; flex-direction: column; gap: 16px; margin-top: 48px; }
 .collage-stack .collage-img-small { margin-top: 0; aspect-ratio: 4/3; }
-.collage-badge {
-  position: absolute; bottom: 20px; left: 50%;
-  transform: translateX(-50%);
-  background: var(--color-gold);
-  border-radius: 14px; padding: 20px 26px;
-  text-align: center; z-index: 2;
-  box-shadow: 0 10px 32px rgba(200,169,110,0.45);
-  white-space: nowrap;
-}
-.collage-badge-label {
-  display: block; font-family: var(--font-sans);
-  font-size: 0.68rem; font-weight: 600;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: #2C3E50; margin-bottom: 4px;
-}
-.collage-badge-num {
-  display: block; font-family: var(--font-display);
-  font-size: 3rem; font-weight: 700;
-  color: #fff; line-height: 1;
-}
-.collage-badge-sub {
-  display: block; font-family: var(--font-sans);
-  font-size: 0.8rem; font-weight: 600;
-  color: rgba(255,255,255,0.9); margin-top: 4px;
-  letter-spacing: 0.06em; text-transform: uppercase;
-}
 
 /* ============================================================
    PRODUCT CATEGORIES
@@ -645,34 +590,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .feature-reasons { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
 .feature-reasons li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.95rem; line-height: 1.5; }
 .feature-check { width: 18px; height: 18px; flex-shrink: 0; color: var(--color-sage-light); margin-top: 2px; }
-.feature-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  color: var(--color-sage); font-weight: 500; font-size: 0.95rem;
-  transition: gap 0.2s ease;
-}
-.feature-link:hover { gap: 10px; }
-.feature-cta-group {
-  display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 28px;
-}
-.feature-btn-primary {
-  display: inline-flex; align-items: center;
-  background: var(--color-sage); color: #fff;
-  font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600;
-  letter-spacing: 0.04em; text-transform: uppercase;
-  padding: 11px 24px; border-radius: 3px;
-  transition: background 0.25s ease, transform 0.2s ease;
-}
-.feature-btn-primary:hover { background: var(--color-sage-light); transform: translateY(-2px); }
-.feature-btn-secondary {
-  display: inline-flex; align-items: center;
-  background: transparent;
-  border: 1.5px solid var(--color-slate-deep); color: var(--color-slate-deep);
-  font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600;
-  letter-spacing: 0.04em; text-transform: uppercase;
-  padding: 11px 24px; border-radius: 3px;
-  transition: border-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
-}
-.feature-btn-secondary:hover { border-color: var(--color-sage); color: var(--color-sage); transform: translateY(-2px); }
 .feature-divider { max-width: 1200px; margin: 0 auto; height: 1px; background: var(--color-gold-light); opacity: 0.5; }
 .feature-trust-strip {
   display: flex; flex-direction: column; gap: 10px;
@@ -867,8 +784,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .hero-panel { padding: 90px 40px 48px; }
   .section-about { padding: 96px 48px 0; }
   .about-inner { grid-template-columns: 1fr; gap: 48px; }
-  .collage-badge { bottom: 20px; left: 50%; padding: 16px 22px; }
-  .collage-badge-num { font-size: 2.4rem; }
   .section-categories { padding: 96px 48px 0; }
   .categories-grid { grid-template-columns: repeat(2,1fr); }
   .categories-grid .category-card:last-child { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
@@ -980,24 +895,26 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
      NAVIGATION
      ============================================================ -->
 <header class="nav" id="nav" role="banner">
-  <a href="#" class="nav-logo" aria-label="Млечко — начало">
-    <img src="images/Mlechko-Logo.png" alt="Млечко" width="170">
-  </a>
-  <nav aria-label="Основна навигация">
-    <ul class="nav-links">
-      <li><a href="#categories">Продукти</a></li>
-      <li><a href="#about">За Нас</a></li>
-      <li><a href="#testimonials">Ревюта</a></li>
-      <li><a href="#visit">Намерете Ни</a></li>
-    </ul>
-  </nav>
-  <a href="tel:0878232365" class="nav-cta">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6 6l.86-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.41 15z"/></svg>
-    Свържете се
-  </a>
-  <button class="nav-hamburger" id="nav-open" aria-label="Отвори меню" aria-expanded="false" aria-controls="mobile-nav">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="Млечко — начало">
+      <img src="images/Mlechko-Logo.png" alt="Млечко" width="170">
+    </a>
+    <nav aria-label="Основна навигация">
+      <ul class="nav-links">
+        <li><a href="#categories">Продукти</a></li>
+        <li><a href="#about">За Нас</a></li>
+        <li><a href="#testimonials">Ревюта</a></li>
+        <li><a href="#visit">Намерете Ни</a></li>
+      </ul>
+    </nav>
+    <a href="tel:0878232365" class="nav-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.87a16 16 0 0 0 6 6l.86-1.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.41 15z"/></svg>
+      Свържете се
+    </a>
+    <button class="nav-hamburger" id="nav-open" aria-label="Отвори меню" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
 <!-- MOBILE NAV -->
@@ -1019,14 +936,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     </ul>
     <p class="mobile-nav-slogan">„Нищо повече и нищо по-малко."</p>
     <div class="mobile-nav-socials">
-      <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-      </a>
-      <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      </a>
+      <!-- TODO: add Facebook and Instagram links once real profile URLs are available -->
       <a href="viber://chat?number=%2B359878232365" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Viber">
-        <img src="images/Viber%20Icon.png" alt="Viber" aria-hidden="true">
+        <img src="images/Viber%20Icon.png" alt="" aria-hidden="true">
       </a>
     </div>
     <div class="mobile-nav-compact-info">
@@ -1442,14 +1354,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       </div>
       <p class="footer-tagline">„Нищо повече и нищо по-малко."</p>
       <div class="footer-socials">
-        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        </a>
+        <!-- TODO: add Facebook and Instagram links once real profile URLs are available -->
         <a href="viber://chat?number=%2B359878232365" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Viber">
-          <img src="images/Viber%20Icon.png" alt="Viber" aria-hidden="true">
+          <img src="images/Viber%20Icon.png" alt="" aria-hidden="true">
         </a>
       </div>
     </div>
@@ -1514,6 +1421,13 @@ const revealObs = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 if (navigator.webdriver) document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+let _revealResizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(_revealResizeTimer);
+  _revealResizeTimer = setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObs.observe(el));
+  }, 200);
+}, { passive: true });
 
 /* ============================================================
    NAVIGATION
@@ -1543,7 +1457,14 @@ function smoothScrollTo(el) {
 
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', function(e) {
-    const target = document.querySelector(this.getAttribute('href'));
+    const href = this.getAttribute('href');
+    if (!href || href === '#') {
+      e.preventDefault();
+      if (this.closest('#mobile-nav')) closeNav();
+      smoothScrollTo(document.body);
+      return;
+    }
+    const target = document.querySelector(href);
     if (!target) return;
     e.preventDefault();
     if (this.closest('#mobile-nav')) {
