@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2C3E50">
+  <meta name="robots" content="noindex">
+  <title>404 — Страницата не е намерена | Млечко</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-cream:       #FAF7F2;
+      --color-warm-white:  #FFFFFF;
+      --color-slate-deep:  #2C3E50;
+      --color-slate-mid:   #4A5568;
+      --color-sage:        #7C9A7E;
+      --color-sage-light:  #A8C5A0;
+      --color-gold:        #C8A96E;
+      --color-gold-light:  #E8D5B0;
+      --color-charcoal:    #1A1A2E;
+      --color-mist:        #F0EDE8;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-sans:    'Inter', system-ui, sans-serif;
+    }
+
+    html {
+      background: var(--color-charcoal);
+      min-height: 100%;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-cream);
+      color: var(--color-slate-deep);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.25rem;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 520px;
+      width: 100%;
+      gap: 0;
+    }
+
+    /* Logo */
+    .logo-wrap {
+      margin-bottom: 2.75rem;
+    }
+    .logo-wrap img {
+      width: 160px;
+      height: auto;
+      display: block;
+    }
+
+    /* Decorative divider above 404 */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      width: 100%;
+      justify-content: center;
+    }
+    .divider-line {
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: var(--color-gold-light);
+    }
+    .divider-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--color-gold);
+    }
+
+    /* 404 number */
+    .error-code {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 18vw, 7.5rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1;
+      color: var(--color-gold);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+      /* layered text shadow for depth */
+      text-shadow:
+        2px 3px 0px rgba(200, 169, 110, 0.18),
+        0 8px 24px rgba(200, 169, 110, 0.12);
+    }
+
+    /* Heading */
+    .heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 4.5vw, 1.9rem);
+      font-weight: 600;
+      color: var(--color-slate-deep);
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+      margin-bottom: 1rem;
+    }
+
+    /* Subline */
+    .subline {
+      font-family: var(--font-sans);
+      font-size: 0.975rem;
+      font-weight: 400;
+      color: var(--color-slate-mid);
+      line-height: 1.7;
+      text-wrap: balance;
+      max-width: 360px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Buttons */
+    .btn-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      padding: 0.65rem 1.4rem;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease, transform 0.15s ease, box-shadow 0.22s ease;
+      cursor: pointer;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn:focus-visible {
+      outline: 2px solid var(--color-sage);
+      outline-offset: 3px;
+    }
+
+    .btn-primary {
+      background: #4d7a50;
+      color: #fff;
+      border: 1.5px solid #4d7a50;
+      box-shadow: 0 2px 8px rgba(77, 122, 80, 0.18);
+    }
+    .btn-primary:hover {
+      background: #3d6340;
+      border-color: #3d6340;
+      box-shadow: 0 4px 14px rgba(77, 122, 80, 0.28);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--color-slate-deep);
+      border: 1.5px solid var(--color-gold-light);
+    }
+    .btn-outline:hover {
+      border-color: var(--color-sage);
+      color: var(--color-sage);
+      background: rgba(124, 154, 126, 0.06);
+    }
+
+    /* Footer credit */
+    .page-footer {
+      margin-top: 3.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      color: var(--color-gold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 400px) {
+      .btn-row { flex-direction: column; align-items: stretch; }
+      .btn { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="logo-wrap">
+      <img src="images/Mlechko-Logo.png" alt="Млечко логотип">
+    </div>
+
+    <div class="divider" aria-hidden="true">
+      <span class="divider-line"></span>
+      <span class="divider-dot"></span>
+      <span class="divider-line"></span>
+    </div>
+
+    <p class="error-code" aria-label="Грешка 404">404</p>
+
+    <h1 class="heading">Страницата не е намерена</h1>
+
+    <p class="subline">Изглежда тази страница не съществува. Разгледайте нашите продукти или се свържете с нас.</p>
+
+    <div class="btn-row">
+      <a href="/" class="btn btn-primary">Начало</a>
+      <a href="/#categories" class="btn btn-outline">Продукти</a>
+      <a href="/#visit" class="btn btn-outline">Намерете ни</a>
+    </div>
+
+    <p class="page-footer">Млечко · Пловдив</p>
+
+  </div>
+</body>
+</html>
