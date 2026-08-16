@@ -55,7 +55,7 @@
   top: 1rem;
   z-index: 9999;
   padding: 12px 20px;
-  background: var(--color-sage);
+  background: #3d6340;
   color: #fff;
   font-family: var(--font-sans);
   font-size: 0.9rem;
@@ -316,7 +316,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 }
 .mobile-nav-compact-info-address svg { flex-shrink: 0; color: var(--color-sage); opacity: 0.7; }
 .mobile-nav-compact-hours { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; }
-.mobile-nav-compact-hours-row { display: flex; justify-content: space-between; font-size: 0.72rem; color: rgba(255,255,255,0.32); }
+.mobile-nav-compact-hours-row { display: flex; justify-content: space-between; font-size: 0.72rem; color: rgba(255,255,255,0.55); }
 .mobile-nav-compact-hours-row span:first-child { color: rgba(255,255,255,0.5); font-weight: 600; }
 
 
@@ -533,13 +533,20 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   padding-bottom: 100px;
 }
 .category-card {
-  position: relative; border-radius: 10px; overflow: hidden;
+  position: relative; border-radius: 10px; overflow: visible;
   aspect-ratio: 3/4; cursor: pointer;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   box-shadow: 0 8px 24px rgba(26,26,46,0.1);
 }
 .category-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(26,26,46,0.18); }
 .category-card:hover .category-img { transform: scale(1.04); }
+.category-card a { overflow: hidden; border-radius: 10px; }
+.category-card a:focus-visible { outline: none; }
+.category-card:focus-within {
+  outline: 2px solid var(--color-sage-light);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
 .category-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
 .category-gradient {
   position: absolute; inset: 0;
@@ -549,7 +556,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .category-tag {
   display: inline-block; font-size: 0.65rem; font-weight: 600;
   letter-spacing: 0.12em; text-transform: uppercase;
-  color: #fff; background: var(--color-sage);
+  color: #fff; background: #3d6340;
   padding: 4px 10px; border-radius: 100px; margin-bottom: 10px;
 }
 .category-content h3 {
@@ -624,7 +631,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .t-text { font-style: italic; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 22px; font-size: 0.93rem; }
 .t-sep { width: 36px; height: 1px; background: var(--color-gold-light); margin-bottom: 14px; opacity: 0.6; }
 .t-name { font-weight: 600; color: var(--color-gold); font-size: 0.92rem; margin-bottom: 4px; }
-.t-location { color: rgba(255,255,255,0.4); font-size: 0.78rem; }
+.t-location { color: rgba(255,255,255,0.62); font-size: 0.78rem; }
 .carousel-arrows {
   position: absolute; top: 50%; left: 0; right: 0;
   transform: translateY(-50%); display: flex; justify-content: space-between;
@@ -667,7 +674,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .info-hours { display: flex; flex-direction: column; gap: 4px; }
 .info-hours-row { display: flex; font-size: 0.95rem; }
 .info-hours-day { font-weight: 700; color: rgba(26,26,46,0.9); min-width: 110px; }
-.info-hours-time { color: rgba(26,26,46,0.55); }
+.info-hours-time { color: rgba(26,26,46,0.80); }
 .info-content a { color: rgba(26,26,46,0.68); transition: color 0.2s ease; }
 .info-content a:hover { color: var(--color-sage); }
 .visit-map-heading {
@@ -726,7 +733,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .footer-hours-row { display: flex; justify-content: space-between; font-size: 0.88rem; color: rgba(255,255,255,0.55); padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
 .footer-hours-row:last-child { border-bottom: none; }
 .footer-hours-day { font-weight: 700; color: rgba(255,255,255,0.88); }
-.footer-hours-time { color: rgba(255,255,255,0.38); }
+.footer-hours-time { color: rgba(255,255,255,0.60); }
 .footer-bottom {
   max-width: 1200px; margin: 0 auto; padding: 16px 0;
   display: flex; justify-content: center; align-items: center; gap: 32px;
@@ -762,7 +769,12 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 /* ============================================================
    FOCUS & MOTION
    ============================================================ */
-:focus-visible { outline: 2px solid var(--color-sage); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--color-slate-deep); outline-offset: 3px; }
+.hero *:focus-visible,
+.section-about *:focus-visible,
+.section-testimonials *:focus-visible,
+.footer *:focus-visible,
+.mobile-nav *:focus-visible { outline-color: var(--color-sage-light); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -1260,7 +1272,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     <div class="testimonials-viewport" id="testimonials-viewport">
       <div class="testimonials-track" id="testimonials-track"></div>
     </div>
-    <div class="carousel-arrows" aria-label="Навигация">
+    <div class="carousel-arrows" role="group" aria-label="Навигация в отзивите">
       <button class="carousel-arrow" id="carousel-prev" aria-label="Предишен отзив">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
@@ -1362,13 +1374,15 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     </div>
     <div class="reveal reveal-delay-1">
       <p class="footer-col-title">Навигация</p>
-      <ul class="footer-nav">
-        <li><a href="#">Начало</a></li>
-        <li><a href="#categories">Продукти</a></li>
-        <li><a href="#about">За Нас</a></li>
-        <li><a href="#visit">Намерете Ни</a></li>
-        <li><a href="#testimonials">Ревюта</a></li>
-      </ul>
+      <nav aria-label="Навигация в футъра">
+        <ul class="footer-nav">
+          <li><a href="#">Начало</a></li>
+          <li><a href="#categories">Продукти</a></li>
+          <li><a href="#about">За Нас</a></li>
+          <li><a href="#visit">Намерете Ни</a></li>
+          <li><a href="#testimonials">Ревюта</a></li>
+        </ul>
+      </nav>
     </div>
     <div class="reveal reveal-delay-2">
       <p class="footer-col-title">Контакт</p>
@@ -1401,7 +1415,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 <!-- VIBER FAB -->
 <aside aria-label="Контакт чрез Viber">
   <a href="viber://chat?number=%2B359878232365" class="wa-fab" aria-label="Пишете ни във Viber" target="_blank" rel="noopener noreferrer">
-    <img src="images/Viber%20Icon.png" alt="Viber" aria-hidden="true">
+    <img src="images/Viber%20Icon.png" alt="" aria-hidden="true">
     <span class="wa-tooltip" aria-hidden="true">Пишете ни във Viber</span>
   </a>
 </aside>
@@ -1482,6 +1496,7 @@ function openNav() {
   document.body.style.overflow = 'hidden';
   navOpen.setAttribute('aria-expanded', 'true');
   navOpen.setAttribute('aria-label', 'Затвори меню');
+  setTimeout(() => document.getElementById('mobile-close').focus(), 50);
 }
 function closeNav() {
   mobileNav.classList.remove('open');
@@ -1493,7 +1508,17 @@ function closeNav() {
 navOpen.addEventListener('click', () => mobileNav.classList.contains('open') ? closeNav() : openNav());
 document.getElementById('mobile-close').addEventListener('click', closeNav);
 mobileNav.querySelectorAll('a:not([href^="#"])').forEach(a => a.addEventListener('click', closeNav));
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeNav(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && mobileNav.classList.contains('open')) { closeNav(); navOpen.focus(); return; }
+  if (e.key !== 'Tab' || !mobileNav.classList.contains('open')) return;
+  const focusable = Array.from(mobileNav.querySelectorAll('a, button')).filter(el => !el.closest('[aria-hidden="true"]'));
+  const first = focusable[0], last = focusable[focusable.length - 1];
+  if (e.shiftKey) {
+    if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+  } else {
+    if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+});
 
 /* ============================================================
    HERO SLIDESHOW
