@@ -302,7 +302,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 }
 .nav-cta svg { flex-shrink: 0; }
 .nav-cta:hover {
-  background: var(--color-sage-light);
+  background: #3d6340;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(124,154,126,0.3);
 }
@@ -353,6 +353,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .mobile-nav.open .mobile-nav-links li:nth-child(2) { opacity:1; transform:none; transition-delay:0.12s; }
 .mobile-nav.open .mobile-nav-links li:nth-child(3) { opacity:1; transform:none; transition-delay:0.18s; }
 .mobile-nav.open .mobile-nav-links li:nth-child(4) { opacity:1; transform:none; transition-delay:0.24s; }
+.mobile-nav.open .mobile-nav-links li:nth-child(5) { opacity:1; transform:none; transition-delay:0.30s; }
 .mobile-nav-links a {
   font-size: 1.25rem; font-weight: 500; color: rgba(255,255,255,0.88);
   display: flex; align-items: center;
@@ -522,15 +523,22 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .hero-wave-wrap { position: absolute; bottom: -1px; left: 0; right: 0; z-index: 3; line-height: 0; }
 .hero-wave-wrap svg { display: block; width: 100%; height: 70px; }
 .hero-dots {
-  position: absolute; bottom: 88px; left: 50%; transform: translateX(-50%);
-  display: flex; gap: 10px; z-index: 10;
+  position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 4px; z-index: 10;
 }
 .hero-dot {
-  width: 8px; height: 8px; border-radius: 50%; border: none;
-  background: rgba(255,255,255,0.35); cursor: pointer; padding: 0;
+  width: 24px; height: 24px; border-radius: 50%; border: none;
+  background: transparent; cursor: pointer; padding: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-dot::before {
+  content: '';
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.35);
   transition: background 0.3s ease, transform 0.3s ease;
 }
-.hero-dot.active { background: #fff; transform: scale(1.3); }
+.hero-dot.active::before { background: #fff; transform: scale(1.3); }
+.hero-dot:focus-visible { outline: 2px solid #fff; outline-offset: 2px; border-radius: 50%; }
 
 /* ============================================================
    STATS BAR
@@ -632,6 +640,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
    PRODUCT CATEGORIES
    ============================================================ */
 .section-categories { background: var(--color-mist); padding: 120px 80px 0; position: relative; }
+.section-categories .eyebrow { color: #3d6340; }
 .categories-grid {
   max-width: 1200px; margin: 0 auto;
   display: grid; grid-template-columns: repeat(3,1fr); gap: 28px;
@@ -682,6 +691,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
    FEATURED PRODUCTS
    ============================================================ */
 .section-feature { position: relative; padding: 100px 80px; background: var(--color-warm-white); }
+.section-feature .eyebrow { color: #3d6340; }
 .section-feature.bg-cream { background: var(--color-cream); }
 .section-feature.bg-mist  { background: var(--color-mist); }
 .feature-inner {
@@ -762,7 +772,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   max-width: 1200px; margin: 0 auto;
   display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
 }
-.visit-info .eyebrow { color: var(--color-gold); }
+.visit-info .eyebrow { color: #8a6a2e; }
 .visit-info h2 { font-size: clamp(2rem,4vw,3rem); font-weight: 600; color: var(--color-charcoal); margin-bottom: 28px; }
 .info-blocks { display: flex; flex-direction: column; gap: 28px; margin-bottom: 0; }
 .info-block { display: flex; align-items: flex-start; gap: 16px; }
@@ -822,6 +832,46 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .map-consent-btn:focus-visible { outline: 2px solid var(--color-slate-deep); outline-offset: 3px; }
 
 /* ============================================================
+   FAQ
+   ============================================================ */
+.section-faq { background: #fff; padding: 100px 80px 120px; position: relative; }
+.section-faq .eyebrow { color: #3d6340; }
+.faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.faq-item {
+  background: var(--color-cream);
+  border: 1px solid rgba(44,62,80,0.08);
+  border-radius: 10px;
+  padding: 4px 24px;
+  box-shadow: 0 4px 16px rgba(26,26,46,0.05);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.faq-item[open] { box-shadow: 0 12px 32px rgba(26,26,46,0.1); border-color: rgba(124,154,126,0.35); }
+.faq-item summary {
+  list-style: none;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  padding: 20px 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem; font-weight: 600;
+  color: var(--color-slate-deep);
+  cursor: pointer;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '';
+  width: 9px; height: 9px; flex-shrink: 0;
+  border-right: 2px solid var(--color-sage);
+  border-bottom: 2px solid var(--color-sage);
+  transform: rotate(45deg);
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.faq-item[open] summary::after { transform: rotate(-135deg); }
+.faq-item summary:focus-visible { outline: 2px solid var(--color-sage-light); outline-offset: 4px; border-radius: 6px; }
+.faq-item summary:hover { color: #3d6340; }
+.faq-item p { padding-bottom: 22px; padding-right: 30px; color: var(--color-slate-mid); font-size: 0.95rem; line-height: 1.7; }
+.faq-item[open] p { animation: faqFadeIn 0.35s cubic-bezier(0.16,1,0.3,1); }
+@keyframes faqFadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .footer { background: #111120; padding: 96px 80px 0; position: relative; overflow: hidden; }
@@ -874,6 +924,13 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   position: relative; z-index: 2;
 }
 .footer-bottom p { font-size: 0.92rem; color: rgba(255,255,255,0.55); }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a {
+  font-size: 0.85rem; color: rgba(255,255,255,0.55);
+  text-decoration: underline; text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+.footer-legal a:hover, .footer-legal a:focus-visible { color: #fff; }
 
 /* ============================================================
    VIBER FAB
@@ -937,6 +994,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .feature-inner { gap: 48px; }
   .testimonials-wrap { padding: 0 80px; }
   .carousel-arrows { padding: 0 28px; }
+  .section-faq { padding: 80px 48px 96px; }
   .section-visit { padding: 96px 48px; }
   .visit-inner { gap: 48px; }
   .footer { padding: 80px 48px 0; }
@@ -1017,6 +1075,12 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .t-stars { margin-bottom: 10px; }
   .t-sep { margin-bottom: 10px; }
 
+  /* --- FAQ --- */
+  .section-faq { padding: 60px 20px 72px; }
+  .faq-item { padding: 2px 16px; }
+  .faq-item summary { padding: 16px 0; font-size: 0.95rem; gap: 14px; }
+  .faq-item p { padding-bottom: 18px; padding-right: 10px; font-size: 0.88rem; }
+
   /* --- FIND US --- */
   .section-visit { padding: 80px 24px; }
   .visit-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -1026,6 +1090,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .footer { padding: 64px 24px 0; }
   .footer-grid { grid-template-columns: 1fr; gap: 40px; }
   .footer-bottom { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .footer-legal { flex-wrap: wrap; gap: 6px 16px; }
 
   /* --- GENERAL --- */
   .section-header { margin-bottom: 40px; }
@@ -1050,6 +1115,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
         <li><a href="#categories">Продукти</a></li>
         <li><a href="#about">За Нас</a></li>
         <li><a href="#testimonials">Ревюта</a></li>
+        <li><a href="#faq">Въпроси</a></li>
         <li><a href="#visit">Намерете Ни</a></li>
       </ul>
     </nav>
@@ -1078,6 +1144,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
       <li><a href="#categories">Продукти</a></li>
       <li><a href="#about">За Нас</a></li>
       <li><a href="#testimonials">Ревюта</a></li>
+      <li><a href="#faq">Въпроси</a></li>
       <li><a href="#visit">Намерете Ни</a></li>
     </ul>
     <p class="mobile-nav-slogan">„Нищо повече и нищо по-малко."</p>
@@ -1113,7 +1180,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
      HERO
      ============================================================ -->
 <section class="hero" aria-label="Начална секция">
-  <video class="hero-video" autoplay muted loop playsinline aria-hidden="true" poster="images/hero-header.png">
+  <video class="hero-video" autoplay muted loop playsinline aria-hidden="true" poster="images/hero-header.jpg">
     <source src="Hero video.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay" aria-hidden="true"></div>
@@ -1423,6 +1490,43 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 </section>
 
 <!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="section-faq" id="faq" aria-label="Често задавани въпроси">
+  <div class="section-header">
+    <span class="eyebrow reveal">Въпроси</span>
+    <h2 class="reveal reveal-delay-1">Често задавани въпроси</h2>
+    <p class="reveal reveal-delay-2">Най-честите неща, които ни питат клиентите.</p>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item reveal reveal-delay-1">
+      <summary>Къде се намира магазин Млечко?</summary>
+      <p>На бул. Пещерско шосе 26, кв. Младежки хълм, Пловдив.</p>
+    </details>
+    <details class="faq-item reveal reveal-delay-2">
+      <summary>Какво е работното време?</summary>
+      <p>Понеделник – петък: 09:30 – 20:00. Събота: 08:30 – 14:30. Неделя почивен ден.</p>
+    </details>
+    <details class="faq-item reveal reveal-delay-3">
+      <summary>Какви продукти предлагате?</summary>
+      <p>Над 30 вида пресни млечни продукти, яйца и маслини, събрани от доверени производители.</p>
+    </details>
+    <details class="faq-item reveal reveal-delay-4">
+      <summary>Всеки ден ли пристигат пресни продукти?</summary>
+      <p>Да. Продуктите пристигат директно от производителите всяка сутрин до 6:00, без посредници.</p>
+    </details>
+    <details class="faq-item reveal reveal-delay-5">
+      <summary>От колко години работи Млечко?</summary>
+      <p>От 2010 година обслужваме пловдивски домакинства с прясна храна на честни цени.</p>
+    </details>
+    <details class="faq-item reveal reveal-delay-6">
+      <summary>Предлагате ли доставка до дома?</summary>
+      <p>В момента продуктите се предлагат само на място в магазина. За въпроси и наличност пишете ни на 0878 232 365 или през Viber.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============================================================
      FIND US
      ============================================================ -->
 <section class="section-visit" id="visit" aria-label="Намерете ни">
@@ -1519,6 +1623,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
           <li><a href="#about">За Нас</a></li>
           <li><a href="#visit">Намерете Ни</a></li>
           <li><a href="#testimonials">Ревюта</a></li>
+          <li><a href="#faq">Въпроси</a></li>
         </ul>
       </nav>
     </div>
@@ -1547,6 +1652,11 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   <div class="footer-bottom">
     <p>© 2026 Млечко. Всички права запазени.</p>
     <p>Специализиран магазин · Пловдив</p>
+    <nav class="footer-legal" aria-label="Правна информация">
+      <a href="/privacy-policy.html">Поверителност</a>
+      <a href="/cookie-policy.html">Бисквитки</a>
+      <a href="/terms.html">Общи условия</a>
+    </nav>
   </div>
 </footer>
 
@@ -1785,7 +1895,7 @@ window.addEventListener('resize', () => {
 document.getElementById('map-load-btn')?.addEventListener('click', function() {
   const consent = document.getElementById('map-consent');
   const iframe = document.createElement('iframe');
-  iframe.src = 'https://maps.google.com/maps?q=бул.+Пещерско+шосе+26,+Пловдив&output=embed';
+  iframe.src = 'https://maps.google.com/maps?q=Млечко,42.1406741,24.7308872&z=17&output=embed';
   iframe.title = 'Местоположение на Млечко в Пловдив';
   iframe.allowFullscreen = true;
   iframe.referrerPolicy = 'no-referrer-when-downgrade';
@@ -1817,10 +1927,50 @@ document.getElementById('map-load-btn')?.addEventListener('click', function() {
   ],
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 42.1285,
-    "longitude": 24.7495
+    "latitude": 42.1406741,
+    "longitude": 24.7308872
   },
+  "hasMap": "https://maps.app.goo.gl/TggEzeMfNA7kNr5u5",
   "image": "https://mlechko.bg/Enhanced%20images/HomePage%20Header.png"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Къде се намира магазин Млечко?",
+      "acceptedAnswer": { "@type": "Answer", "text": "На бул. Пещерско шосе 26, кв. Младежки хълм, Пловдив." }
+    },
+    {
+      "@type": "Question",
+      "name": "Какво е работното време?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Понеделник – петък: 09:30 – 20:00. Събота: 08:30 – 14:30. Неделя почивен ден." }
+    },
+    {
+      "@type": "Question",
+      "name": "Какви продукти предлагате?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Над 30 вида пресни млечни продукти, яйца и маслини, събрани от доверени производители." }
+    },
+    {
+      "@type": "Question",
+      "name": "Всеки ден ли пристигат пресни продукти?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Да. Продуктите пристигат директно от производителите всяка сутрин до 6:00, без посредници." }
+    },
+    {
+      "@type": "Question",
+      "name": "От колко години работи Млечко?",
+      "acceptedAnswer": { "@type": "Answer", "text": "От 2010 година обслужваме пловдивски домакинства с прясна храна на честни цени." }
+    },
+    {
+      "@type": "Question",
+      "name": "Предлагате ли доставка до дома?",
+      "acceptedAnswer": { "@type": "Answer", "text": "В момента продуктите се предлагат само на място в магазина. За въпроси и наличност пишете ни на 0878 232 365 или през Viber." }
+    }
+  ]
 }
 </script>
 </body>
