@@ -801,36 +801,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   width: 100%; height: 450px; border: none; border-radius: 10px;
   box-shadow: 0 8px 40px rgba(26,26,46,0.1); display: block;
 }
-.map-consent {
-  width: 100%; height: 450px; border-radius: 10px;
-  box-shadow: 0 8px 40px rgba(26,26,46,0.1);
-  background: var(--color-mist);
-  display: flex; align-items: center; justify-content: center;
-  border: 1.5px dashed rgba(124,154,126,0.35);
-}
-.map-consent-inner {
-  text-align: center; padding: 32px; max-width: 320px;
-  display: flex; flex-direction: column; align-items: center; gap: 12px;
-}
-.map-consent-inner svg { color: var(--color-sage); opacity: 0.6; }
-.map-consent-addr {
-  font-family: var(--font-sans); font-size: 0.9rem;
-  color: var(--color-slate-deep); line-height: 1.6; font-weight: 500;
-}
-.map-consent-note {
-  font-size: 0.75rem; color: var(--color-slate-mid);
-  line-height: 1.5; opacity: 0.8; margin-top: -4px;
-}
-.map-consent-btn {
-  margin-top: 4px; padding: 10px 22px; border-radius: 6px;
-  background: #4d7a50; color: #fff;
-  font-family: var(--font-sans); font-size: 0.85rem;
-  font-weight: 600; letter-spacing: 0.04em;
-  cursor: pointer; border: none; transition: background 0.2s ease;
-}
-.map-consent-btn:hover { background: #3d6340; }
-.map-consent-btn:focus-visible { outline: 2px solid var(--color-slate-deep); outline-offset: 3px; }
-
 /* ============================================================
    FAQ
    ============================================================ */
@@ -1579,14 +1549,13 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     </div>
     <div class="visit-map reveal reveal-delay-3">
       <span class="visit-map-heading">Намерете ни на картата</span>
-      <div class="map-consent" id="map-consent">
-        <div class="map-consent-inner">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <p class="map-consent-addr">бул. Пещерско шосе 26<br>гк. Младежки хълм, 4002 Пловдив</p>
-          <p class="map-consent-note">Картата се зарежда от Google Maps и може да постави бисквитки.</p>
-          <button class="map-consent-btn" id="map-load-btn">Зареди картата</button>
-        </div>
-      </div>
+      <iframe
+        src="https://maps.google.com/maps?q=Млечко+Пловдив&output=embed"
+        title="Местоположение на Млечко в Пловдив"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        style="width:100%;height:450px;border:none;border-radius:10px;display:block;box-shadow:0 8px 40px rgba(26,26,46,0.1)">
+      </iframe>
     </div>
   </div>
 </section>
@@ -1887,20 +1856,6 @@ window.addEventListener('resize', () => {
   if (window.innerWidth === prevW) return;
   prevW = window.innerWidth;
   clearCauto(); buildCarousel(); startCauto();
-});
-
-/* ============================================================
-   MAP CONSENT GATE
-   ============================================================ */
-document.getElementById('map-load-btn')?.addEventListener('click', function() {
-  const consent = document.getElementById('map-consent');
-  const iframe = document.createElement('iframe');
-  iframe.src = 'https://maps.google.com/maps?q=Млечко+Пловдив&output=embed';
-  iframe.title = 'Местоположение на Млечко в Пловдив';
-  iframe.allowFullscreen = true;
-  iframe.referrerPolicy = 'no-referrer-when-downgrade';
-  iframe.style.cssText = 'width:100%;height:450px;border:none;border-radius:10px;display:block;box-shadow:0 8px 40px rgba(26,26,46,0.1)';
-  consent.replaceWith(iframe);
 });
 
 </script>
